@@ -1,0 +1,76 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{ user.fullName }}{% endblock %}
+
+{% block buttons %}
+    {% include '_partials/buttons/back.html.twig' with {'href': path('back_user_index')} %}
+    {% include '_partials/buttons/edit.html.twig' with {'href': path('back_user_edit', {'id': user.id})} %}
+    {% include 'back/user/_delete_form.html.twig' %}
+{% endblock %}
+
+{% block content %}
+    <section class="mt-3">
+        <div class="container-fluid">
+            <div class="row align-items-center mb-3">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <th>{{ 'user.email'|trans }}</th>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'user.name'|trans }}</th>
+                            <td>{{ user.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'user.firstname'|trans }}</th>
+                            <td>{{ user.firstname }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <h5>{{ 'project.select'|trans }}</h5>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>{{ 'user.name'|trans }}</th>
+                                <th>{% if not selected %}{{ 'Actions' }}{% else %}{{ 'project.assignAt'|trans }}{% endif %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in projects.project %}
+                                    <tr>
+                                        <td>
+                                            <a href="{{ path('back_project_show', {'id': item.project.id}) }}">
+                                                {{ item.name }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {% if not selected %}
+                                                <form action="{{ path('back_project_assign', {'id': project.id, 'user': item.userId.id}) }}">
+                                                    <button class="btn btn-primary" type="submit">{{ 'button.select'|trans }}</button>
+                                                </form>
+                                            {% else %}
+                                                {% if item.selected %}
+                                                    <i class="fas fa-check"></i>
+                                                {% else %}
+                                                    <i class="fas fa-times"></i>
+                                                {% endif %}
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="2">L'utilisateur n'a pas de projet</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

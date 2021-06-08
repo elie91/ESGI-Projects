@@ -1,0 +1,43 @@
+stages:
+    - build
+    - test
+
+image: docker:stable
+
+variables:
+    POSTGRES_DB: "api"
+    POSTGRES_USER: "api-platform"
+    POSTGRES_PASSWORD: "!ChangeMe!"
+    CONTAINER_NAME: $CI_PROJECT_NAMESPACE-$CI_PROJECT_NAME-$CI_JOB_ID-php
+    DOCKER_DRIVER: overlay2
+
+
+before_script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
+    - export APP_ENV="test"
+    - export IMAGE_TAG_PHP=$CI_REGISTRY_IMAGE/php:${CI_COMMIT_REF_NAME/\//-}
+    - export IMAGE_TAG_NGINX=$CI_REGISTRY_IMAGE/nginx:${CI_COMMIT_REF_NAME/\//-}
+    - export IMAGE_TAG_VARNISH=$CI_REGISTRY_IMAGE/varnish:${CI_COMMIT_REF_NAME/\//-}
+
+build_php:
+    stage: build
+    services:
+        - docker:dind
+    script:
+        - docker build -f Dockerfile.test --pull --cache-from "$IMAGE_TAG_PHP-test" -t "$IMAGE_TAG_PHP-test" . --target api_platform_php
+        - docker push "$IMAGE_TAG_PHP-test"
+
+test_php:
+    stage: test
+    services:
+        - docker:dind
+        -   name: postgres:12
+            alias: db
+    script:
+        - docker pull "$IMAGE_TAG_PHP-test"
+        - export DOCKER_ARGUMENTS="--net=host --add-host=db:$DB_PORT_5432_TCP_ADDR"
+        - docker run --rm $DOCKER_ARGUMENTS "$IMAGE_TAG_PHP-test" sh behat.sh | tee ./docker-php.log
+    artifacts:
+        paths:
+            - ./docker-php.log
+        when: on_failure

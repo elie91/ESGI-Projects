@@ -1,0 +1,233 @@
+tracking:
+  title: "Etat d'avancement de votre compte"
+  account:
+    short: "Compte crée"
+    message: "Votre compte a bien été crée"
+  import:
+    short: "Import des références"
+    message: "Votre catalogue de produit est en cours de traitement"
+  success:
+    short: "références en ligne"
+    message: "Vos références sont désormais en ligne, vous pouvez les retrouver dans votre espace ou sur le catalogue"
+button:
+  show: "Voir"
+  edit: "Modifier"
+  back: "Retour"
+  save: "Sauvegarder"
+  create: "Créer"
+  delete: "Supprimer"
+  valid: "Valider"
+  filter: "Filtrer"
+  filterBy: "Filtrer par"
+  search: "Rechercher"
+  send : "Envoyer"
+product:
+  name: "Références"
+  singular: "Références"
+  list:
+    title: "Vos Références"
+    nocategory: "Le produit n'a pas de catégorie"
+    noproduct: "Il n'y a pas de référence pour le moment"
+    edit: "Modification de la référence"
+    import: "Import des références"
+    file: "Choisir un fichier"
+    fileHelp: "Veuillez charger un fichier au format CSV."
+  button:
+    add: "Créer une référence"
+    confirmDelete: "Etes-vous sur de vouloir supprimer cette référence ?"
+    more: "Plus d'infos"
+  column:
+    id: "ID"
+    name: "Nom"
+    reference: "Référence"
+    quantity: "Quantité"
+    state: "Etat"
+    description: "Description"
+    rewrittenUrl: "Réecriture de l'url"
+    metaTitle: "Meta titre"
+    metaDescription: "Meta description"
+    aloy: "Alliage"
+    width: "Largeur"
+    height: "Longueur"
+    weight: "Poids"
+    depth: "Epaisseur"
+    dimension: "Dimension"
+    standardIndex: "Indice Norme Aero"
+    elaborator: "Elaborateur"
+    featureValues: "Caractéristiques"
+    user: "Entreprise"
+    active: "Affiché ?"
+  flash:
+    import:
+      success: "Les références ont été importés"
+      error: "Erreur lors de l'import du fichier"
+      mime: "Le fichier envoyé doit être au format csv"
+    new: "la référence a été ajouté au catalogue"
+    denied: "Accès refusé"
+    updated: "La référence a été mis à jour"
+    deleted: "La référence a été supprimé"
+
+feature:
+  name: "Caractéristiques"
+  button:
+    add: "Créer une caractéristique"
+    confirmDelete: "Etes-vous sur de vouloir supprimer cette caractéristique ?"
+  list:
+    edit: "Modifier la caractéristique"
+    novalues: "Il n'y a pas encore de caractéristique"
+  flash:
+    new: "La caractéristique a été créée"
+    update: "La caractéristique a été mise à jour"
+    deleted: "La caractéristique a été supprimée"
+
+featureValue:
+  list:
+    title: "Liste des caractéristiques"
+    novalues: "Il n'y a pas encore de valeur"
+    edit: "Modifier la valeur"
+  button:
+    add: "Ajouter une valeur"
+    create: "Créer une nouvelle valeur"
+    confirmDelete: "Etes-vous sur de vouloir supprimer cette valeur ?"
+  column:
+    values: "Valeurs"
+    value: "Valeur"
+  flash:
+    new: "La nouvelle valeur a été ajoutée à la caractéristique"
+    update: "La valeur de la caractéristique a été mise à jour"
+    deleted: "La valeur de la caractéristique a été supprimée"
+
+category:
+  name: "Catégories"
+  list:
+    title: "Liste des catégories"
+    noparent: "Pas de catégorie parente"
+    nocategory: "Il n'y a pas de catégorie"
+    products: "Les produits de la catégorie"
+  button:
+    add: "Ajouter une catégorie"
+    edit: "Modifier une catégorie"
+    confirmDelete: "Etes-vous sur de vouloir supprimer cette catégorie ?"
+  column:
+    title: "Nom"
+    parent: "Catégorie parente"
+    level: "Niveau"
+  flash:
+    update: "La catégorie a été mise à jour"
+    add: "La catégorie a été créée"
+    delete: "La catégorie a été supprimée"
+
+user:
+  nav:
+    account: "Mon compte"
+    information: "Mes informations"
+    tracking: "Status de mon compte"
+    logout: "Se deconnecter"
+    login: "Se connecter"
+    admin: "Administration"
+    catalog: "Catalogue"
+    forgot: "Mot de passe oublié"
+    operation: "Opérations"
+  name: "Utilisateurs"
+  list:
+    title: "Liste des utilisateurs"
+    nouser: "Il n'y a pas d'utilisateurs"
+  button:
+    add: "Ajouter un utilisateur"
+    edit: "Modifier un utilisateur"
+    confirmDelete: "Etes-vous sur de vouloir supprimer cet utilisateur ?"
+    send: "Envoyer mes références"
+    sendDescription: "Veuillez charger votre fichier ci-dessous, votre fichier sera traité par nos soins afin de permettre la compatibilité avec la plateforme. Il sera donc envoyé par mail à un administrateur. Vous pouvez visualiser l'avancement sur"
+    yourAccount: "votre compte."
+    example: "Vous pouvez également retrouver un exemple de fichier afin de nous faciliter l'ajout de vos références sur la plateforme"
+    here: "en cliquant ici"
+    reset: "Réinitialiser votre mot de passe"
+    selectState: "Selectionner l'état d'avancement du compte"
+    selectDelete: "Selectionner le statut du compte"
+    updatePassword: "Modifier mon mot de passe"
+  column:
+    email: "Email"
+    password: "Mot de passe"
+    repeatPassword: "Confirmer le mot de passe"
+    oldPassword: "Mot de passe actuel"
+    roles: "Rôles"
+    lastname: "Nom"
+    firstname: "Prénom"
+    phone: "Téléphone"
+    job: "Poste occupé"
+    product: 'Produit'
+    company: "Entreprise"
+    siret: "Siret"
+    state: "Status du compte"
+    deleted: "Compte desactivé"
+    yes: "Oui"
+    no: "Non"
+    generate: "Générer le mot de passe"
+  error:
+    samePassword: "Les mots de passe doivent correspondre"
+    emailExist: "Un email vous a été envoyé si l'email existe"
+    emailNotFound: "Identifiants de connexion invalides"
+    deletedAccount: "Votre compte a été desactivé"
+  flash:
+    new: "L'utilisateur a été créé"
+    update: "L'utilisateur a été mis à jour"
+    delete: "L'utilisateur a été supprimé"
+    passwordFail: "Le mot de passe actuel est invalide"
+    file:
+      import: "L'envoi des références s'est effectué avec succès"
+      error: "Erreur lors de l'envoie du fichier"
+quote:
+  name: "Devis"
+  request: "Demander un devis"
+  message: "Votre message"
+  list:
+    title: "Liste des devis"
+    noquote: "Il n'y a pas de devis"
+  button:
+    add: "Créer un devis"
+    edit: "Modifier un devis"
+    show: "Détails du devis"
+  column:
+    createdAt: "Crée le"
+  flash:
+    new: "Le devis a été créé"
+    update: "Le devis a été mis à jour"
+    delete: "Le devis a été supprimé"
+    send: "Votre devis à bien été envoyé. Merci !"
+    error: "Une erreur est survenue lors de l'envoi du mail"
+mail:
+  hello: "Bonjour"
+  generate:
+    subject: "Votre compte a été crée"
+    content: "Votre mot de passe est "
+  reset:
+    subject: "Réinitialiser votre mot de passe"
+    content: "Afin de réinitialiser votre mot de passe, merci de cliquer sur le lien suivant:"
+    button: "Réinitialiser"
+    success: "Votre mot de passe a bien été réinitialisé"
+    error: "Une erreur est survenue"
+  file:
+    subject: "Un nouveau catalogue vous a été envoyé"
+    content: "name de l'entreprise company vous a envoyé son catalogue qui se trouve en piece-jointe"
+  quote:
+    subject: "Création d'un devis"
+filter:
+  reference: 'Recherche une référence'
+  category: 'Rechercher des catégories par titre'
+  feature: 'Rechercher une caractéristique'
+  quote: 'Rechercher une facture par société, email ou téléphone'
+  front:
+    category: "Choisir un catégorie"
+    feature: "Choisir un type de métal"
+import:
+  productUpdate: "La référence REFERENCE a été mis à jour"
+  error:
+    feature: "La forme n'existe pas pour la référence REFERENCE [ Ligne ROW ]"
+    company: "L'entreprise n'existe pas pour la référence REFERENCE [ Ligne ROW ]"
+  success:
+    product: "La référence REFERENCE a été ajouté"
+page:
+  404:
+    title: "Désolé, cette page n'est pas disponible"
+    content: "La page que vous avez demandé a été déplacé ou supprimé"
+    button: "Retour à l'accueil"

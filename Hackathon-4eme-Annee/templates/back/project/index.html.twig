@@ -1,0 +1,100 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{ 'project.plurial'|trans }}{% endblock %}
+
+{% block buttons %}
+    {% if is_granted("ROLE_ADMIN") %}
+        {% include '_partials/buttons/new.html.twig' with {'href': path('back_project_new')} %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container">
+            {% if is_granted("ROLE_ADMIN") %}
+                <table class="table table-striped data-table">
+                    <thead>
+                    <tr>
+                        <th>{{ 'project.name'|trans }}</th>
+                        <th>{{ 'project.usersApply'|trans }}</th>
+                        <th>{{ 'project.ended'|trans }}</th>
+                        <th class="text-right">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for project in projects %}
+                        <tr>
+                            <td>{{ project.name }}</td>
+                            <td>{{ project.users|length }}</td>
+                            <td>
+                                {% if project.ended %}
+                                    <i class="fas fa-check"></i>
+                                {% endif %}
+                            </td>
+                            <td class="text-right">
+                                {% include '_partials/buttons/show.html.twig' with {'href': path('back_project_show', {'id': project.id})} %}
+                                {% include '_partials/buttons/edit.html.twig' with {'href' : path('back_project_edit', {'id': project.id})} %}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">{{ 'project.empty'|trans }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="row">
+                    <div class="m-auto">
+                        <img src="{{ asset('build/images/logo.png') }}" class="img-hexagone profil__photo"
+                             alt="{{ 'user.picture'|trans }}"
+                             height="100" width="100">
+                        <h5 class="pt-3 text-blue text-center">OFFRES</h5>
+                    </div>
+                </div>
+                <div class="offer_wraper mt-5 mb-lg-5">
+                    {% for project in projects %}
+                        {% if not project.assigned %}
+                            <div class="offer" style="background-image: url( {{ '/build/images/offre' ~ loop.index ~'.png' }});">
+                                <div class="offer_content text-center text-blue">
+                                    <div>
+                                        <h4 class="text-uppercase">{{ project.company }}</h4>
+                                        <span class="pt-5">{{ project.description }}</span>
+                                    </div>
+
+                                    {% set find = false %}
+                                    {% for item in userProjects %}
+                                        {% if item.project.id == project.id %}
+                                            {% set find = true %}
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <button class="btn btn-{% if find %}danger{% else %}primary{% endif %} btn-apply"
+                                            data-id="{{ project.id }}"
+                                            data-url="{{ absolute_url(path('back_project_apply', {'id': project.id})) }}">
+                                        {% if find %}
+                                            <i class="fas fa-times"></i>
+                                            {{ 'project.cancel'|trans }}
+                                        {% else %}
+                                            <i class="fas fa-check"></i>
+                                            {{ 'project.apply'|trans }}
+                                        {% endif %}
+                                    </button>
+
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="col-md-12">
+                            {{ 'project.empty'|trans }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('project') }}
+{% endblock %}

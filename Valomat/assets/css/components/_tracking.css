@@ -1,0 +1,54 @@
+.dot {
+  margin-bottom: 1rem;
+  position: relative;
+  display: block;
+  width: 100%;
+  font-size: 0;
+}
+.dot:before {
+  border-color: transparent;
+  display: block;
+  left: -30px;
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: calc(50% + 30px);
+  border-top-width: 1px;
+  border-top-style: solid;
+  margin-top: -1px;
+}
+.dot:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: calc(50% + 30px);
+  border-top-width: 1px;
+  border-top-style: solid;
+  margin-top: -1px;
+}
+.dot span {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+.dot span:before {
+  border-color: #ccc;
+  background-color: #fff;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 50%;
+}
+
+/*# sourceMappingURL=tracking.css.map */

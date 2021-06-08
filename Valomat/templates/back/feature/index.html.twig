@@ -1,0 +1,68 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{ 'featureValue.list.title'|trans }}{% endblock %}
+
+{% block content %}
+    <section class="mt-3">
+        <div class="container">
+            <div class="row mb-3 align-items-center">
+                <div class="col-md-6">
+                    <h1>{{ 'featureValue.list.title'|trans }}</h1>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a class="btn btn-primary sm-mb-1" href="{{ path('back_feature_new') }}">
+                        <i class="fas fa-plus"></i>{{ 'feature.button.add'|trans }}
+                    </a>
+                    <a class="btn btn-primary" href="{{ path('back_feature_value_new') }}">
+                        <i class="fas fa-plus"></i>{{ 'featureValue.button.add'|trans }}
+                    </a>
+                </div>
+            </div>
+            {% include 'form/search_in_table.html.twig' with {'placeholder' : 'filter.feature'  } %}
+
+            <div class="card">
+                <div class="card-body">
+                    <table class="table data-table">
+                        <thead>
+                        <tr>
+                            <th>{{ knp_pagination_sortable(features, 'product.column.name'|trans, 'feature.name') }}</th>
+                            <th>{{ knp_pagination_sortable(features, 'featureValue.column.values'|trans, 'feature.featureValues') }}</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for feature in features %}
+                            <tr>
+                                <td>{{ feature.name }}</td>
+                                <td>
+                                    {% for value in feature.featureValues %}
+                                        {{ value.value }}
+                                    {% else %}
+                                        {{ 'featureValue.list.novalues'|trans }}
+                                    {% endfor %}
+                                </td>
+                                <td class="text-right">
+                                    <a class="btn btn-primary" href="{{ path('back_feature_show', {'id': feature.id}) }}">
+                                        <i class="fas fa-search-plus"></i><span>{{ 'button.show'|trans }}</span>
+                                    </a>
+                                    <a class="btn btn-primary" href="{{ path('back_feature_edit', {'id': feature.id}) }}">
+                                        <i class="fas fa-pen"></i><span>{{ 'button.edit'|trans }}</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="3">{{'feature.list.novalues'|trans}}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="navigation my-4">
+                {{ knp_pagination_render(features) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

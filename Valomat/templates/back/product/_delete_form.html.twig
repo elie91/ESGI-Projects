@@ -1,0 +1,5 @@
+<form class="d-inline-block" method="post" action="{{ path('back_product_delete', {'id': product.id}) }}" onsubmit="return confirm('{{ "product.button.confirmDelete"|trans }}');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+    <button class="btn btn-danger"><i class="fas fa-trash"></i>{{ 'button.delete'|trans }}</button>
+</form>

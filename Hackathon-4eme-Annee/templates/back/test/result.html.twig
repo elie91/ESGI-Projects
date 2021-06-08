@@ -1,0 +1,37 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{ 'test.result'|trans }}{% endblock %}
+
+{#{% block buttons %}
+    {% include '_partials/buttons/new.html.twig' with {'href': path('back_topic_new'), 'button_label': 'topic.add'|trans } %}
+{% endblock %}#}
+
+{% block content %}
+    <section>
+        <div class="container-fluid">
+            <div class="form_test__header">
+                <h1 class="form_test__title">{{ 'test.result_test'|trans }} {{ user_test.test.title }}</h1>
+            </div>
+            <div class="form_test__result">
+                {% if user_test.score > 70 %}
+                    <div class="alert alert-success">
+                        {{ 'test.success'|trans }} {{ user_test.score }} % du test
+                        {% if app.user.state == 1 %}
+                            <p>{{ 'user.testSuccess'|trans }}</p>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <div class="alert alert-danger">
+                        {{ 'test.failed'|trans }}
+                        {{ 'test.retry'|trans }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('test') }}
+{% endblock %}

@@ -1,0 +1,92 @@
+{{ form_start(form) }}
+<div class="accordion" id="accordionUser">
+    <div class="row text-center mb-3">
+        <div class="col-md-6">
+            <button id="headingOne" class="btn btn-bordered" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                {{ 'user.informations'|trans }}
+            </button>
+        </div>
+        <div class="col-md-6">
+            <button id="headingTwo" class="btn btn-bordered collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                {{ 'user.updatePassword'|trans }}
+            </button>
+        </div>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionUser">
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                {{ form_row(form.email) }}
+            </div>
+            {% if user is defined %}
+                <div class="col-md-2 mb-3 text-center">
+                    <img src="{{ asset(picture_path~user.picture) }}" class="rounded-circle" alt="{{ 'user.picture'|trans }}" height="80" width="80">
+                </div>
+            {% endif %}
+            <div class="col-md-{% if user is defined %}10{% else %}12{% endif %} mb-3">
+                {{ form_row(form.picture) }}
+            </div>
+            <div class="col-md-6 mb-3">
+                {{ form_row(form.name) }}
+            </div>
+
+            <div class="col-md-6 mb-3">
+                {{ form_row(form.firstname) }}
+            </div>
+
+            <div class="col-md-4 mb-3">
+                {{ form_row(form.job) }}
+            </div>
+
+            <div class="col-md-4 mb-3">
+                {{ form_row(form.city) }}
+            </div>
+
+            <div class="col-md-4 mb-3">
+                {{ form_row(form.website) }}
+            </div>
+
+            <div class="col-md-12 mb-3 text-center">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-pen"></i> {{ button_label|default('button.save')|trans }}</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionUser">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                {{ form_row(form.plainPassword.first) }}
+            </div>
+
+            <div class="col-md-6 mb-3">
+                {{ form_row(form.plainPassword.second) }}
+            </div>
+
+            <div class="col-md-12 mb-3 text-center">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-pen"></i>{{ button_label|default('button.edit')|trans }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{'user.actualPassword'|trans}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12 mb-3">
+                    {{ form_row(form.oldPassword) }}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'button.close'|trans }}</button>
+                <button type="submit" class="btn btn-primary">{{ button_label|default('button.save')|trans }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}

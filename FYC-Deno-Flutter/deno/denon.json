@@ -1,0 +1,16 @@
+{
+  "$schema": "https://deno.land/x/denon/schema.json",
+  "scripts": {
+    "start": {
+      "cmd": "deno run index.ts",
+      "desc": "Run index.ts file"
+    }
+  },
+  "watcher": {
+    "interval": 350,
+    "exts": ["js", "jsx", "ts", "tsx", "json"],
+    "match": ["*.*", "*/*"],
+    "skip": ["*/.git/*"],
+    "legacy": false
+  }
+}

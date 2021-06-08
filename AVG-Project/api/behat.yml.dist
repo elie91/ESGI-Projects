@@ -1,0 +1,10 @@
+default:
+  autoload:
+    '': "%paths.base%/vendor/autoload.php"
+  suites:
+    default:
+      paths: [ "%paths.base%/tests/Behat/Feature" ]
+      contexts:
+        - App\Tests\Behat\Context\ApiFeatureContext
+  extensions:
+    FriendsOfBehat\SymfonyExtension: ~

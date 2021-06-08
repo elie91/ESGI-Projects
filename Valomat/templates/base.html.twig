@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Valomat{% endblock %}</title>
+    <meta name="title" content="{% block meta_title %}Valomat{% endblock %}">
+    <meta name="description" content="{% block meta_description %}Valomat{% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/png" href="{{ asset('build/logo.png')}}" />
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+</head>
+<body {% if app.request.requestUri matches '/admin/' %}class="admin"{% endif %}>
+    {% block body %}{% endblock %}
+    {{ encore_entry_script_tags('app') }}
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

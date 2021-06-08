@@ -1,0 +1,26 @@
+@import "../abstracts/variables";
+
+.navbar{
+  .dropdown-menu{
+    right: 0;
+    left: initial;
+  }
+  .dropdown{
+    & .dropdown-toggle {
+      &::after {
+        margin-left: .055em;
+        transform: rotateZ(90deg);
+        vertical-align: middle;
+        transition: all .15s ease-in;
+      }
+    }
+    &.show .dropdown-toggle{
+      &::after {
+        transform: rotateZ(0);
+      }
+    }
+    .dropdown-item:active, .dropdown-item.active{
+      background-color: $blueColor;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+framework:
+  workflows:
+    home:
+      type: 'state_machine'
+      audit_trail:
+        enabled: true
+      marking_store:
+        type: 'method'
+        property: 'status'
+      supports:
+        - App\Entity\Home
+      initial_marking: CREATED
+      places:
+        - CREATED
+        - VERIFIED
+        - REJECTED
+      transitions:
+        VERIFIED:
+          from: CREATED
+          to: VERIFIED
+        REJECTED:
+          from: CREATED
+          to: REJECTED
+    event:
+      type: 'state_machine'
+      audit_trail:
+        enabled: true
+      marking_store:
+        type: 'method'
+        property: 'status'
+      supports:
+        - App\Entity\Event
+      initial_marking: CREATED
+      places:
+        - CREATED
+        - APPROVED
+        - REJECTED
+      transitions:
+        APPROVED:
+          from: CREATED
+          to: APPROVED
+        REJECTED:
+          from: CREATED
+          to: REJECTED

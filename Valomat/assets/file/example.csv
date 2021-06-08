@@ -1,0 +1,3 @@
+ID Valomat,Nom entreprise,Forme,METAL,Alliage,Etat,Indice norme Aero,Diametre rond (mm),Longueur rond (m),Epaisseur plat (mm),Largeur plat (mm),Longueur plat (m),Epaisseur tôle (mm),Largeur tôle (mm),Longueur tôle (mm),Élaborateur,Nb d'unités,Masse totale (kg),"Aide au filtre : Z = max ({AA,AB,AC,AD})"
+R1234,Mon entreprise,ROND,INOX,Z15CN16-02,T 880-1080,ASNA 3138,6,82000,,,,,,,,1,"17,9",1
+R5678,Mon entreprise,ROND,ALUMINIUM,5754,H12,,8,30000,,,,,,,,1,"4,1",1

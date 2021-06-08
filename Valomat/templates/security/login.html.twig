@@ -1,0 +1,46 @@
+{% extends 'front/index.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block content %}
+    <section class="min-vh-100">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <h1 class="h3 mb-3 font-weight-normal">{{ 'user.nav.login'|trans }}</h1>
+                            <form method="post">
+                                {% if error %}
+                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+                                <label for="inputEmail">{{ 'user.column.email'|trans }}</label>
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mb-3" required autofocus>
+                                <label for="inputPassword">{{ 'user.column.password'|trans }}</label>
+                                <input type="password" name="password" id="inputPassword" class="form-control mb-3" required>
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-primary" name="Submit" id="submit" type="submit">{{ 'user.nav.login'|trans }}</button>
+                                    <a href="{{ path('security_forgot_password') }}" class="text-center btn btn-danger">{{ 'user.nav.forgot'|trans }}</a>
+                                </div>
+
+                                {#
+                                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                                    See https://symfony.com/doc/current/security/remember_me.html
+
+                                    <div class="checkbox mb-3">
+                                        <label>
+                                            <input type="checkbox" name="_remember_me"> Remember me
+                                        </label>
+                                    </div>
+                                #}
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

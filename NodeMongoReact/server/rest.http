@@ -1,0 +1,67 @@
+GET http://localhost:3000/movies
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJpYXQiOjE1OTA0ODc2MjksImV4cCI6MTU5MDQ5MTIyOX0.Y7OTBPnbTOU4dWQTab52KkhGehjVB1TLMBtuPTFZP0M
+
+###
+POST http://localhost:3000/movies
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJpYXQiOjE1OTA0ODc2MjksImV4cCI6MTU5MDQ5MTIyOX0.Y7OTBPnbTOU4dWQTab52KkhGehjVB1TLMBtuPTFZP0M
+
+{
+    "Category":"Horror",
+    "Length": 130,
+    "Title": "Frankenstein"
+}
+
+###
+GET http://localhost:3000/movies/5eccd6b61a20f409cfd6529c
+
+###
+PUT http://localhost:3000/movies/5eccd6b61a20f409cfd6529c
+Content-Type: application/json
+
+{
+  "Length": 145,
+  "_id": "5eccd6b61a20f409cfd6529c",
+  "Category": "Horror",
+  "Title": "Frankenstein"
+}
+###
+DELETE http://localhost:3000/movies/5eccd6b61a20f409cfd6529c
+
+###
+POST http://localhost:3003/login_check
+Content-Type: application/json
+
+{
+    "username":"kmarques@vetixy9.fr",
+    "password": "test"
+}
+
+
+###
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImttYXJxdWVzQHZldGl4eS5mciIsImlhdCI6MTU5MjI5NTA0OSwiZXhwIjoxNTkyMjk4NjQ5fQ.iWCeclbL98Y8CyNIBxY6Aphvs52pdXd70ipoTsyKk24
+
+###
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+  "username": "kmarques@vetixy9.fr",
+    "password": "test"
+}
+
+###
+GET http://localhost:3000/users/2
+
+###
+PUT http://localhost:3000/users/1
+Content-Type: application/json
+
+{
+  "username": "kmarques@vetixy.com",
+  "password": "test"
+}
+
+###
+DELETE http://localhost:3000/users/2

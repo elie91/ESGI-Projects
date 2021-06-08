@@ -1,0 +1,23 @@
+# import User, Query.user, Query.users, Mutation.updateUser, Mutation.createUser, Mutation.deleteUser, from "./generated/prisma.graphql"
+# import Home, Query.home, Query.homes, Mutation.updateHome, Mutation.createHome, Mutation.deleteHome, from "./generated/prisma.graphql"
+# import Event, Query.event, Query.events, Mutation.updateEvent, Mutation.createEvent, Mutation.deleteEvent, from "./generated/prisma.graphql"
+# import Service, Query.service, Query.services, Mutation.updateService, Mutation.createService, Mutation.deleteService, from "./generated/prisma.graphql"
+# import Rent, Query.rent, Query.rents, Mutation.updateRent, Mutation.createRent, Mutation.deleteRent, from "./generated/prisma.graphql"
+# import Option, Query.option, Query.options, Mutation.updateOption, Mutation.createOption, Mutation.deleteOption, from "./generated/prisma.graphql"
+# import Picture, Query.picture, Query.pictures, Mutation.updatePicture, Mutation.createPicture, Mutation.deletePicture, from "./generated/prisma.graphql"
+# import EventUser, Query.eventUser, Query.eventUsers, Mutation.updateEventUser, Mutation.createEventUser, Mutation.deleteEventUser, from "./generated/prisma.graphql"
+# import Notification, Query.notification, Query.notifications, Mutation.updateNotification, Mutation.createNotification, Mutation.deleteNotification, from "./generated/prisma.graphql"
+
+type Query {
+  me: User
+}
+
+type Mutation {
+  signup(lastname: String!,firstname: String!, email: String!, phone: String, password: String!, roles: Json!): AuthPayload!
+  check_login(email: String!, password: String!): AuthPayload!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}

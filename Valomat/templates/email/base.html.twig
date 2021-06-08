@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Valomat{% endblock %}</title>
+    <meta name="title" content="{% block meta_title %}Valomat{% endblock %}">
+    <meta name="description" content="{% block meta_description %}Valomat{% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ absolute_url('build/app.css') }}">
+    {% endblock %}
+
+</head>
+<body class="bg-light py-5">
+    <div class="container">
+        <header class="text-center">
+            <h1>Valomat</h1>
+        </header>
+        {% block body %}{% endblock %}
+    </div>
+</body>
+</html>

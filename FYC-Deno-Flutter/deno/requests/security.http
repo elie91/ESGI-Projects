@@ -1,0 +1,9 @@
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "email": "deno@deno.com",
+  "password": "deno"
+}
+
+> {% client.global.set('bearer', response.body.jwt) %}

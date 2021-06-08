@@ -1,0 +1,34 @@
+version: '3.6'
+services:
+  php:
+    build: docker/php
+    volumes:
+      - ./:/usr/share/nginx/html:cached
+      - var:/var/www/html/var
+      - ./vendor:/var/www/html/vendor:delegated
+      - ./docker/php/blackfire.ini:/usr/local/etc/php/conf.d/blackfire.ini
+    depends_on:
+      - db
+  nginx:
+    build: docker/nginx
+    ports:
+      - 7080:80
+    volumes:
+      - ./public:/usr/share/nginx/html/public
+    depends_on:
+      - php
+  db:
+    image: postgres:12-alpine
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - 7082:5432
+    environment:
+      - PGDATA=/data/postgres
+      - POSTGRES_DB=valomat_db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+
+volumes:
+  var:
+  postgres:

@@ -1,0 +1,51 @@
+{% extends 'back/index.html.twig' %}
+
+{% block content %}
+    <section class="mt-3">
+        <div class="container">
+            <div class="row align-items-center mb-3">
+                <div class="col-md-6">
+                    <h1>{{ user.firstname }} <span class="text-muted font-weight-light">ID : {{ user.id }}</span></h1>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a class="btn btn-primary sm-mb-1" href="{{ path('back_user_index') }}"><i class="fas fa-arrow-left"></i>{{'button.back'|trans}}</a>
+                    <a class="btn btn-primary sm-mb-1" href="{{ path('back_user_edit', {'id': user.id}) }}"><i class="fas fa-pen"></i>{{ 'button.edit'|trans }}</a>
+                </div>
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <th>{{ 'user.column.email'|trans }}</th>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'user.column.lastname'|trans }}</th>
+                            <td>{{ user.lastname }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'user.column.firstname'|trans }}</th>
+                            <td>{{ user.firstname }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'user.column.phone'|trans }}</th>
+                            <td>{{ user.phone }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'user.column.job'|trans }}</th>
+                            <td>{{ user.job }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'user.column.company'|trans }}</th>
+                            <td>{{ user.company }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'user.column.siret'|trans }}</th>
+                            <td>{{ user.siret }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

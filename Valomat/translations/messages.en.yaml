@@ -1,0 +1,224 @@
+tracking:
+  title: 'Status of your account'
+  account:
+    short: 'Account created'
+    message: 'Your account has been created'
+  import:
+    short: 'Import of references'
+    message: 'Your product catalog is being processed'
+  success:
+    short: 'online references'
+    message: 'Your references are now online, you can find them in your space or in the catalog'
+button:
+  show: See
+  edit: Edit
+  back: Return
+  save: Save
+  create: Create
+  delete: Remove
+  valid: Validate
+  filter: Filter
+  filterBy: 'filter by'
+  search: Search
+  send: 'To send'
+product:
+  name: References
+  singular: References
+  list:
+    title: 'Your references'
+    nocategory: 'The product has no category'
+    noproduct: 'There is no reference for the moment'
+    edit: 'Modification of the reference'
+    import: 'Import of references'
+    file: 'Choose a file'
+    fileHelp: 'Please upload a file in CSV format.'
+  button:
+    add: 'Create a reference'
+    confirmDelete: 'Are you sure you want to delete this reference?'
+    more: 'More informations'
+  column:
+    id: ID
+    name: 'Last name'
+    reference: Reference
+    quantity: Quantity
+    state: State
+    description: Description
+    rewrittenUrl: 'URL rewriting'
+    metaTitle: 'Meta title'
+    metaDescription: 'Meta description'
+    aloy: Alloy
+    width: Width
+    height: Length
+    weight: Weight
+    depth: Thickness
+    standardIndex: 'Aero Standard Index'
+    elaborator: Developer
+    featureValues: Characteristics
+    user: Company
+    active: 'Posted?'
+  flash:
+    import:
+      success: 'References have been imported'
+      error: 'Error importing file'
+      mime: 'The file sent must be in csv format'
+    new: 'the reference has been added to the catalog'
+    denied: 'Access denied'
+    updated: 'The reference has been updated'
+    deleted: 'The reference has been deleted'
+feature:
+  name: Characteristics
+  button:
+    add: 'Create a characteristic'
+    confirmDelete: 'Are you sure you want to delete this characteristic?'
+  list:
+    edit: 'Modify the characteristic'
+    novalues: 'There are no features yet'
+  flash:
+    new: 'The characteristic was created'
+    update: 'The feature has been updated'
+    deleted: 'Feature has been removed'
+featureValue:
+  list:
+    title: 'List of characteristics'
+    novalues: 'There is no value yet'
+    edit: 'Change the value'
+  button:
+    add: 'Add a value'
+    create: 'Create a new value'
+    confirmDelete: 'Are you sure you want to delete this value?'
+  column:
+    values: Values
+    value: Value
+  flash:
+    new: 'The new value has been added to the characteristic'
+    update: 'Characteristic value has been updated'
+    deleted: 'Characteristic value has been deleted'
+category:
+  name: Categories
+  list:
+    title: 'List of categories'
+    noparent: 'No parent category'
+    nocategory: 'There is no category'
+    products: 'Category products'
+  button:
+    add: 'Add category'
+    edit: 'Edit Category'
+    confirmDelete: 'Are you sure you want to delete this category?'
+  column:
+    title: 'Last name'
+    parent: 'Parent category'
+    level: Level
+  flash:
+    update: 'Category has been updated'
+    add: 'Category was created'
+    delete: 'Category has been deleted'
+user:
+  nav:
+    account: 'My account'
+    information: 'My information'
+    tracking: 'Account status'
+    logout: 'Sign out'
+    login: 'To log in'
+    admin: Administration
+    catalog: Catalog
+    forgot: 'Forgot your password'
+    operation: Operations
+  name: Users
+  list:
+    title: 'Users list'
+    nouser: 'There are no users'
+  button:
+    add: 'Add user'
+    edit: 'Edit user'
+    confirmDelete: 'Are you sure you want to delete this user?'
+    send: 'Send my references'
+    reset: 'Reset your password'
+    selectState: 'Select account progress'
+    selectDelete: 'Select account status'
+    updatePassword: 'Change my password'
+  column:
+    email: Email
+    password: Password
+    repeatPassword: 'Confirm password'
+    oldPassword: 'Current Password'
+    roles: Roles
+    lastname: 'Last name'
+    firstname: 'First name'
+    phone: Phone
+    job: 'Position held'
+    product: Product
+    company: Company
+    siret: Siret
+    state: 'Account status'
+    deleted: 'Account Disabled'
+    'yes': 'Yes'
+    'no': Not
+    generate: 'Generate password'
+  error:
+    samePassword: 'Passwords must match'
+    emailExist: 'An email has been sent to you if the email exists'
+    emailNotFound: 'Invalid login credentials'
+    deletedAccount: 'Your account has been deactivated'
+  flash:
+    new: 'The user has been created'
+    update: 'User has been updated'
+    delete: 'User has been deleted'
+    passwordFail: 'The current password is invalid'
+    file:
+      import: 'Sending of references was successful'
+      error: 'Error sending file'
+quote:
+  name: Quote
+  request: 'Ask for a quote'
+  message: 'Your message'
+  list:
+    title: 'Quote list'
+    noquote: 'There is no quote'
+  button:
+    add: 'Create a quote'
+    edit: 'Edit a quote'
+    show: 'Quote details'
+  column:
+    createdAt: 'Created the'
+  flash:
+    new: 'The quote has been created'
+    update: 'The quote has been updated'
+    delete: 'The quote has been deleted'
+    send: 'Your quote has been sent. Thank you !'
+    error: 'An error occurred while sending the email'
+mail:
+  hello: Hello
+  generate:
+    subject: 'Your account was created'
+    content: 'Your password is'
+  reset:
+    subject: 'Reset your password'
+    content: 'To reset your password, please click on the following link:'
+    button: Reset
+    success: 'Your password has been reset'
+    error: 'An error has occurred'
+  file:
+    subject: 'A new catalog has been sent to you'
+    content: 'company name company sent you its catalog which is attached'
+  quote:
+    subject: 'Create a quote'
+filter:
+  reference: 'Search a reference'
+  category: 'Search categories by title'
+  feature: 'Search for a characteristic'
+  quote: 'Search an invoice by company, email or phone'
+  front:
+    category: 'Choose a category'
+    feature: 'Choose a metal type'
+import:
+  productUpdate: 'The REFERENCE reference has been updated'
+  error:
+    feature: 'The form does not exist for the REFERENCE reference [ROW Line]'
+    company: 'The company does not exist for the REFERENCE reference [ROW Line]'
+  success:
+    product: 'Reference REFERENCE has been added'
+page:
+  404:
+    title: 'Sorry, this page is not available'
+    content: 'The page you requested has been moved or deleted'
+    button: 'Back to Home'

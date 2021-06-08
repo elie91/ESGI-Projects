@@ -1,0 +1,68 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-6 mb-3">
+        {{ form_label(form.product) }}
+        {{ form_widget(form.product) }}
+        <div class="invalid-feedback" {% if form_errors(form.product) %}style="display: block"{% endif %}>
+            {{ form_errors(form.product) }}
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        {{ form_label(form.company) }}
+        {{ form_widget(form.company) }}
+        <div class="invalid-feedback" {% if form_errors(form.company) %}style="display: block"{% endif %}>
+            {{ form_errors(form.company) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3 mb-3">
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email) }}
+        <div class="invalid-feedback" {% if form_errors(form.email) %}style="display: block"{% endif %}>
+            {{ form_errors(form.email) }}
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        {{ form_label(form.phone) }}
+        {{ form_widget(form.phone) }}
+        <div class="invalid-feedback" {% if form_errors(form.phone) %}style="display: block"{% endif %}>
+            {{ form_errors(form.phone) }}
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        {{ form_label(form.firstname) }}
+        {{ form_widget(form.firstname) }}
+        <div class="invalid-feedback" {% if form_errors(form.firstname) %}style="display: block"{% endif %}>
+            {{ form_errors(form.firstname) }}
+        </div>
+
+    </div>
+    <div class="col-md-3 mb-3">
+        {{ form_label(form.lastname) }}
+        {{ form_widget(form.lastname) }}
+        <div class="invalid-feedback" {% if form_errors(form.lastname) %}style="display: block"{% endif %}>
+            {{ form_errors(form.lastname) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 mb-6">
+        {{ form_label(form.message) }}
+        {{ form_widget(form.message) }}
+        <div class="invalid-feedback" {% if form_errors(form.message) %}style="display: block"{% endif %}>
+            {{ form_errors(form.message) }}
+        </div>
+
+    </div>
+</div>
+
+<div class="d-flex justify-content-center">
+    <div class="col-md-4 mb-3 ">
+        <button class="btn btn-block btn-primary">{{ button_label|default('button.save')|trans }}</button>
+    </div>
+</div>
+
+
+{{ form_end(form) }}

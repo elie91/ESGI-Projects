@@ -1,0 +1,23 @@
+POST http://localhost:8080/orders
+Content-Type: application/json
+Authorization: Bearer {{bearer}}
+
+{
+  "orderProducts": [
+    {
+      "product": {
+        "id": 1,
+        "name": "Product 1",
+        "price": 100,
+        "description":  "Lorem"
+      },
+      "quantity": 10
+    }
+  ]
+}
+
+###
+
+GET http://localhost:8080/orders
+Content-Type: application/json
+Authorization: Bearer {{bearer}}

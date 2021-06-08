@@ -1,0 +1,24 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{ 'project.add'|trans }}{% endblock %}
+
+{% block buttons %}
+    {% include '_partials/buttons/back.html.twig' with {'href':path('back_project_index')} %}
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    {% include 'back/project/_form.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    {{ encore_entry_script_tags('quills') }}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{ 'constant.plurial'|trans }}{% endblock %}
+
+{% block buttons %}
+    {% include '_partials/buttons/new.html.twig' with {'href': path('back_constant_new')} %}
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container-fluid">
+            <table class="table table-striped data-table">
+                <thead>
+                <tr>
+                    <th>{{ 'constant.type'|trans }}</th>
+                    <th>{{ 'constant.value'|trans }}</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for constant in constants %}
+                    <tr>
+                        <td>{{ constant.type }}</td>
+                        <td>{{ constant.value }}</td>
+                        <td class="text-right">
+                            {% include '_partials/buttons/edit.html.twig' with {'href' : path('back_constant_edit', {'id': constant.id})} %}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">{{ 'constant.empty'|trans }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

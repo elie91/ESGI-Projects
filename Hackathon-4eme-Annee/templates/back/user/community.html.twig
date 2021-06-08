@@ -1,0 +1,54 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{ 'Communauté' }}{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container-fluid">
+            {% include 'form/search.html.twig' with {'placeholder' : 'user.search'|trans  } %}
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                {% if users %}
+                    {% for key,user in users %}
+                        {% if user != current_user %}
+                        <div class="col-md-6 col-lg-4 text-center mt-3">
+                            <div class="card community">
+                                <div class="card-body">
+                                    <div class="position-relative d-inline-block">
+                                        <img class="badge-level" src="{% if user.userTests|length == 0 %}{{ asset('build/images/pictos/badge_debutant.svg') }}{% elseif user.userTests|length == 1 %}{{ asset('build/images/pictos/badge_intermediaire.svg') }}{% else %}{{ asset('build/images/pictos/badge_confirme.svg')}}{% endif %}" alt="badge" height="30">
+                                        <img class="img-hexagone" src="{% if user.picture %}{{ asset('build/images/users/'~user.picture) }}{% else %}{{ asset('build/images/users/9.jpeg') }}{% endif %}" alt="" height="80">
+                                    </div>
+                                    <h5 class="mt-3 h6 text-uppercase">{{ user.fullname }}</h5>
+                                    <h6 class="text-uppercase">
+                                        {% for constant in constants %}
+                                            {% if constant.position ==  user.job %}
+                                                {{ constant.value }}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </h6>
+                                    {% for i in 0..5 %}
+                                        {% if key % 2 == 0 %}
+                                            <img src="{{ asset('build/images/pictos/etoile_pleine.svg') }}" alt="" height="15">
+                                        {% else %}
+                                            <img src="{{ asset('build/images/pictos/etoile_vide.svg') }}" alt="" height="15">
+                                        {% endif %}
+                                    {% endfor  %}
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    </p>
+                                    <a class="btn btn-primary" href="mailto:{{ user.email }}">Contacter</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4">{{ 'user.empty'|trans }}</td>
+                    </tr>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

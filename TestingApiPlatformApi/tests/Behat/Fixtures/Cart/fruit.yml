@@ -1,0 +1,13 @@
+App\Entity\CartFruit:
+  cart_fruit:
+      fruit: "@fruit"
+      cart: "@cart"
+      quantity: 3
+  cart_fruit_2:
+      fruit: "@fruit_2"
+      cart: "@cart"
+      quantity: 1
+  cart_2_fruit:
+      fruit: "@fruit_2"
+      cart: "@cart_2"
+      quantity: 4

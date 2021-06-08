@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome todo 🚀</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            min-height: 100vh;
+            font-family: sans-serif;
+        }
+
+        .loader,
+        .loader:before,
+        .loader:after {
+            background: royalblue;
+            -webkit-animation: load1 1s infinite ease-in-out;
+            animation: load1 1s infinite ease-in-out;
+            width: 1em;
+            height: 4em;
+        }
+
+        [hidden],
+        [page] {
+            display: none !important;
+        }
+
+        [page][active] {
+            display: block !important;
+        }
+
+        .bg-heraku {
+            background: linear-gradient(315deg, #ff8f8f 0%, #2196F3 100%);
+        }
+    </style>
+    <link rel="preload" href="./assets/styles/tailwind.css" as="style">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', async () => {
+                let refreshing = false;
+                const reg = await navigator.serviceWorker.getRegistration();
+                if (reg) {
+                    if (reg.waiting && navigator.serviceWorker.controller) {
+                        document.newWorker = reg.waiting;
+                        const response = confirm('A new version of your application is awaiable, would you like to update ?');
+                        if (response) document.newWorker.postMessage({type: 'SKIP_WAITING'});
+                    }
+                }
+
+                navigator.serviceWorker.register('/service-worker.js', {
+                    scrope: '/'
+                }).then(registration => {
+                    setInterval(() => {
+                        console.log('Checking for new service workder');
+                        registration.update();
+                    }, 5 * 1000);
+
+                    registration.addEventListener('updatefound', () => {
+                        console.log('Service Worker update detected!');
+                        document.newWorker = registration.installing;
+
+                        document.newWorker.addEventListener('statechange', () => {
+                            if (document.newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                const response = confirm('A new version of your application is awaiable, would you like to update ?');
+                                if (response) document.newWorker.postMessage({type: 'SKIP_WAITING'});
+                            }
+                        })
+                    });
+
+                    navigator.serviceWorker.addEventListener('controllerchange', () => {
+                        if (refreshing) return;
+                        window.location.reload();
+                        refreshing = true;
+                    });
+
+                });
+            });
+        } else {
+            console.log("Sorry you browser doesn't support service worker");
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100">
+<header class="sticky inset-0 top-0 h-12 font-bold text-xl bg-heraku text-white flex justify-center items-center z-10 shadow-sm">
+    <a href="/" class="block">My awesome todo 🚀</a>
+</header>
+<section id="app">
+    <header></header>
+    <main>
+        <div page="home"></div>
+        <div page="detail"></div>
+        <div page="addTodo"></div>
+    </main>
+</section>
+<script type="module" src="/src/app.js"></script>
+</body>
+
+</html>

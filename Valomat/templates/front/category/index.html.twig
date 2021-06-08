@@ -1,0 +1,23 @@
+{% extends 'front/index.html.twig' %}
+
+{% block title %}{{ 'category.list.title'|trans }}{% endblock %}
+
+{% block content %}
+    <section class="min-vh-100">
+        <div class="container">
+            <h1 class="text-center my-5">{{ 'category.list.products'|trans }} {{ category.title }}</h1>
+            <div id="container-products" class="row"
+                 data-fetch="{{ path('front_category_index', {'slug': category.slug}) }}"
+                 data-url="{{ path('front_product_show', {'slug': 0}) }}"
+                 data-empty="{{ 'product.list.noproduct'|trans }}"
+                 data-translations='{"aloy":"{{ 'product.column.aloy'|trans }}", "width": "{{ 'product.column.width'|trans }}", "depth": "{{ 'product.column.depth'|trans }}","state": "{{ 'product.column.state'|trans }}", "height": "{{ 'product.column.height'|trans }}", "dimension": "{{ 'product.column.dimension'|trans }}"}'
+            >
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('loadMore') | replace({'src=' : 'defer src='}) | raw }}
+{% endblock %}

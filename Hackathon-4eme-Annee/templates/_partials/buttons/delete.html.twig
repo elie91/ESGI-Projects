@@ -1,0 +1,3 @@
+<button class="btn btn-danger sm-mb-1{% if class is defined %} {{ class }}{% endif %}">
+    <i class="fas fa-trash"></i>{% if text is defined %}{{ text|trans }}{% else %}{{ 'button.delete'|trans }}{% endif %}
+</button>

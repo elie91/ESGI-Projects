@@ -1,0 +1,64 @@
+### Login
+
+POST http://localhost:8080/login_check
+Content-Type: application/json
+
+{
+    "email": "renter@avg.com",
+    "password": "renter"
+}
+
+> {% client.global.set('bearer', response.body.token) %}
+
+### Sign Up
+
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+    "email": "coichot.t@gmail.com",
+    "plainPassword": "Thomas123",
+    "firstname": "ff",
+    "lastname": "Coichot",
+    "phone": "0673763262"
+}
+
+### users
+
+GET http://localhost:8080/users
+Content-Type: application/json
+Authorization: Bearer {{bearer}}
+
+### user
+
+GET http://localhost:8080/users/3
+Content-Type: application/json
+Authorization: Bearer {{bearer}}
+
+### Sign Up
+
+PUT http://localhost:8080/users/1
+Content-Type: application/json
+Authorization: Bearer {{bearer}}
+
+{
+    "firstname": "New Name"
+}
+
+
+### events
+
+GET http://localhost:8080/events?startDate[after]=2020-11-17&endDate[before]=2020-12-02
+Content-Type: application/json
+Authorization: Bearer {{bearer}}
+
+###
+GET http://localhost:8080/notifications
+Content-Type: application/json
+Authorization: Bearer {{bearer}}
+
+###
+
+GET http://localhost:8080/events?rent.owner=/users/13c3d65f6655434b9757ad0120b87d90
+Content-Type: application/json
+Authorization: Bearer {{bearer}}

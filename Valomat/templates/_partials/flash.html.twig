@@ -1,0 +1,9 @@
+{% for type,message in app.flashes %}
+    <div class="flash alert alert-{{ type }}">
+        <ul class="list-unstyled mb-0">
+            {% for text in message %}
+                <li><i class="fas mr-1 {% if type == 'success' %}fa-check{% elseif type == "danger" %}fa-times{% endif %}"></i>{{ text }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endfor %}

@@ -1,0 +1,38 @@
+@import "../helpers/variables.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*|*:-webkit-any-link {
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+
+*|*:-moz-any-link {
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+
+*|*:any-link {
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+
+::selection {
+    background-color: $primary;
+    color: $white;
+}
+
+::-moz-selection {
+    background-color: $primary;
+    color: $white;
+}
+
+body {
+    background-color: $smoke;
+    overflow-x: hidden;
+}
+

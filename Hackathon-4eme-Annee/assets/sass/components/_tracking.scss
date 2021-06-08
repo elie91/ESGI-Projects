@@ -1,0 +1,44 @@
+@import "../abstracts/variables";
+
+.tracking{
+  position: relative;
+  &:before{
+    position: absolute;
+    top: 16px;
+    left: 5%;
+    width: 90%;
+    border-top: 2px solid #000;
+    content: " ";
+  }
+
+  h3{
+    font-size: 1rem;
+  }
+
+  .list-inline-item:not(:last-child) {
+    margin-right: 0;
+  }
+}
+
+span {
+  &.check {
+    border: 1px solid #000;
+    padding: 5px 5px;
+    border-radius: 50%;
+    background-color: #000;
+    font-size: 0;
+    &.active{
+      background-color: $greenColor;
+      color: white;
+    }
+    &.inactive{
+      background-color: $redColor;
+      color: white;
+    }
+    &.incoming{
+      box-shadow: 0 0 0 0 $greenColor;
+      transform: scale(.75);
+      animation: pulse 1.5s infinite;
+    }
+  }
+}

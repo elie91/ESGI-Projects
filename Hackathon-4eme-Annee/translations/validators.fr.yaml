@@ -1,0 +1,18 @@
+assert:
+  email:
+    exist: "L'email existe déjà"
+    valid: "L'email renseigné n'est pas un email valide"
+    max: "Votre email doit contenir au maximum 100 caractères"
+  firstname:
+    min: "Votre prénom doit contenir au moins 3 caractères"
+    max: "Votre prénom doit contenir au maximum 100 caractères"
+  name:
+    min: "Votre nom doit contenir au moins 3 caractères"
+    max: "Votre nom doit contenir au maximum 100 caractères"
+  password:
+    safe: "Votre mot de passe ne peut pas contenir votre nom ou prénom"
+    min: "Votre mot de passe doit contenir au moins 6 caractères"
+    max: "Votre mot de passe doit contenir au maximum 255 caractères"
+  picture: "Votre image doit être au format jpeg ou png"
+
+

@@ -1,0 +1,7 @@
+{% extends 'emails/base.html.twig' %}
+{% block mail_title %}
+    <h2>{{ 'Hey' }} {{ name }},</h2>
+{% endblock %}
+{% block mail_content %}
+    {{ 'email.confirmUser.content'|trans }} <a href="{{ link }}">{{ 'email.confirmUser.button'|trans }}</a>
+{% endblock %}

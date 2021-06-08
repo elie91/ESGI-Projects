@@ -1,0 +1,158 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-12">
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email) }}
+        <div class="invalid-feedback" {% if form_errors(form.email) %}style="display: block"{% endif %}>
+            {{ form_errors(form.email) }}
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        {{ form_label(form.lastname) }}
+        {{ form_widget(form.lastname) }}
+        <div class="invalid-feedback" {% if form_errors(form.lastname) %}style="display: block"{% endif %}>
+            {{ form_errors(form.lastname) }}
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        {{ form_label(form.firstname) }}
+        {{ form_widget(form.firstname) }}
+        <div class="invalid-feedback" {% if form_errors(form.firstname) %}style="display: block"{% endif %}>
+            {{ form_errors(form.firstname) }}
+        </div>
+    </div>
+
+    {% if edit is not defined %}
+        {% if update is not defined%}
+            <div class="col-md-12 mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkGeneratePassword" checked>
+                    <label class="form-check-label" for="checkGeneratePassword">
+                        {{'user.column.generate'|trans}}
+                    </label>
+                </div>
+            </div>
+        {% endif %}
+        <div {% if update is not defined%}id="collapse-form"{% endif %} class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_label(form.plainPassword.first) }}
+                    {{ form_widget(form.plainPassword.first) }}
+                    <div class="invalid-feedback" {% if form_errors(form.plainPassword.first) %}style="display: block"{% endif %}>
+                        {{ form_errors(form.plainPassword.first) }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    {{ form_label(form.plainPassword.second) }}
+                    {{ form_widget(form.plainPassword.second) }}
+                    <div class="invalid-feedback" {% if form_errors(form.plainPassword.second) %}style="display: block"{% endif %}>
+                        {{ form_errors(form.plainPassword.second) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="col-md-6">
+        {{ form_label(form.phone) }}
+        {{ form_widget(form.phone) }}
+        <div class="invalid-feedback" {% if form_errors(form.phone) %}style="display: block"{% endif %}>
+            {{ form_errors(form.phone) }}
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        {{ form_label(form.job) }}
+        {{ form_widget(form.job) }}
+        <div class="invalid-feedback" {% if form_errors(form.job) %}style="display: block"{% endif %}>
+            {{ form_errors(form.job) }}
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        {{ form_label(form.company) }}
+        {{ form_widget(form.company) }}
+        <div class="invalid-feedback" {% if form_errors(form.company) %}style="display: block"{% endif %}>
+            {{ form_errors(form.company) }}
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        {{ form_label(form.siret) }}
+        {{ form_widget(form.siret) }}
+        <div class="invalid-feedback" {% if form_errors(form.siret) %}style="display: block"{% endif %}>
+            {{ form_errors(form.siret) }}
+        </div>
+    </div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="col-md-6">
+            {{ form_label(form.state) }}
+            {{ form_widget(form.state) }}
+            <div class="invalid-feedback" {% if form_errors(form.state) %}style="display: block"{% endif %}>
+                {{ form_errors(form.state) }}
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            {{ form_label(form.deleted) }}
+            {{ form_widget(form.deleted) }}
+            <div class="invalid-feedback" {% if form_errors(form.deleted) %}style="display: block"{% endif %}>
+                {{ form_errors(form.deleted) }}
+            </div>
+        </div>
+    {% endif %}
+    <div class="{% if edit is defined %}col-md-6{% else %}col-md-12{% endif %}">
+        <button class="btn btn-block btn-primary" type="submit">{{ button_label|default('button.save')|trans }}</button>
+    </div>
+    {% if edit is defined %}
+        <div class="col-md-6">
+            <button class="btn btn-block btn-primary" type="button" data-toggle="modal" data-target="#modalPassword">{{ 'user.button.updatePassword'|trans }}</button>
+        </div>
+    {% endif %}
+
+</div>
+{% if edit is defined %}
+    <div id="modalPassword" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        {{ form_label(form.oldPassword) }}
+                        {{ form_widget(form.oldPassword) }}
+                        <div class="invalid-feedback" {% if form_errors(form.oldPassword) %}style="display: block"{% endif %}>
+                            {{ form_errors(form.oldPassword) }}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.plainPassword.first) }}
+                        {{ form_widget(form.plainPassword.first) }}
+                        <div class="invalid-feedback" {% if form_errors(form.plainPassword.first) %}style="display: block"{% endif %}>
+                            {{ form_errors(form.plainPassword.first) }}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.plainPassword.second) }}
+                        {{ form_widget(form.plainPassword.second) }}
+                        <div class="invalid-feedback" {% if form_errors(form.plainPassword.second) %}style="display: block"{% endif %}>
+                            {{ form_errors(form.plainPassword.second) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'button.back'|trans }}</button>
+                    <button type="submit" class="btn btn-primary">{{ 'button.save'|trans }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{{ form_end(form) }}

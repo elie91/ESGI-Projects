@@ -1,0 +1,10 @@
+{% extends 'emails/base.html.twig' %}
+{% block mail_title %}
+    <h2>{{ 'Hey' }} {{ name }},</h2>
+{% endblock %}
+{% block mail_content %}
+    Email : {{ email_user }}<br>
+    Téléphone : {{ phone }}<br>
+    Entreprise : {{ company }}<br>
+    Message : {{ message }}<br>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% apply inline_css %}
+<style>
+    body{
+        background-color: rgba(32, 32, 32, 0.03);
+    }
+    header {
+        padding-top: 1rem;
+    }
+    footer{
+        padding-bottom: 1rem;
+    }
+    h1{
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    h2{
+        font-size: 1rem;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        padding: 0;
+    }
+    a{
+        text-decoration: none;
+        color: #c53030;
+        font-weight: bold;
+    }
+    .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .card{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid #272454;
+        border-radius: .25rem;
+        margin-bottom: 1rem;
+    }
+    .card-body {
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 1.25rem;
+    }
+    .text-center{
+        text-align: center;
+    }
+    @media (min-width: 1200px)
+        .container, .container-sm, .container-md, .container-lg, .container-xl {
+            max-width: 1140px;
+        }
+
+        @media (min-width: 992px) {
+            .container, .container-sm, .container-md, .container-lg {
+                max-width: 960px;
+            }
+        }
+        @media (min-width: 768px) {
+            .container, .container-sm, .container-md {
+                max-width: 720px;
+            }
+        }
+        @media (min-width: 576px){
+            .container, .container-sm {
+                max-width: 540px;
+            }
+        }
+        @media (min-width: 1200px){
+            .container {
+                max-width: 1140px;
+            }
+        }
+        @media (min-width: 992px){
+            .container {
+                max-width: 960px;
+            }
+        }
+        @media (min-width: 768px){
+            .container {
+                max-width: 720px;
+            }
+        }
+        @media (min-width: 576px){
+            .container {
+                max-width: 540px;
+            }
+        }
+</style>
+{% endapply %}
+
+<main>
+    <header>
+        <div class="container text-center">
+            <h1>Les agents du web</h1>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    {% block mail_title%}{% endblock %}
+                    {% block mail_content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container text-center">
+            © Copyright 2020
+        </div>
+    </footer>
+</main>
+

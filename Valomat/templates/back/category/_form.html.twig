@@ -1,0 +1,36 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-12">
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title) }}
+        <div class="invalid-feedback" {% if form_errors(form.title) %}style="display: block"{% endif %}>
+            {{ form_errors(form.title) }}
+        </div>
+    </div>
+    <div class="col-md-12 mb-3">
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description) }}
+        <div class="invalid-feedback" {% if form_errors(form.description) %}style="display: block"{% endif %}>
+            {{ form_errors(form.description) }}
+        </div>
+    </div>
+    <div class="col-md-12">
+        {{ form_label(form.metaTitle) }}
+        {{ form_widget(form.metaTitle) }}
+        <div class="invalid-feedback" {% if form_errors(form.metaTitle) %}style="display: block"{% endif %}>
+            {{ form_errors(form.metaTitle) }}
+        </div>
+    </div>
+    <div class="col-md-12">
+        {{ form_label(form.metaDescription) }}
+        {{ form_widget(form.metaDescription) }}
+        <div class="invalid-feedback" {% if form_errors(form.metaDescription) %}style="display: block"{% endif %}>
+            {{ form_errors(form.metaDescription) }}
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <button class="btn btn-primary btn-block">{{ button_label|default('button.save')|trans }}</button>
+    </div>
+</div>
+{{ form_end(form) }}

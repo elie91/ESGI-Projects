@@ -1,0 +1,13 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-12 mb-12">
+        {{ form_row(form.title) }}
+    </div>
+    <div class="col-md-12 mb-3">
+        {{ form_row(form.content) }}
+    </div>
+    <div class="col-md-12 text-center">
+        {% include '_partials/buttons/save.html.twig' %}
+    </div>
+</div>
+{{ form_end(form) }}

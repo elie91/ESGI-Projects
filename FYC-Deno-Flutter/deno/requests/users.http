@@ -1,0 +1,34 @@
+### GET COLLECTIONS
+
+GET http://localhost:8080/users
+Content-Type: application/json
+
+### GET ONE
+
+GET http://localhost:8080/users/3
+Content-Type: application/json
+
+### ADD
+
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "email": "deno1@deno.com",
+  "firstname": "Thomas",
+  "lastname": "Thomas",
+  "password": "deno"
+}
+
+### UPDATE
+
+PUT http://localhost:8080/users/1
+Content-Type: application/json
+
+{
+  "price": 599
+}
+
+### DELETE
+
+DELETE http://localhost:8080/users/2

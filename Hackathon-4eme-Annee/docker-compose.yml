@@ -1,0 +1,31 @@
+version: '3.6'
+services:
+  php:
+    build:
+      context: docker/php
+    volumes:
+      - ./:/usr/share/nginx/html
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini:ro
+    depends_on:
+      - db
+  nginx:
+    build:
+      context: docker/nginx
+    depends_on:
+      - php
+    ports:
+      - 7080:80
+    volumes:
+      - ./:/usr/share/nginx/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+  db:
+    image: 'postgres:12-alpine'
+    volumes:
+      - './docker/postgresql/data:/var/lib/postgresql/data'
+    ports:
+      - 7082:5432
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_DB=symfony
+      - POSTGRES_USER=symfony
+      - POSTGRES_PASSWORD=symfony

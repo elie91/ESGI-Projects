@@ -1,0 +1,19 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{ 'user.add'|trans }}{% endblock %}
+
+{% block buttons %}
+ {% include '_partials/buttons/back.html.twig' with {'href':path('back_user_index')} %}
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    {% include 'back/user/_form.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

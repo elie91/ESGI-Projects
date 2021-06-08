@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Les agents du web{% endblock %}</title>
+        <meta name="title" content="{% block meta_title %}Symfony{% endblock %}">
+        <meta name="description" content="{% block meta_description %}Symfony template{% endblock %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,500,500i&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,500,900&display=swap" rel="stylesheet">
+        {{ encore_entry_link_tags('app') }}
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body {% block body_class %}{% endblock %}>
+        {% block body %}{% endblock %}
+        {{ encore_entry_script_tags('app') }}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
+

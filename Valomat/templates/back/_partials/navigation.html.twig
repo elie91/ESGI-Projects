@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-back">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+            {% if app.user %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i>{{ 'user.nav.account'|trans }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{{ path('security_edit')}}"><i class="fas fa-clipboard-list"></i>{{'user.nav.information'|trans}}</a>
+                    {% if not navigation.isAdmin %}
+                        <a class="dropdown-item" href="{{ path('back_user_tracking')}}"><i class="fas fa-question"></i>{{'user.nav.tracking'|trans}}</a>
+                    {% endif %}
+                    <a class="dropdown-item" href="{{ path('security_logout') }}"><i class="fas fa-sign-out-alt"></i>{{'user.nav.logout'|trans}}</a>
+                </div>
+            </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('security_login') }}"><i class="fas fa-sign-in-alt"></i>{{ 'user.nav.login'|trans }}</a>
+                </li>
+            {% endif %}
+            {% if is_granted('ROLE_USER') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('front_index') }}"><i class="fas fa-list-alt"></i>{{ 'user.nav.catalog'|trans }}<span class="sr-only">(current)</span></a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

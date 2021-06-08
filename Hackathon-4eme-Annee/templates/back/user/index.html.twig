@@ -1,0 +1,46 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{ 'user.plurial'|trans }}{% endblock %}
+
+{% block buttons %}
+    {% include '_partials/buttons/new.html.twig' with {'href': path('back_user_new')} %}
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container-fluid pt-3">
+            {% include 'form/search.html.twig' with {'placeholder' : 'user.search'|trans  } %}
+        </div>
+        <div class="container-fluid pt-3">
+            <table class="table table-striped data-table">
+                <thead>
+                <tr>
+                    <th>{{ 'user.email'|trans }}</th>
+                    <th class="hidden-md">{{ 'user.firstname'|trans }}</th>
+                    <th class="hidden-md">{{ 'user.name'|trans }}</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if users %}
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.email }}</td>
+                            <td class="hidden-md">{{ user.firstname }}</td>
+                            <td class="hidden-md">{{ user.name }}</td>
+                            <td class="text-right">
+                                {% include '_partials/buttons/show.html.twig' with {'href': path('back_user_show', {'id': user.id})} %}
+                                {% include '_partials/buttons/edit.html.twig' with {'href' : path('back_user_edit', {'id': user.id})} %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4">{{ 'user.empty'|trans }}</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

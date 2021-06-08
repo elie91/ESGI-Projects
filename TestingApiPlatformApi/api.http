@@ -1,0 +1,39 @@
+POST http://localhost:8080/fruits
+Accept: application/ld+json
+Content-Type: application/json
+
+{
+    "name": "Pomme"
+}
+
+###
+
+GET http://localhost:8080/fruits
+Accept: application/ld+json
+Content-Type: application/json
+
+###
+
+POST http://localhost:8080/carts
+Accept: application/ld+json
+Content-Type: application/json
+
+{}
+
+###
+
+POST http://localhost:8080/cart_fruits
+Accept: application/ld+json
+Content-Type: application/json
+
+{
+    "fruit": "/fruits/1",
+    "cart": "/carts/1",
+    "quantity": 4
+}
+
+###
+
+GET http://localhost:8080/carts
+Accept: application/ld+json
+Content-Type: application/json

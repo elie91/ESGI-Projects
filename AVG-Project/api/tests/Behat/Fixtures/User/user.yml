@@ -1,0 +1,10 @@
+parameters:
+  password: '$2y$13$btz3lbw7cpj0fhL3pF.h/OVjR63VOh0N9tlQnKELBL2mKTttyBbLK'
+
+App\Entity\User:
+  user:
+    firstname: user_firstname
+    lastname: user_lastname
+    email: 'thomas@popotes.fr'
+    password: '<{password}>'
+    phone: '0123456789'

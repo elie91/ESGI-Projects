@@ -1,0 +1,73 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{ test.title }}{% endblock %}
+
+{#{% block buttons %}
+    {% include '_partials/buttons/new.html.twig' with {'href': path('back_topic_new'), 'button_label': 'topic.add'|trans } %}
+{% endblock %}#}
+
+{% block content %}
+    <section>
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <form class="form_test" method="post" action="{{ path('back_test_results') }}">
+                        <div class="form_test__header">
+                            <h1 class="form_test__title">{{ 'test.title'|trans }} {{ test.title }}</h1>
+                        </div>
+                        <div class="form_test__tab">
+                            <p>{{ "test.message1"|trans }}</p>
+                            <p>{{ "test.message2"|trans }}</p>
+                            <p>{{ "test.goodluck"|trans }}</p>
+                        </div>
+
+                        {% set index = 1 %}
+                        {% for question in test.questions %}
+                            <div class="form_test__tab">
+                                <div class="alert alert-danger form_test__error">{{ 'test.invalid'|trans }}</div>
+                                <div class="form_test__question">{{ question.title }}:</div>
+                                <div class="form_test__answers">
+                                    {% set index_answer = 1 %}
+                                    {% for answer in question.answers %}
+                                        <div class="form_test__answer">
+                                            <input type="radio" id="{{ 'answer_'~ index ~ '_' ~ index_answer }}"
+                                                   name="{{ 'answer_'~ index }}"
+                                                   value="{{ answer.id }}">
+                                            <label for="{{ 'answer_'~ index ~ '_' ~ index_answer }}">
+                                                {{ answer.content }} {{ answer.isValid }}
+                                            </label>
+                                        </div>
+                                        {% set index_answer = index_answer + 1 %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% set index = index + 1 %}
+                        {% endfor %}
+
+                        <div class="form_test__buttons">
+                            <div style="float:right; margin-right: 20px">
+                                <button type="button" id="prevBtn" class="btn btn-secondary">Précédent</button>
+                                <button type="button" id="nextBtn" class="btn btn-primary">Suivant</button>
+                            </div>
+                        </div>
+
+                        <!-- Circles which indicates the steps of the form: -->
+                        <div class="form_test__indicator">
+                            {% for question in test.questions %}
+                                <span class="form_test__step"></span>
+                            {% endfor %}
+                            <span class="form_test__step"></span>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('test') }}
+{% endblock %}

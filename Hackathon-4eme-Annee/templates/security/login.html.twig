@@ -1,0 +1,47 @@
+{% extends 'front/index.html.twig' %}
+
+{% block title %}{{ 'button.login'|trans }}{% endblock %}
+
+{% block content %}
+    <section class="pt-5 overflow-hidden position-relative bg-hexagone min-height">
+        <img src="{{ asset('build/images/hexagones/hexagone-rose.png') }}" alt="">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-lg-5">
+                    <h1 class="text-white font-weight-light margin-hexagone"><img src="{{ asset('build/images/pictos/mon-espace_blanc.svg') }}" height="50" alt="">Mon compte</h1>
+                </div>
+                <div class="col-lg-7">
+                    <div class="card mt-5 mb-0">
+                        <div class="card-body">
+                            <h1 class="h3 mb-3">{{ 'button.login'|trans }}</h1>
+                            <form method="post">
+                                {% if error %}
+                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+                                <label for="inputEmail">{{ 'user.email'|trans }}</label>
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mb-3" required autofocus>
+                                <label for="inputPassword">{{ 'user.password'|trans }}</label>
+                                <input type="password" name="password" id="inputPassword" class="form-control mb-3" required>
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                <div class="checkbox mb-3">
+                                    <div class="form-check pl-0">
+                                        <input type="checkbox" name="_remember_me" id="remember">
+                                        <label class="form-check-label" for="remember">
+                                            {{ 'button.remember'|trans }}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-primary btn-block mr-2" type="submit"><i class="fas fa-sign-in-alt"></i>{{ 'button.login'|trans }}</button>
+                                    <a href="{{ path('security_register') }}" class="text-center btn btn-primary btn-block ml-2"><i class="fas fa-user-plus"></i>{{ 'button.register'|trans }}</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <a href="{{ path('security_forgot_password') }}" class="text-center btn btn-transparent text-muted btn-block">{{ 'button.forgot'|trans }}</a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

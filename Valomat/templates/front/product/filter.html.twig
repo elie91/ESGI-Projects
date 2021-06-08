@@ -1,0 +1,31 @@
+<button class="btn btn-primary btn-block mb-3 hidden-lg" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter">
+    {{ 'button.filterBy'|trans }}<i class="fas fa-angle-left"></i>
+</button>
+<div class="collapse collapse-lg" id="collapseFilter">
+    <div class="card card-body">
+        {{ form_start(form, {attr: {id: 'form-filter'}}) }}
+
+        <div class="spinner-border js-loading" role="status" aria-hidden="true" style="display: none">
+            <span class="sr-only">Loading...</span>
+        </div>
+
+        {{ form_row(form.name) }}
+
+        {{ form_row(form.aloy) }}
+
+        {{ form_row(form.categories) }}
+
+        {#{{ form_row(form.width) }}
+
+        {{ form_row(form.height) }}
+
+        {{ form_row(form.weight) }}
+
+        {{ form_row(form.depth) }}#}
+
+        {{ form_row(form.elaborator) }}
+
+        <button type="button" class="btn btn-primary w-100">{{ 'button.filter'|trans }}</button>
+        {{ form_end(form) }}
+    </div>
+</div>

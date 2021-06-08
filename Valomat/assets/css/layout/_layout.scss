@@ -1,0 +1,94 @@
+@import "../abstracts/variables";
+
+footer{
+  width: 100%;
+  background-color: $darkGrayColor;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+
+  .sidebar {
+    min-width: $widthSidebar;
+    max-width: $widthSidebar;
+    min-height: calc(100vh - 56px);
+    background-color: #fff;
+
+    .nav{
+      position: fixed;
+      width: $widthSidebar;
+    }
+
+    .nav-link, .btn-link {
+      color: $darkGrayColor;
+      width: 100%;
+      text-align: left;
+      padding: .75rem .5rem .75rem 2rem;
+      box-shadow: none;
+
+      &:hover, &:focus {
+        text-decoration: none;
+      }
+    }
+
+    & .accordion {
+      .collapse {
+        padding-left: .5rem;
+      }
+
+      .collapsing {
+        padding-left: .5rem;
+      }
+    }
+
+    &.active {
+      margin-left: -$widthSidebar;
+    }
+  }
+
+  .content {
+    width: 100%;
+    section:first-of-type{
+      margin-top: 4.5rem!important;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+
+  .wrapper{
+    .sidebar{
+      min-width: $widthSidebarMobile;
+      max-width: $widthSidebarMobile;
+      .nav-link, .btn-link {
+        padding: .75rem .5rem;
+        text-align: center;
+        width: 100%;
+        span{
+          display: none;
+        }
+        i{
+          margin-right: 0;
+        }
+      }
+      &.active {
+        margin-left: 0;
+      }
+      .nav{
+        width: $widthSidebarMobile;
+      }
+      .accordion .collapse, .accordion .collapsing {
+        padding-left: 0;
+      }
+    }
+  }
+  .list-group{
+    .btn{
+      i{
+        margin-right: 0;
+      }
+    }
+  }
+}

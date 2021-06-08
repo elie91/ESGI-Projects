@@ -1,0 +1,15 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    App\Tests\Behat\:
+        resource: '../tests/Behat/*'
+
+    test.App\Service\Mailer:
+        class: 'App\Tests\Mock\MockMailer'
+        decorates: 'App\Service\Mailer'
+        arguments: [ '@test.App\Service\Mailer.inner' ]
+
+    Fidry\AliceDataFixtures\LoaderInterface: '@fidry_alice_data_fixtures.doctrine.persister_loader'

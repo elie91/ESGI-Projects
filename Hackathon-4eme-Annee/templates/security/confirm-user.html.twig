@@ -1,0 +1,23 @@
+{% extends 'front/index.html.twig' %}
+
+{% block title %}{{ 'page.confirmUser.title'|trans }}{% endblock %}
+
+{% block content %}
+    <section class="pt-5">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="h3 mb-3 font-weight-normal">{{ 'page.confirmUser.title'|trans }}</h1>
+                            <p>{{ 'page.confirmUser.content'|trans }}</p>
+                            <div class="text-center">
+                                <a class="btn btn-primary" href="{{ path('security_login') }}">{{ 'button.login'|trans }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

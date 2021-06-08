@@ -1,0 +1,88 @@
+@import "./../App";
+
+.cart {
+  position: absolute;
+  width: 20rem;
+  min-height: 200px;
+  top: 75px;
+  right: 0;
+  border: black;
+  background-color: #ffffff;
+  z-index: 5;
+  box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;
+  border-radius: .35rem;
+
+  .icon{
+    height: 15px;
+  }
+
+  .cart-header{
+    border-top-left-radius: .35rem;
+    border-top-right-radius: .35rem;
+    padding: .5rem 1.5rem;
+    margin-bottom: 0;
+    font-size: .875rem;
+    white-space: nowrap;
+    background-color: $primary;
+    border: 1px solid $primary;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .btn-delete{
+    padding: 0 .5rem;
+  }
+
+}
+
+.cart-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+
+  .shopping-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .item-count {
+    position: absolute;
+    font-size: 10px;
+    font-weight: bold;
+    bottom: 10px;
+  }
+}
+
+.cursor{
+  cursor: pointer;
+}
+
+.btn{
+  &.btn-icon {
+    padding: .5rem;
+
+    &:active, &:hover, &:focus {
+      box-shadow: none;
+    }
+  }
+  &.btn-top-left-0{
+    border-top-left-radius: 0;
+  }
+  &.btn-top-right-0{
+    border-top-right-radius: 0;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .cart{
+    position: relative;
+    width: 100%;
+    top: 0;
+  }
+
+}

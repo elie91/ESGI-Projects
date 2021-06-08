@@ -1,0 +1,24 @@
+{% set uri = app.request.attributes.get('_route')|split('_') %}
+{% if uri|length > 2 %}
+    <nav aria-label="breadcrumb" class="ml-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{{ path('back_index') }}">{{ 'breadcrumb.dashboard'|trans }}</a>
+            </li>
+            {% if uri[1] is defined and uri[1] != "index" %}
+                <li class="breadcrumb-item">
+                    <a href="{{ path(uri[0]~'_'~uri[1]~'_index') }}">
+                        {{ (uri[1]~'.plurial')|trans }}
+                    </a>
+                </li>
+            {% endif %}
+            {% if uri[2] is defined and uri[2] != "index" %}
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a href="{{ path(app.request.attributes.get('_route'), {'id': app.request.attributes.get('id')}) }}">
+                        {{ ('breadcrumb.'~uri[2])|trans }}
+                    </a>
+                </li>
+            {% endif %}
+        </ol>
+    </nav>
+{% endif %}

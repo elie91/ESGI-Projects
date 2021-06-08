@@ -1,0 +1,19 @@
+@import "../abstracts/variables";
+.ql-container{
+  height: auto!important;
+  background-color: $materialGray;
+  &.ql-snow {
+    border: 1px solid $materialGray;
+  }
+}
+
+.ql-toolbar{
+  &.ql-snow {
+    border: 1px solid $materialGray;
+    border-radius: .25rem .25rem 0 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    padding: 8px;
+    background-color: white;
+  }
+}

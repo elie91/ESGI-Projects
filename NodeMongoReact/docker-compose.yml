@@ -1,0 +1,68 @@
+version: "3.4"
+
+services:
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - ./SampleCollections:/usr/local/sampleCollections
+    working_dir: /usr/local/sampleCollections
+
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=api
+      - POSTGRES_USER=root
+      # You should definitely change the password in production
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - db-data:/var/lib/postgresql/data:rw
+    # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
+    # - ./docker/db/data:/var/lib/postgresql/data:rw
+    ports:
+      - "5432:5432"
+
+  mongo-express:
+    image: mongo-express
+    depends_on:
+      - mongo
+    ports:
+      - 127.0.0.1:8088:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+
+  server:
+    image: node:alpine
+    volumes:
+      - "./server:/home/node/app:rw,consistent"
+    working_dir: "/home/node/app"
+    environment:
+      MONGODB_USER: "root"
+      MONGODB_PASS: "password"
+      MONGODB_DBNAME: "SampleCollections"
+      DATABASE_URL: "postgres://root:password@db/api"
+      JWT_SECRET: "MyBestSecret"
+    depends_on:
+      - mongo
+    command: "npm start"
+    ports:
+      - 127.0.0.1:3003:3000
+
+  client:
+    build: "./client"
+    volumes:
+      - "./client:/home/node/app"
+    working_dir: "/home/node/app"
+    command: "yarn start"
+    tty: true
+    stdin_open: true
+    ports:
+      - 127.0.0.1:3001:3000
+
+volumes:
+  db-data: {}

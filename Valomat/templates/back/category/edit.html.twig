@@ -1,0 +1,24 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{'category.button.edit'|trans}}{% endblock %}
+
+{% block content %}
+    <section class="mt-3">
+        <div class="container">
+            <div class="row align-items-center mb-3">
+                <div class="col-md-6">
+                    <h1>{{'category.button.edit'|trans}}</h1>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a class="btn btn-primary" href="{{ path('back_category_index') }}"><i class="fas fa-arrow-left"></i>{{'button.back'|trans}}</a>
+                    {{ include('back/category/_delete_form.html.twig') }}
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    {{ include('back/category/_form.html.twig', {'button_label': 'button.edit'}) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

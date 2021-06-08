@@ -1,0 +1,152 @@
+@import "../abstracts/variables";
+
+body {
+  min-height: 100vh;
+  position: relative;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: $blueColor;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+
+  .sidebar {
+    min-width: $widthSidebar;
+    max-width: $widthSidebar;
+    min-height: 100vh;
+    background-color: $blueColor;
+    &.hide{
+      min-width: 0;
+      max-width: 0;
+    }
+
+    .nav {
+      position: fixed;
+      width: $widthSidebar;
+    }
+
+    .nav-link, .btn-link {
+      color: $yellowColor;
+      font-family: "Montserrat", sans-serif;
+      letter-spacing: 1px;
+      padding: .75rem 1rem;
+      font-weight: 300;
+      box-shadow: none;
+      text-transform: uppercase;
+
+      i {
+        margin-right: .5rem;
+      }
+
+      &:hover, &:focus {
+        text-decoration: none;
+        color: white!important;
+        opacity: 1;
+      }
+    }
+
+    & .accordion {
+      .collapse {
+        padding-left: 2.5rem;
+      }
+
+      .collapsing {
+        padding-left: 2.5rem;
+      }
+    }
+
+    &.active {
+      margin-left: -$widthSidebar;
+    }
+  }
+
+  .content {
+    width: 100%;
+
+    & header:first-of-type {
+      padding-top: 4.5rem;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  #btn-sidebar {
+    padding-left: 15px !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .navbar.navbar-expand-lg {
+    width: calc(100% - 50px);
+  }
+  .front .navbar.navbar-expand-lg {
+    width: 100%;
+  }
+
+  .wrapper {
+    .sidebar {
+      min-width: $widthSidebarMobile;
+      max-width: $widthSidebarMobile;
+
+      .nav-link, .btn-link {
+        padding: .75rem .5rem;
+        text-align: center;
+        width: 100%;
+        span {
+          display: none;
+        }
+
+        i {
+          margin-right: 0;
+        }
+      }
+
+      &.active {
+        margin-left: 0;
+      }
+
+      .nav {
+        width: $widthSidebarMobile;
+      }
+
+      .accordion .collapse, .accordion .collapsing {
+        padding-left: 0;
+      }
+    }
+  }
+  .list-group {
+    .btn {
+      i {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.card-stat i {
+  background-color: $blueColor;
+  color: #fff;
+  padding: 1.25rem;
+  border-radius: 50%;
+  font-size: 1.5em;
+}
+
+.card-stat .number {
+  font-weight: 900;
+  font-size: 1.5em;
+}
+
+.card-stat .text {
+  font-weight: 400;
+  font-style: italic;
+  margin-top: -.5rem;
+}

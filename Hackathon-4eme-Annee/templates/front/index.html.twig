@@ -1,0 +1,302 @@
+{% extends 'base.html.twig' %}
+
+{% block body_class %}class="front"{% endblock %}
+
+{% block body %}
+    {% include '_partials/navigation.html.twig' %}
+    {% include '_partials/flash.html.twig' %}
+    {% block content %}
+        <header class="bg-blue text-center">
+            <img src="{{ asset('build/images/logo.png') }}" alt="Logo" height="250">
+            <h1>LES AGENTS DU WEB</h1>
+            <p>
+                Les Agents du web sont des experts dans leurs domaines certifiés et encadrés<br>
+                par l’agence 148 afin de répondre à des projets clients de qualité.
+            </p>
+            <a href="#values" class="btn">
+                <img src="{{ asset('build/images/pictos/fleche-homepage_jaune.svg') }}" alt="Fleche" height="50">
+            </a>
+        </header>
+        <section id="values" class="py-5">
+            <div class="container">
+                <h2 class="text-uppercase text-blue text-center">148 & agents du web vous garantissent :</h2>
+                <div class="row mt-5">
+                    <div class="col-lg-4 col-md-6 text-center">
+                        <img src="{{ asset('build/images/pictos/expertise_bleu.svg') }}" alt="expertise" height="80">
+                        <h3>{{ 'home.expert'|trans }}</h3>
+                        <p>Apprendre à avoir la maîtrise parfaite d’un projet</p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 text-center">
+                        <img src="{{ asset('build/images/pictos/exigence_bleu.svg') }}" alt="expertise" height="80">
+                        <h3>{{ 'home.exigence'|trans }}</h3>
+                        <p>Apprendre à satisfaire à la perfection la réalisation d’un projet</p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 text-center">
+                        <img src="{{ asset('build/images/pictos/accompagnement_bleu.svg') }}" alt="expertise"
+                             height="80">
+                        <h3>{{ 'home.accompagnement'|trans }}</h3>
+                        <p>Un suivi personnalisé et encadré dans vos projets</p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 text-center">
+                        <img src="{{ asset('build/images/pictos/innovation_bleu.svg') }}" alt="expertise" height="80">
+                        <h3>{{ 'home.innovation'|trans }}</h3>
+                        <p>
+                            Garantir de l’innovation dans les projets
+                            et apprendre de nouvelles techinques
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 text-center">
+                        <img src="{{ asset('build/images/pictos/ethique_bleu.svg') }}" alt="expertise" height="80">
+                        <h3>{{ 'home.ethique'|trans }}</h3>
+                        <p>
+                            Nous possedons le label <b>BCorp</b> qui permet à notre agence
+                            de se développer selon des principes économiques,
+                            humains et durables
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 text-center">
+                        <img src="{{ asset('build/images/pictos/confiance_bleu.svg') }}" alt="expertise" height="80">
+                        <h3>{{ 'home.confiance'|trans }}</h3>
+                        <p>
+                            Elle permet d’instaurer un climat saint
+                            et une relation durable basée sur de la transparence
+                        </p>
+                    </div>
+                    <div class="offset-lg-4 col-lg-4 col-md-6 offset-md-3 text-center">
+                        <img src="{{ asset('build/images/pictos/proximite_bleu.svg') }}" alt="expertise" height="80">
+                        <h3>{{ 'home.proximity'|trans }}</h3>
+                        <p>
+                            C’est garantir un bon relationnel entre agents
+                            et rester à taille humaine
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="agency" class="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <img src="{{ asset('build/images/148.png') }}" class="img-fluid" alt="148">
+                    </div>
+                    <div class="col-md-9">
+                        <h2 class="text-uppercase text-white">Qui sommes-nous ?</h2>
+                        <h3>L'agence 148</h3>
+                        <p class="text-white">
+                            Nous rejoindre c’est faire parti de nous, c’est intégrer une agence créative & technique dans une éthique construite sur le respect de la condition humaine et environnementale. Notre plus grande force est notre capacité à accompagner nos clients sur chaque étape de leur projet grâce à notre expertise et nos expériences.Toutes polyvalences dans le domaine du digital est bienvenu dans notre agence, nous vous accompagnons et vous garantissons l’apprentissage de nos valeurs et un accompagnement sur nos formations, alors qu’attendez-vous ?
+                        </p>
+                        <a class="btn btn-primary" href="//148.fr" target="_blank">Je visite le site</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="teams" class="py-5">
+            <div class="container">
+                <h3 class="text-uppercase text-blue text-center">Quelques membres de notre équipe</h3>
+                <div class="row mt-5">
+                    <div class="col-md-4 text-center">
+                        <img src="{{ asset('build/images/mathias.jpg') }}" class="img-fluid px-5" alt="">
+                        <h4 class="text-uppercase mt-4">Mathias</h4>
+                        <h6 class="text-uppercase mt-3">Directeur technique</h6>
+                        <p class="mt-3">Mathias peut donner l’illusion qu’il est dans la lune, il a pourtant bel et bien
+                            les pieds sur terre. Ce doux rêveur a l’art de trouver les meilleures astuces pour que votre
+                            site web soit le plus performant, le plus efficace, le plus beau, le mieux référencé…</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <img src="{{ asset('build/images/gaetan.jpg') }}" class="img-fluid px-5" alt="">
+                        <h4 class="text-uppercase mt-4">Gaethan</h4>
+                        <h6 class="text-uppercase mt-3">Directeur artistique</h6>
+                        <p class="mt-3">Aussi drôle que Chandler, aussi inventif que Ross et aussi gourmand que Joey,
+                            Gaétan (en bon fan de Friends) maitrise autant la palette graphique que les dernières
+                            pépites design du Web. En revanche on se saura jamais s'il est amoureux de Phoebe, de Rachel
+                            ou de Monica... mystère...</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <img src="{{ asset('build/images/kilian.jpg') }}" class="img-fluid px-5" alt="">
+                        <h4 class="text-uppercase mt-4">Kilian</h4>
+                        <h6 class="text-uppercase mt-3">Directeur de création</h6>
+                        <p class="mt-3">Hyperactif ambitieux, monter une agence de com à la hauteur de ses valeurs avec
+                            un pote ça ne lui a pas fait peur. Pour ce technophile avéré, orchestrer créativité et
+                            technique c’est comme une seconde nature, surtout quand on est écolo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="account" class="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-3 px-5">
+                        <img src="{{ asset('build/images/pictos/mon-espace_bleu.svg') }}" class="img-fluid"
+                             alt="Mon compte">
+                    </div>
+                    <div class="col-md-9">
+                        <h3>Créer mon compte</h3>
+                        <p class="text-white">
+                            Pour se connecter à la plateforme et obtenir le graal en matière digital rien de plus simple, tout se passe ici !
+                        </p>
+                        <a class="btn btn-primary" href="{{ path('security_login') }}">Je m'inscris</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5">
+            <div class="container text-center text-blue">
+                <div class="px-5">
+                    <img src="{{ asset('build/images/pictos/interrogation_jaune-92.svg') }}" height="100" alt="">
+                    <h3 class="text-uppercase mt-4">Quel statut choisir ?</h3>
+                    <div class="row bordered mt-5">
+                        <div class="col-lg-4 col-md-6">
+                            <h4 class="text-uppercase">Auto<br>entrepreneur</h4>
+                            <p class="px-3">
+                                Il bénéfice de régimes sociaux et fiscaux allégés basés sur le chiffre d’affaires réalisé.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <h4 class="text-uppercase">Entrepreneur individuel</h4>
+                            <p class="px-3">
+                                C‘est un professionnel travaillant en indépendant. Il exerce une activité de prestation de service en vertu de laquelle il est lié à une entité ou à une entreprise par un contrat. Travaillant pour son compte, le freelance offre ses service aux entreprises, aux sociétés, etc
+                            </p>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <h4 class="text-uppercase">Travailler en freelance</h4>
+                            <p class="px-3">
+                                Il crée une micro-entreprise dont il est le dirigeant. En d’autres termes, il est son propre employeur. Il est imposable sur son revenu en tant que travailleur non salarié et soumis au régime micro-social.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-uppercase mt-5">Inscription auto-entrepreneur : <br> Comment faire ?</h3>
+                <div class="row tasks py-4">
+                    <div class="col-lg-3 col-md-6  mt-3">
+                        <div class="card bg-yellow">
+                            <div class="card-body">
+                                <b>
+                                    1
+                                </b>
+                                Faire la déclaration d'auto-entrepreneur en ligne
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-md-6  mt-3">
+                        <div class="card bg-yellow">
+                            <div class="card-body">
+                                <b>
+                                    2
+                                </b>
+                                Apportez les pièces complémentaires
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-md-6  mt-3">
+                        <div class="card bg-yellow">
+                            <div class="card-body">
+                                <b>
+                                    3
+                                </b>
+                                Envoyer le dossier au Centre de Formalité des Entreprises compétentes
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mt-3">
+                        <div class="card bg-yellow">
+                            <div class="card-body">
+                                <b>
+                                    4
+                                </b>
+                                Réceptionner et conserver les documents des auto-entreprise
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="b-corp" class="banner bg-green">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-3 px-5">
+                        <img src="{{ asset('build/images/bcorp.png') }}" class="img-fluid" alt="148">
+                    </div>
+                    <div class="col-md-9">
+                        <h3>Green attitude</h3>
+                        <p class="text-white">
+                            Il s’agit d’un label indicateur qui permet d’évaluer une entreprise sur la préoccupation du bien-être de ses salariés, de son engagement sociétal et de son impact environnemental. C’est faire du business de la manière la plus vertueuse possible.
+                        </p>
+                        <a class="btn btn-primary" href="{{ path('security_login') }}">Je découvre</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="newsletter">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="offset-md-2 col-md-8 hexagone text-center">
+                        <img src="{{ asset('build/images/pictos/newsletter_jaune.svg') }}" height="50" alt="Newsletter">
+                        <h3 class="text-uppercase">Abonnez-vous <br> à notre newsletter</h3>
+                        <p>
+                            Cette newsletter mensuelle présente trois projets<br> de l'agence 148 & les agents du web
+                        </p>
+                        <a class="btn btn-primary text-white">Je m’inscris</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="offset-md-2 col-md-8">
+                        <h3 class="text-uppercase text-center mb-3">ils nous font confiance</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="{{ asset('build/images/maaf.png') }}" class="img-fluid" alt="">
+                            </div>
+                            <div class="col-md-4">
+                                <img src="{{ asset('build/images/newmanity.png') }}" class="img-fluid" alt="">
+                            </div>
+
+                            <div class="col-md-4">
+                                <img src="{{ asset('build/images/opcalim.png') }}" class="img-fluid" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="container">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <h3 class="h6 mb-3 mt-3 text-uppercase">Vous souhaitez nous rejoindre mais vous avez une question ?</h3>
+                        {{ form_start(form) }}
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form_row(form.subject) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form_row(form.name) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form_row(form.email) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form_row(form.phone) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form_row(form.company) }}
+                            </div>
+                            <div class="col-md-12">
+                                {{ form_row(form.message) }}
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                                </div>
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+    {% include '_partials/footer.html.twig' %}
+{% endblock %}

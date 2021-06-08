@@ -1,0 +1,58 @@
+@import "../abstracts/variables";
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 $darkGrayColor; }
+}
+
+@keyframes pulse-danger {
+  0% { box-shadow: 0 0 0 0 $redColor; }
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0)
+  }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes wave {
+  0% {
+    margin-left: -1500px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+
+@keyframes swell {
+  0%, 100% {
+    transform: translate3d(0, -25px, 0);
+  }
+  50% {
+    transform: translate3d(0, 5px, 0);
+  }
+}
+
+@keyframes margin-animation {
+  0%, 100% {
+    margin-left: 0;
+  }
+  50% {
+    margin-left: .5rem;
+  }
+}

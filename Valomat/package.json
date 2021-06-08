@@ -1,0 +1,41 @@
+{
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.28.2",
+    "core-js": "^3.6.3",
+    "regenerator-runtime": "^0.13.2",
+    "webpack-notifier": "^1.6.0"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  },
+  "name": "valomatproject",
+  "version": "1.0.0",
+  "main": "webpack.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Elie91/valomatproject.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://gitlab.com/Elie91/valomatproject/issues"
+  },
+  "homepage": "https://gitlab.com/Elie91/valomatproject#readme",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "highlight.js": "^9.18.1",
+    "jquery": "^3.4.1",
+    "node-sass": "^4.13.0",
+    "popper.js": "^1.16.1",
+    "quill": "^1.3.7",
+    "sass-loader": "^7.3.1"
+  }
+}

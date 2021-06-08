@@ -1,0 +1,94 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{ 'topic.plurial'|trans }}{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container-fluid pt-2">
+            {% include 'form/search.html.twig' with {'placeholder' : 'topic.search'|trans  } %}
+            <div class="text-center">
+                {% include '_partials/buttons/new.html.twig' with {'href': path('back_topic_new'), 'button_label': 'topic.add'|trans } %}
+            </div>
+            <table class="table table-striped data-table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Sujets</th>
+                    <th>Réponses</th>
+                    <th class="text-center">Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key, topic in topics %}
+                    <tr {% if key % 2 == 0 %}class="pink"{% endif %}>
+                        <td>
+                            <a class="btn btn-circle btn-primary" data-toggle="collapse" href="#collapse{{ topic.id }}"
+                               role="button" aria-expanded="false" aria-controls="collapse{{ topic.id }}">
+                                <i class="fas fa-caret-down mr-0"></i>
+                            </a>
+                        </td>
+                        <td>{{ topic.content }}</td>
+                        <td>{{ topic.comments|length }}</td>
+                        <td>
+                            {{ 'topic.createdBy'|trans }} {{ topic.author.name }} {{ topic.author.firstname }},
+                            le {{ topic.createdAt|date('d/m/Y') }}
+                        </td>
+                    </tr>
+
+                    <tr class="collapse{{ topic.id }} collapse" id="collapse{{ topic.id }}">
+                        <td colspan="4">
+                            <div class="input-group mt-3 mb-3">
+                                <input class="form-control w-50 comment_content" type="text"
+                                       placeholder="Ajouter un commentaire" aria-label="">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary add_comment text-white input-group-text" data-author="{{ app.user.id }}"
+                                            data-topic="{{ topic.id }}">
+                                        <i class="fa fa-comment"></i>
+                                        {{ 'topic.comment'|trans }}
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="comment_wrapper text-left" id="comment_{{ topic.id }}">
+                                Commentaires associés
+                                {% for comment in topic.comments|sort((a, b) => a.createdAt > b.createdAt) %}
+                                    <div class="comment">
+                                        <div class="comment__body">
+                                            <img src="{{ asset('build/images/users/' ~ comment.author.picture) }}"
+                                                 alt="Author" class="comment__photo">
+                                            <div class="comment__content">
+                                                <span>{{ comment.content }}</span>
+                                                <span class="comment__author">
+                                                    {{ comment.author.fullname }} - {{ comment.createdAt|date('d/m/Y h:i') }}
+                                                </span>
+                                            </div>
+                                            {% if is_granted('ROLE_ADMIN') %}
+                                                <form class="comment__delete" method="post"
+                                                      action="{{ path('back_comment_delete', {'id': comment.id}) }}"
+                                                      onsubmit="return confirm('{{ 'button.confirmDelete'|trans({'item': comment.content}) }}');">
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <input type="hidden" name="_token"
+                                                           value="{{ csrf_token('delete' ~ comment.id) }}">
+                                                    {% include '_partials/buttons/delete.html.twig' %}
+                                                </form>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div>Il n'y a pas de commentaire pour le moment sur ce topic</div>
+                                {% endfor %}
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td>
+                            Il n'y a pas encore de topic
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

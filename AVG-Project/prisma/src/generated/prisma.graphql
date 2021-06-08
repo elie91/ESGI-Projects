@@ -1,0 +1,2946 @@
+type AggregateDoctrineMigrationVersion {
+  count: Int!
+}
+
+type AggregateEvent {
+  count: Int!
+}
+
+type AggregateEventUser {
+  count: Int!
+}
+
+type AggregateHome {
+  count: Int!
+}
+
+type AggregateNotification {
+  count: Int!
+}
+
+type AggregateOption {
+  count: Int!
+}
+
+type AggregatePicture {
+  count: Int!
+}
+
+type AggregateRent {
+  count: Int!
+}
+
+type AggregateService {
+  count: Int!
+}
+
+type AggregateUser {
+  count: Int!
+}
+
+type BatchPayload {
+  count: Long!
+}
+
+scalar DateTime
+
+type DoctrineMigrationVersion {
+  version: ID!
+  executedAt: DateTime
+  executionTime: Int
+}
+
+type DoctrineMigrationVersionConnection {
+  pageInfo: PageInfo!
+  edges: [DoctrineMigrationVersionEdge]!
+  aggregate: AggregateDoctrineMigrationVersion!
+}
+
+input DoctrineMigrationVersionCreateInput {
+  version: ID
+  executedAt: DateTime
+  executionTime: Int
+}
+
+type DoctrineMigrationVersionEdge {
+  node: DoctrineMigrationVersion!
+  cursor: String!
+}
+
+enum DoctrineMigrationVersionOrderByInput {
+  version_ASC
+  version_DESC
+  executedAt_ASC
+  executedAt_DESC
+  executionTime_ASC
+  executionTime_DESC
+}
+
+type DoctrineMigrationVersionPreviousValues {
+  version: ID!
+  executedAt: DateTime
+  executionTime: Int
+}
+
+type DoctrineMigrationVersionSubscriptionPayload {
+  mutation: MutationType!
+  node: DoctrineMigrationVersion
+  updatedFields: [String!]
+  previousValues: DoctrineMigrationVersionPreviousValues
+}
+
+input DoctrineMigrationVersionSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: DoctrineMigrationVersionWhereInput
+  AND: [DoctrineMigrationVersionSubscriptionWhereInput!]
+  OR: [DoctrineMigrationVersionSubscriptionWhereInput!]
+  NOT: [DoctrineMigrationVersionSubscriptionWhereInput!]
+}
+
+input DoctrineMigrationVersionUpdateInput {
+  executedAt: DateTime
+  executionTime: Int
+}
+
+input DoctrineMigrationVersionUpdateManyMutationInput {
+  executedAt: DateTime
+  executionTime: Int
+}
+
+input DoctrineMigrationVersionWhereInput {
+  version: ID
+  version_not: ID
+  version_in: [ID!]
+  version_not_in: [ID!]
+  version_lt: ID
+  version_lte: ID
+  version_gt: ID
+  version_gte: ID
+  version_contains: ID
+  version_not_contains: ID
+  version_starts_with: ID
+  version_not_starts_with: ID
+  version_ends_with: ID
+  version_not_ends_with: ID
+  executedAt: DateTime
+  executedAt_not: DateTime
+  executedAt_in: [DateTime!]
+  executedAt_not_in: [DateTime!]
+  executedAt_lt: DateTime
+  executedAt_lte: DateTime
+  executedAt_gt: DateTime
+  executedAt_gte: DateTime
+  executionTime: Int
+  executionTime_not: Int
+  executionTime_in: [Int!]
+  executionTime_not_in: [Int!]
+  executionTime_lt: Int
+  executionTime_lte: Int
+  executionTime_gt: Int
+  executionTime_gte: Int
+  AND: [DoctrineMigrationVersionWhereInput!]
+  OR: [DoctrineMigrationVersionWhereInput!]
+  NOT: [DoctrineMigrationVersionWhereInput!]
+}
+
+input DoctrineMigrationVersionWhereUniqueInput {
+  version: ID
+}
+
+type Event {
+  id: ID!
+  description: String
+  name: String!
+  peopleLimit: Int!
+  rent: Rent
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  startDate: DateTime!
+  endDate: DateTime!
+  eventUsers(where: EventUserWhereInput, orderBy: EventUserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [EventUser!]
+  status: String!
+}
+
+type EventConnection {
+  pageInfo: PageInfo!
+  edges: [EventEdge]!
+  aggregate: AggregateEvent!
+}
+
+input EventCreateInput {
+  id: ID
+  description: String
+  name: String!
+  peopleLimit: Int!
+  rent: RentCreateOneInput
+  startDate: DateTime!
+  endDate: DateTime!
+  eventUsers: EventUserCreateManyWithoutEventInput
+  status: String!
+}
+
+input EventCreateManyInput {
+  create: [EventCreateInput!]
+  connect: [EventWhereUniqueInput!]
+}
+
+input EventCreateOneWithoutEventUsersInput {
+  create: EventCreateWithoutEventUsersInput
+  connect: EventWhereUniqueInput
+}
+
+input EventCreateWithoutEventUsersInput {
+  id: ID
+  description: String
+  name: String!
+  peopleLimit: Int!
+  rent: RentCreateOneInput
+  startDate: DateTime!
+  endDate: DateTime!
+  status: String!
+}
+
+type EventEdge {
+  node: Event!
+  cursor: String!
+}
+
+enum EventOrderByInput {
+  id_ASC
+  id_DESC
+  description_ASC
+  description_DESC
+  name_ASC
+  name_DESC
+  peopleLimit_ASC
+  peopleLimit_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  startDate_ASC
+  startDate_DESC
+  endDate_ASC
+  endDate_DESC
+  status_ASC
+  status_DESC
+}
+
+type EventPreviousValues {
+  id: ID!
+  description: String
+  name: String!
+  peopleLimit: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  startDate: DateTime!
+  endDate: DateTime!
+  status: String!
+}
+
+input EventScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  peopleLimit: Int
+  peopleLimit_not: Int
+  peopleLimit_in: [Int!]
+  peopleLimit_not_in: [Int!]
+  peopleLimit_lt: Int
+  peopleLimit_lte: Int
+  peopleLimit_gt: Int
+  peopleLimit_gte: Int
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  startDate: DateTime
+  startDate_not: DateTime
+  startDate_in: [DateTime!]
+  startDate_not_in: [DateTime!]
+  startDate_lt: DateTime
+  startDate_lte: DateTime
+  startDate_gt: DateTime
+  startDate_gte: DateTime
+  endDate: DateTime
+  endDate_not: DateTime
+  endDate_in: [DateTime!]
+  endDate_not_in: [DateTime!]
+  endDate_lt: DateTime
+  endDate_lte: DateTime
+  endDate_gt: DateTime
+  endDate_gte: DateTime
+  status: String
+  status_not: String
+  status_in: [String!]
+  status_not_in: [String!]
+  status_lt: String
+  status_lte: String
+  status_gt: String
+  status_gte: String
+  status_contains: String
+  status_not_contains: String
+  status_starts_with: String
+  status_not_starts_with: String
+  status_ends_with: String
+  status_not_ends_with: String
+  AND: [EventScalarWhereInput!]
+  OR: [EventScalarWhereInput!]
+  NOT: [EventScalarWhereInput!]
+}
+
+type EventSubscriptionPayload {
+  mutation: MutationType!
+  node: Event
+  updatedFields: [String!]
+  previousValues: EventPreviousValues
+}
+
+input EventSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: EventWhereInput
+  AND: [EventSubscriptionWhereInput!]
+  OR: [EventSubscriptionWhereInput!]
+  NOT: [EventSubscriptionWhereInput!]
+}
+
+input EventUpdateDataInput {
+  description: String
+  name: String
+  peopleLimit: Int
+  rent: RentUpdateOneInput
+  startDate: DateTime
+  endDate: DateTime
+  eventUsers: EventUserUpdateManyWithoutEventInput
+  status: String
+}
+
+input EventUpdateInput {
+  description: String
+  name: String
+  peopleLimit: Int
+  rent: RentUpdateOneInput
+  startDate: DateTime
+  endDate: DateTime
+  eventUsers: EventUserUpdateManyWithoutEventInput
+  status: String
+}
+
+input EventUpdateManyDataInput {
+  description: String
+  name: String
+  peopleLimit: Int
+  startDate: DateTime
+  endDate: DateTime
+  status: String
+}
+
+input EventUpdateManyInput {
+  create: [EventCreateInput!]
+  update: [EventUpdateWithWhereUniqueNestedInput!]
+  upsert: [EventUpsertWithWhereUniqueNestedInput!]
+  delete: [EventWhereUniqueInput!]
+  connect: [EventWhereUniqueInput!]
+  set: [EventWhereUniqueInput!]
+  disconnect: [EventWhereUniqueInput!]
+  deleteMany: [EventScalarWhereInput!]
+  updateMany: [EventUpdateManyWithWhereNestedInput!]
+}
+
+input EventUpdateManyMutationInput {
+  description: String
+  name: String
+  peopleLimit: Int
+  startDate: DateTime
+  endDate: DateTime
+  status: String
+}
+
+input EventUpdateManyWithWhereNestedInput {
+  where: EventScalarWhereInput!
+  data: EventUpdateManyDataInput!
+}
+
+input EventUpdateOneRequiredWithoutEventUsersInput {
+  create: EventCreateWithoutEventUsersInput
+  update: EventUpdateWithoutEventUsersDataInput
+  upsert: EventUpsertWithoutEventUsersInput
+  connect: EventWhereUniqueInput
+}
+
+input EventUpdateWithoutEventUsersDataInput {
+  description: String
+  name: String
+  peopleLimit: Int
+  rent: RentUpdateOneInput
+  startDate: DateTime
+  endDate: DateTime
+  status: String
+}
+
+input EventUpdateWithWhereUniqueNestedInput {
+  where: EventWhereUniqueInput!
+  data: EventUpdateDataInput!
+}
+
+input EventUpsertWithoutEventUsersInput {
+  update: EventUpdateWithoutEventUsersDataInput!
+  create: EventCreateWithoutEventUsersInput!
+}
+
+input EventUpsertWithWhereUniqueNestedInput {
+  where: EventWhereUniqueInput!
+  update: EventUpdateDataInput!
+  create: EventCreateInput!
+}
+
+type EventUser {
+  id: ID!
+  event: Event!
+  user: User!
+  isOwner: Boolean!
+}
+
+type EventUserConnection {
+  pageInfo: PageInfo!
+  edges: [EventUserEdge]!
+  aggregate: AggregateEventUser!
+}
+
+input EventUserCreateInput {
+  id: ID
+  event: EventCreateOneWithoutEventUsersInput!
+  user: UserCreateOneInput!
+  isOwner: Boolean
+}
+
+input EventUserCreateManyWithoutEventInput {
+  create: [EventUserCreateWithoutEventInput!]
+  connect: [EventUserWhereUniqueInput!]
+}
+
+input EventUserCreateWithoutEventInput {
+  id: ID
+  user: UserCreateOneInput!
+  isOwner: Boolean
+}
+
+type EventUserEdge {
+  node: EventUser!
+  cursor: String!
+}
+
+enum EventUserOrderByInput {
+  id_ASC
+  id_DESC
+  isOwner_ASC
+  isOwner_DESC
+}
+
+type EventUserPreviousValues {
+  id: ID!
+  isOwner: Boolean!
+}
+
+input EventUserScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  isOwner: Boolean
+  isOwner_not: Boolean
+  AND: [EventUserScalarWhereInput!]
+  OR: [EventUserScalarWhereInput!]
+  NOT: [EventUserScalarWhereInput!]
+}
+
+type EventUserSubscriptionPayload {
+  mutation: MutationType!
+  node: EventUser
+  updatedFields: [String!]
+  previousValues: EventUserPreviousValues
+}
+
+input EventUserSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: EventUserWhereInput
+  AND: [EventUserSubscriptionWhereInput!]
+  OR: [EventUserSubscriptionWhereInput!]
+  NOT: [EventUserSubscriptionWhereInput!]
+}
+
+input EventUserUpdateInput {
+  event: EventUpdateOneRequiredWithoutEventUsersInput
+  user: UserUpdateOneRequiredInput
+  isOwner: Boolean
+}
+
+input EventUserUpdateManyDataInput {
+  isOwner: Boolean
+}
+
+input EventUserUpdateManyMutationInput {
+  isOwner: Boolean
+}
+
+input EventUserUpdateManyWithoutEventInput {
+  create: [EventUserCreateWithoutEventInput!]
+  delete: [EventUserWhereUniqueInput!]
+  connect: [EventUserWhereUniqueInput!]
+  set: [EventUserWhereUniqueInput!]
+  disconnect: [EventUserWhereUniqueInput!]
+  update: [EventUserUpdateWithWhereUniqueWithoutEventInput!]
+  upsert: [EventUserUpsertWithWhereUniqueWithoutEventInput!]
+  deleteMany: [EventUserScalarWhereInput!]
+  updateMany: [EventUserUpdateManyWithWhereNestedInput!]
+}
+
+input EventUserUpdateManyWithWhereNestedInput {
+  where: EventUserScalarWhereInput!
+  data: EventUserUpdateManyDataInput!
+}
+
+input EventUserUpdateWithoutEventDataInput {
+  user: UserUpdateOneRequiredInput
+  isOwner: Boolean
+}
+
+input EventUserUpdateWithWhereUniqueWithoutEventInput {
+  where: EventUserWhereUniqueInput!
+  data: EventUserUpdateWithoutEventDataInput!
+}
+
+input EventUserUpsertWithWhereUniqueWithoutEventInput {
+  where: EventUserWhereUniqueInput!
+  update: EventUserUpdateWithoutEventDataInput!
+  create: EventUserCreateWithoutEventInput!
+}
+
+input EventUserWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  event: EventWhereInput
+  user: UserWhereInput
+  isOwner: Boolean
+  isOwner_not: Boolean
+  AND: [EventUserWhereInput!]
+  OR: [EventUserWhereInput!]
+  NOT: [EventUserWhereInput!]
+}
+
+input EventUserWhereUniqueInput {
+  id: ID
+}
+
+input EventWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  peopleLimit: Int
+  peopleLimit_not: Int
+  peopleLimit_in: [Int!]
+  peopleLimit_not_in: [Int!]
+  peopleLimit_lt: Int
+  peopleLimit_lte: Int
+  peopleLimit_gt: Int
+  peopleLimit_gte: Int
+  rent: RentWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  startDate: DateTime
+  startDate_not: DateTime
+  startDate_in: [DateTime!]
+  startDate_not_in: [DateTime!]
+  startDate_lt: DateTime
+  startDate_lte: DateTime
+  startDate_gt: DateTime
+  startDate_gte: DateTime
+  endDate: DateTime
+  endDate_not: DateTime
+  endDate_in: [DateTime!]
+  endDate_not_in: [DateTime!]
+  endDate_lt: DateTime
+  endDate_lte: DateTime
+  endDate_gt: DateTime
+  endDate_gte: DateTime
+  eventUsers_every: EventUserWhereInput
+  eventUsers_some: EventUserWhereInput
+  eventUsers_none: EventUserWhereInput
+  status: String
+  status_not: String
+  status_in: [String!]
+  status_not_in: [String!]
+  status_lt: String
+  status_lte: String
+  status_gt: String
+  status_gte: String
+  status_contains: String
+  status_not_contains: String
+  status_starts_with: String
+  status_not_starts_with: String
+  status_ends_with: String
+  status_not_ends_with: String
+  AND: [EventWhereInput!]
+  OR: [EventWhereInput!]
+  NOT: [EventWhereInput!]
+}
+
+input EventWhereUniqueInput {
+  id: ID
+}
+
+type Home {
+  id: ID!
+  active: Boolean!
+  address: String!
+  city: String!
+  country: String!
+  description: String
+  name: String!
+  price: Float!
+  owner: User
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  homeOption(where: OptionWhereInput, orderBy: OptionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Option!]
+  pictures(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Picture!]
+  type: String!
+  status: String!
+}
+
+type HomeConnection {
+  pageInfo: PageInfo!
+  edges: [HomeEdge]!
+  aggregate: AggregateHome!
+}
+
+input HomeCreateInput {
+  id: ID
+  active: Boolean
+  address: String!
+  city: String!
+  country: String!
+  description: String
+  name: String!
+  price: Float!
+  owner: UserCreateOneWithoutHomesInput
+  homeOption: OptionCreateManyWithoutHomeOptionInput
+  pictures: PictureCreateManyWithoutHomeInput
+  type: String!
+  status: String!
+}
+
+input HomeCreateManyWithoutOwnerInput {
+  create: [HomeCreateWithoutOwnerInput!]
+  connect: [HomeWhereUniqueInput!]
+}
+
+input HomeCreateOneInput {
+  create: HomeCreateInput
+  connect: HomeWhereUniqueInput
+}
+
+input HomeCreateOneWithoutHomeOptionInput {
+  create: HomeCreateWithoutHomeOptionInput
+  connect: HomeWhereUniqueInput
+}
+
+input HomeCreateOneWithoutPicturesInput {
+  create: HomeCreateWithoutPicturesInput
+  connect: HomeWhereUniqueInput
+}
+
+input HomeCreateWithoutHomeOptionInput {
+  id: ID
+  active: Boolean
+  address: String!
+  city: String!
+  country: String!
+  description: String
+  name: String!
+  price: Float!
+  owner: UserCreateOneWithoutHomesInput
+  pictures: PictureCreateManyWithoutHomeInput
+  type: String!
+  status: String!
+}
+
+input HomeCreateWithoutOwnerInput {
+  id: ID
+  active: Boolean
+  address: String!
+  city: String!
+  country: String!
+  description: String
+  name: String!
+  price: Float!
+  homeOption: OptionCreateManyWithoutHomeOptionInput
+  pictures: PictureCreateManyWithoutHomeInput
+  type: String!
+  status: String!
+}
+
+input HomeCreateWithoutPicturesInput {
+  id: ID
+  active: Boolean
+  address: String!
+  city: String!
+  country: String!
+  description: String
+  name: String!
+  price: Float!
+  owner: UserCreateOneWithoutHomesInput
+  homeOption: OptionCreateManyWithoutHomeOptionInput
+  type: String!
+  status: String!
+}
+
+type HomeEdge {
+  node: Home!
+  cursor: String!
+}
+
+enum HomeOrderByInput {
+  id_ASC
+  id_DESC
+  active_ASC
+  active_DESC
+  address_ASC
+  address_DESC
+  city_ASC
+  city_DESC
+  country_ASC
+  country_DESC
+  description_ASC
+  description_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  type_ASC
+  type_DESC
+  status_ASC
+  status_DESC
+}
+
+type HomePreviousValues {
+  id: ID!
+  active: Boolean!
+  address: String!
+  city: String!
+  country: String!
+  description: String
+  name: String!
+  price: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  type: String!
+  status: String!
+}
+
+input HomeScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  active: Boolean
+  active_not: Boolean
+  address: String
+  address_not: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_lt: String
+  address_lte: String
+  address_gt: String
+  address_gte: String
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
+  city: String
+  city_not: String
+  city_in: [String!]
+  city_not_in: [String!]
+  city_lt: String
+  city_lte: String
+  city_gt: String
+  city_gte: String
+  city_contains: String
+  city_not_contains: String
+  city_starts_with: String
+  city_not_starts_with: String
+  city_ends_with: String
+  city_not_ends_with: String
+  country: String
+  country_not: String
+  country_in: [String!]
+  country_not_in: [String!]
+  country_lt: String
+  country_lte: String
+  country_gt: String
+  country_gte: String
+  country_contains: String
+  country_not_contains: String
+  country_starts_with: String
+  country_not_starts_with: String
+  country_ends_with: String
+  country_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  price: Float
+  price_not: Float
+  price_in: [Float!]
+  price_not_in: [Float!]
+  price_lt: Float
+  price_lte: Float
+  price_gt: Float
+  price_gte: Float
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  type: String
+  type_not: String
+  type_in: [String!]
+  type_not_in: [String!]
+  type_lt: String
+  type_lte: String
+  type_gt: String
+  type_gte: String
+  type_contains: String
+  type_not_contains: String
+  type_starts_with: String
+  type_not_starts_with: String
+  type_ends_with: String
+  type_not_ends_with: String
+  status: String
+  status_not: String
+  status_in: [String!]
+  status_not_in: [String!]
+  status_lt: String
+  status_lte: String
+  status_gt: String
+  status_gte: String
+  status_contains: String
+  status_not_contains: String
+  status_starts_with: String
+  status_not_starts_with: String
+  status_ends_with: String
+  status_not_ends_with: String
+  AND: [HomeScalarWhereInput!]
+  OR: [HomeScalarWhereInput!]
+  NOT: [HomeScalarWhereInput!]
+}
+
+type HomeSubscriptionPayload {
+  mutation: MutationType!
+  node: Home
+  updatedFields: [String!]
+  previousValues: HomePreviousValues
+}
+
+input HomeSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: HomeWhereInput
+  AND: [HomeSubscriptionWhereInput!]
+  OR: [HomeSubscriptionWhereInput!]
+  NOT: [HomeSubscriptionWhereInput!]
+}
+
+input HomeUpdateDataInput {
+  active: Boolean
+  address: String
+  city: String
+  country: String
+  description: String
+  name: String
+  price: Float
+  owner: UserUpdateOneWithoutHomesInput
+  homeOption: OptionUpdateManyWithoutHomeOptionInput
+  pictures: PictureUpdateManyWithoutHomeInput
+  type: String
+  status: String
+}
+
+input HomeUpdateInput {
+  active: Boolean
+  address: String
+  city: String
+  country: String
+  description: String
+  name: String
+  price: Float
+  owner: UserUpdateOneWithoutHomesInput
+  homeOption: OptionUpdateManyWithoutHomeOptionInput
+  pictures: PictureUpdateManyWithoutHomeInput
+  type: String
+  status: String
+}
+
+input HomeUpdateManyDataInput {
+  active: Boolean
+  address: String
+  city: String
+  country: String
+  description: String
+  name: String
+  price: Float
+  type: String
+  status: String
+}
+
+input HomeUpdateManyMutationInput {
+  active: Boolean
+  address: String
+  city: String
+  country: String
+  description: String
+  name: String
+  price: Float
+  type: String
+  status: String
+}
+
+input HomeUpdateManyWithoutOwnerInput {
+  create: [HomeCreateWithoutOwnerInput!]
+  delete: [HomeWhereUniqueInput!]
+  connect: [HomeWhereUniqueInput!]
+  set: [HomeWhereUniqueInput!]
+  disconnect: [HomeWhereUniqueInput!]
+  update: [HomeUpdateWithWhereUniqueWithoutOwnerInput!]
+  upsert: [HomeUpsertWithWhereUniqueWithoutOwnerInput!]
+  deleteMany: [HomeScalarWhereInput!]
+  updateMany: [HomeUpdateManyWithWhereNestedInput!]
+}
+
+input HomeUpdateManyWithWhereNestedInput {
+  where: HomeScalarWhereInput!
+  data: HomeUpdateManyDataInput!
+}
+
+input HomeUpdateOneRequiredInput {
+  create: HomeCreateInput
+  update: HomeUpdateDataInput
+  upsert: HomeUpsertNestedInput
+  connect: HomeWhereUniqueInput
+}
+
+input HomeUpdateOneWithoutHomeOptionInput {
+  create: HomeCreateWithoutHomeOptionInput
+  update: HomeUpdateWithoutHomeOptionDataInput
+  upsert: HomeUpsertWithoutHomeOptionInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: HomeWhereUniqueInput
+}
+
+input HomeUpdateOneWithoutPicturesInput {
+  create: HomeCreateWithoutPicturesInput
+  update: HomeUpdateWithoutPicturesDataInput
+  upsert: HomeUpsertWithoutPicturesInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: HomeWhereUniqueInput
+}
+
+input HomeUpdateWithoutHomeOptionDataInput {
+  active: Boolean
+  address: String
+  city: String
+  country: String
+  description: String
+  name: String
+  price: Float
+  owner: UserUpdateOneWithoutHomesInput
+  pictures: PictureUpdateManyWithoutHomeInput
+  type: String
+  status: String
+}
+
+input HomeUpdateWithoutOwnerDataInput {
+  active: Boolean
+  address: String
+  city: String
+  country: String
+  description: String
+  name: String
+  price: Float
+  homeOption: OptionUpdateManyWithoutHomeOptionInput
+  pictures: PictureUpdateManyWithoutHomeInput
+  type: String
+  status: String
+}
+
+input HomeUpdateWithoutPicturesDataInput {
+  active: Boolean
+  address: String
+  city: String
+  country: String
+  description: String
+  name: String
+  price: Float
+  owner: UserUpdateOneWithoutHomesInput
+  homeOption: OptionUpdateManyWithoutHomeOptionInput
+  type: String
+  status: String
+}
+
+input HomeUpdateWithWhereUniqueWithoutOwnerInput {
+  where: HomeWhereUniqueInput!
+  data: HomeUpdateWithoutOwnerDataInput!
+}
+
+input HomeUpsertNestedInput {
+  update: HomeUpdateDataInput!
+  create: HomeCreateInput!
+}
+
+input HomeUpsertWithoutHomeOptionInput {
+  update: HomeUpdateWithoutHomeOptionDataInput!
+  create: HomeCreateWithoutHomeOptionInput!
+}
+
+input HomeUpsertWithoutPicturesInput {
+  update: HomeUpdateWithoutPicturesDataInput!
+  create: HomeCreateWithoutPicturesInput!
+}
+
+input HomeUpsertWithWhereUniqueWithoutOwnerInput {
+  where: HomeWhereUniqueInput!
+  update: HomeUpdateWithoutOwnerDataInput!
+  create: HomeCreateWithoutOwnerInput!
+}
+
+input HomeWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  active: Boolean
+  active_not: Boolean
+  address: String
+  address_not: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_lt: String
+  address_lte: String
+  address_gt: String
+  address_gte: String
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
+  city: String
+  city_not: String
+  city_in: [String!]
+  city_not_in: [String!]
+  city_lt: String
+  city_lte: String
+  city_gt: String
+  city_gte: String
+  city_contains: String
+  city_not_contains: String
+  city_starts_with: String
+  city_not_starts_with: String
+  city_ends_with: String
+  city_not_ends_with: String
+  country: String
+  country_not: String
+  country_in: [String!]
+  country_not_in: [String!]
+  country_lt: String
+  country_lte: String
+  country_gt: String
+  country_gte: String
+  country_contains: String
+  country_not_contains: String
+  country_starts_with: String
+  country_not_starts_with: String
+  country_ends_with: String
+  country_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  price: Float
+  price_not: Float
+  price_in: [Float!]
+  price_not_in: [Float!]
+  price_lt: Float
+  price_lte: Float
+  price_gt: Float
+  price_gte: Float
+  owner: UserWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  homeOption_every: OptionWhereInput
+  homeOption_some: OptionWhereInput
+  homeOption_none: OptionWhereInput
+  pictures_every: PictureWhereInput
+  pictures_some: PictureWhereInput
+  pictures_none: PictureWhereInput
+  type: String
+  type_not: String
+  type_in: [String!]
+  type_not_in: [String!]
+  type_lt: String
+  type_lte: String
+  type_gt: String
+  type_gte: String
+  type_contains: String
+  type_not_contains: String
+  type_starts_with: String
+  type_not_starts_with: String
+  type_ends_with: String
+  type_not_ends_with: String
+  status: String
+  status_not: String
+  status_in: [String!]
+  status_not_in: [String!]
+  status_lt: String
+  status_lte: String
+  status_gt: String
+  status_gte: String
+  status_contains: String
+  status_not_contains: String
+  status_starts_with: String
+  status_not_starts_with: String
+  status_ends_with: String
+  status_not_ends_with: String
+  AND: [HomeWhereInput!]
+  OR: [HomeWhereInput!]
+  NOT: [HomeWhereInput!]
+}
+
+input HomeWhereUniqueInput {
+  id: ID
+}
+
+scalar Json
+
+scalar Long
+
+type Mutation {
+  createDoctrineMigrationVersion(data: DoctrineMigrationVersionCreateInput!): DoctrineMigrationVersion!
+  updateDoctrineMigrationVersion(data: DoctrineMigrationVersionUpdateInput!, where: DoctrineMigrationVersionWhereUniqueInput!): DoctrineMigrationVersion
+  updateManyDoctrineMigrationVersions(data: DoctrineMigrationVersionUpdateManyMutationInput!, where: DoctrineMigrationVersionWhereInput): BatchPayload!
+  upsertDoctrineMigrationVersion(where: DoctrineMigrationVersionWhereUniqueInput!, create: DoctrineMigrationVersionCreateInput!, update: DoctrineMigrationVersionUpdateInput!): DoctrineMigrationVersion!
+  deleteDoctrineMigrationVersion(where: DoctrineMigrationVersionWhereUniqueInput!): DoctrineMigrationVersion
+  deleteManyDoctrineMigrationVersions(where: DoctrineMigrationVersionWhereInput): BatchPayload!
+  createEvent(data: EventCreateInput!): Event!
+  updateEvent(data: EventUpdateInput!, where: EventWhereUniqueInput!): Event
+  updateManyEvents(data: EventUpdateManyMutationInput!, where: EventWhereInput): BatchPayload!
+  upsertEvent(where: EventWhereUniqueInput!, create: EventCreateInput!, update: EventUpdateInput!): Event!
+  deleteEvent(where: EventWhereUniqueInput!): Event
+  deleteManyEvents(where: EventWhereInput): BatchPayload!
+  createEventUser(data: EventUserCreateInput!): EventUser!
+  updateEventUser(data: EventUserUpdateInput!, where: EventUserWhereUniqueInput!): EventUser
+  updateManyEventUsers(data: EventUserUpdateManyMutationInput!, where: EventUserWhereInput): BatchPayload!
+  upsertEventUser(where: EventUserWhereUniqueInput!, create: EventUserCreateInput!, update: EventUserUpdateInput!): EventUser!
+  deleteEventUser(where: EventUserWhereUniqueInput!): EventUser
+  deleteManyEventUsers(where: EventUserWhereInput): BatchPayload!
+  createHome(data: HomeCreateInput!): Home!
+  updateHome(data: HomeUpdateInput!, where: HomeWhereUniqueInput!): Home
+  updateManyHomes(data: HomeUpdateManyMutationInput!, where: HomeWhereInput): BatchPayload!
+  upsertHome(where: HomeWhereUniqueInput!, create: HomeCreateInput!, update: HomeUpdateInput!): Home!
+  deleteHome(where: HomeWhereUniqueInput!): Home
+  deleteManyHomes(where: HomeWhereInput): BatchPayload!
+  createNotification(data: NotificationCreateInput!): Notification!
+  updateNotification(data: NotificationUpdateInput!, where: NotificationWhereUniqueInput!): Notification
+  updateManyNotifications(data: NotificationUpdateManyMutationInput!, where: NotificationWhereInput): BatchPayload!
+  upsertNotification(where: NotificationWhereUniqueInput!, create: NotificationCreateInput!, update: NotificationUpdateInput!): Notification!
+  deleteNotification(where: NotificationWhereUniqueInput!): Notification
+  deleteManyNotifications(where: NotificationWhereInput): BatchPayload!
+  createOption(data: OptionCreateInput!): Option!
+  updateOption(data: OptionUpdateInput!, where: OptionWhereUniqueInput!): Option
+  updateManyOptions(data: OptionUpdateManyMutationInput!, where: OptionWhereInput): BatchPayload!
+  upsertOption(where: OptionWhereUniqueInput!, create: OptionCreateInput!, update: OptionUpdateInput!): Option!
+  deleteOption(where: OptionWhereUniqueInput!): Option
+  deleteManyOptions(where: OptionWhereInput): BatchPayload!
+  createPicture(data: PictureCreateInput!): Picture!
+  updatePicture(data: PictureUpdateInput!, where: PictureWhereUniqueInput!): Picture
+  updateManyPictures(data: PictureUpdateManyMutationInput!, where: PictureWhereInput): BatchPayload!
+  upsertPicture(where: PictureWhereUniqueInput!, create: PictureCreateInput!, update: PictureUpdateInput!): Picture!
+  deletePicture(where: PictureWhereUniqueInput!): Picture
+  deleteManyPictures(where: PictureWhereInput): BatchPayload!
+  createRent(data: RentCreateInput!): Rent!
+  updateRent(data: RentUpdateInput!, where: RentWhereUniqueInput!): Rent
+  updateManyRents(data: RentUpdateManyMutationInput!, where: RentWhereInput): BatchPayload!
+  upsertRent(where: RentWhereUniqueInput!, create: RentCreateInput!, update: RentUpdateInput!): Rent!
+  deleteRent(where: RentWhereUniqueInput!): Rent
+  deleteManyRents(where: RentWhereInput): BatchPayload!
+  createService(data: ServiceCreateInput!): Service!
+  updateService(data: ServiceUpdateInput!, where: ServiceWhereUniqueInput!): Service
+  updateManyServices(data: ServiceUpdateManyMutationInput!, where: ServiceWhereInput): BatchPayload!
+  upsertService(where: ServiceWhereUniqueInput!, create: ServiceCreateInput!, update: ServiceUpdateInput!): Service!
+  deleteService(where: ServiceWhereUniqueInput!): Service
+  deleteManyServices(where: ServiceWhereInput): BatchPayload!
+  createUser(data: UserCreateInput!): User!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+interface Node {
+  id: ID!
+}
+
+type Notification {
+  id: ID!
+  description: String
+  owner: User
+  viewed: Boolean!
+}
+
+type NotificationConnection {
+  pageInfo: PageInfo!
+  edges: [NotificationEdge]!
+  aggregate: AggregateNotification!
+}
+
+input NotificationCreateInput {
+  id: ID
+  description: String
+  owner: UserCreateOneWithoutNotificationsInput
+  viewed: Boolean
+}
+
+input NotificationCreateManyWithoutOwnerInput {
+  create: [NotificationCreateWithoutOwnerInput!]
+  connect: [NotificationWhereUniqueInput!]
+}
+
+input NotificationCreateWithoutOwnerInput {
+  id: ID
+  description: String
+  viewed: Boolean
+}
+
+type NotificationEdge {
+  node: Notification!
+  cursor: String!
+}
+
+enum NotificationOrderByInput {
+  id_ASC
+  id_DESC
+  description_ASC
+  description_DESC
+  viewed_ASC
+  viewed_DESC
+}
+
+type NotificationPreviousValues {
+  id: ID!
+  description: String
+  viewed: Boolean!
+}
+
+input NotificationScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  viewed: Boolean
+  viewed_not: Boolean
+  AND: [NotificationScalarWhereInput!]
+  OR: [NotificationScalarWhereInput!]
+  NOT: [NotificationScalarWhereInput!]
+}
+
+type NotificationSubscriptionPayload {
+  mutation: MutationType!
+  node: Notification
+  updatedFields: [String!]
+  previousValues: NotificationPreviousValues
+}
+
+input NotificationSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: NotificationWhereInput
+  AND: [NotificationSubscriptionWhereInput!]
+  OR: [NotificationSubscriptionWhereInput!]
+  NOT: [NotificationSubscriptionWhereInput!]
+}
+
+input NotificationUpdateInput {
+  description: String
+  owner: UserUpdateOneWithoutNotificationsInput
+  viewed: Boolean
+}
+
+input NotificationUpdateManyDataInput {
+  description: String
+  viewed: Boolean
+}
+
+input NotificationUpdateManyMutationInput {
+  description: String
+  viewed: Boolean
+}
+
+input NotificationUpdateManyWithoutOwnerInput {
+  create: [NotificationCreateWithoutOwnerInput!]
+  delete: [NotificationWhereUniqueInput!]
+  connect: [NotificationWhereUniqueInput!]
+  set: [NotificationWhereUniqueInput!]
+  disconnect: [NotificationWhereUniqueInput!]
+  update: [NotificationUpdateWithWhereUniqueWithoutOwnerInput!]
+  upsert: [NotificationUpsertWithWhereUniqueWithoutOwnerInput!]
+  deleteMany: [NotificationScalarWhereInput!]
+  updateMany: [NotificationUpdateManyWithWhereNestedInput!]
+}
+
+input NotificationUpdateManyWithWhereNestedInput {
+  where: NotificationScalarWhereInput!
+  data: NotificationUpdateManyDataInput!
+}
+
+input NotificationUpdateWithoutOwnerDataInput {
+  description: String
+  viewed: Boolean
+}
+
+input NotificationUpdateWithWhereUniqueWithoutOwnerInput {
+  where: NotificationWhereUniqueInput!
+  data: NotificationUpdateWithoutOwnerDataInput!
+}
+
+input NotificationUpsertWithWhereUniqueWithoutOwnerInput {
+  where: NotificationWhereUniqueInput!
+  update: NotificationUpdateWithoutOwnerDataInput!
+  create: NotificationCreateWithoutOwnerInput!
+}
+
+input NotificationWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  owner: UserWhereInput
+  viewed: Boolean
+  viewed_not: Boolean
+  AND: [NotificationWhereInput!]
+  OR: [NotificationWhereInput!]
+  NOT: [NotificationWhereInput!]
+}
+
+input NotificationWhereUniqueInput {
+  id: ID
+}
+
+type Option {
+  id: ID!
+  name: String!
+  homeOption: Home
+}
+
+type OptionConnection {
+  pageInfo: PageInfo!
+  edges: [OptionEdge]!
+  aggregate: AggregateOption!
+}
+
+input OptionCreateInput {
+  id: ID
+  name: String!
+  homeOption: HomeCreateOneWithoutHomeOptionInput
+}
+
+input OptionCreateManyWithoutHomeOptionInput {
+  create: [OptionCreateWithoutHomeOptionInput!]
+  connect: [OptionWhereUniqueInput!]
+}
+
+input OptionCreateWithoutHomeOptionInput {
+  id: ID
+  name: String!
+}
+
+type OptionEdge {
+  node: Option!
+  cursor: String!
+}
+
+enum OptionOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+}
+
+type OptionPreviousValues {
+  id: ID!
+  name: String!
+}
+
+input OptionScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  AND: [OptionScalarWhereInput!]
+  OR: [OptionScalarWhereInput!]
+  NOT: [OptionScalarWhereInput!]
+}
+
+type OptionSubscriptionPayload {
+  mutation: MutationType!
+  node: Option
+  updatedFields: [String!]
+  previousValues: OptionPreviousValues
+}
+
+input OptionSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: OptionWhereInput
+  AND: [OptionSubscriptionWhereInput!]
+  OR: [OptionSubscriptionWhereInput!]
+  NOT: [OptionSubscriptionWhereInput!]
+}
+
+input OptionUpdateInput {
+  name: String
+  homeOption: HomeUpdateOneWithoutHomeOptionInput
+}
+
+input OptionUpdateManyDataInput {
+  name: String
+}
+
+input OptionUpdateManyMutationInput {
+  name: String
+}
+
+input OptionUpdateManyWithoutHomeOptionInput {
+  create: [OptionCreateWithoutHomeOptionInput!]
+  delete: [OptionWhereUniqueInput!]
+  connect: [OptionWhereUniqueInput!]
+  set: [OptionWhereUniqueInput!]
+  disconnect: [OptionWhereUniqueInput!]
+  update: [OptionUpdateWithWhereUniqueWithoutHomeOptionInput!]
+  upsert: [OptionUpsertWithWhereUniqueWithoutHomeOptionInput!]
+  deleteMany: [OptionScalarWhereInput!]
+  updateMany: [OptionUpdateManyWithWhereNestedInput!]
+}
+
+input OptionUpdateManyWithWhereNestedInput {
+  where: OptionScalarWhereInput!
+  data: OptionUpdateManyDataInput!
+}
+
+input OptionUpdateWithoutHomeOptionDataInput {
+  name: String
+}
+
+input OptionUpdateWithWhereUniqueWithoutHomeOptionInput {
+  where: OptionWhereUniqueInput!
+  data: OptionUpdateWithoutHomeOptionDataInput!
+}
+
+input OptionUpsertWithWhereUniqueWithoutHomeOptionInput {
+  where: OptionWhereUniqueInput!
+  update: OptionUpdateWithoutHomeOptionDataInput!
+  create: OptionCreateWithoutHomeOptionInput!
+}
+
+input OptionWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  homeOption: HomeWhereInput
+  AND: [OptionWhereInput!]
+  OR: [OptionWhereInput!]
+  NOT: [OptionWhereInput!]
+}
+
+input OptionWhereUniqueInput {
+  id: ID
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Picture {
+  id: ID!
+  image: String!
+  isMainPicture: Boolean!
+  home: Home
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PictureConnection {
+  pageInfo: PageInfo!
+  edges: [PictureEdge]!
+  aggregate: AggregatePicture!
+}
+
+input PictureCreateInput {
+  id: ID
+  image: String!
+  isMainPicture: Boolean
+  home: HomeCreateOneWithoutPicturesInput
+}
+
+input PictureCreateManyWithoutHomeInput {
+  create: [PictureCreateWithoutHomeInput!]
+  connect: [PictureWhereUniqueInput!]
+}
+
+input PictureCreateWithoutHomeInput {
+  id: ID
+  image: String!
+  isMainPicture: Boolean
+}
+
+type PictureEdge {
+  node: Picture!
+  cursor: String!
+}
+
+enum PictureOrderByInput {
+  id_ASC
+  id_DESC
+  image_ASC
+  image_DESC
+  isMainPicture_ASC
+  isMainPicture_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type PicturePreviousValues {
+  id: ID!
+  image: String!
+  isMainPicture: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input PictureScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  image: String
+  image_not: String
+  image_in: [String!]
+  image_not_in: [String!]
+  image_lt: String
+  image_lte: String
+  image_gt: String
+  image_gte: String
+  image_contains: String
+  image_not_contains: String
+  image_starts_with: String
+  image_not_starts_with: String
+  image_ends_with: String
+  image_not_ends_with: String
+  isMainPicture: Boolean
+  isMainPicture_not: Boolean
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PictureScalarWhereInput!]
+  OR: [PictureScalarWhereInput!]
+  NOT: [PictureScalarWhereInput!]
+}
+
+type PictureSubscriptionPayload {
+  mutation: MutationType!
+  node: Picture
+  updatedFields: [String!]
+  previousValues: PicturePreviousValues
+}
+
+input PictureSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: PictureWhereInput
+  AND: [PictureSubscriptionWhereInput!]
+  OR: [PictureSubscriptionWhereInput!]
+  NOT: [PictureSubscriptionWhereInput!]
+}
+
+input PictureUpdateInput {
+  image: String
+  isMainPicture: Boolean
+  home: HomeUpdateOneWithoutPicturesInput
+}
+
+input PictureUpdateManyDataInput {
+  image: String
+  isMainPicture: Boolean
+}
+
+input PictureUpdateManyMutationInput {
+  image: String
+  isMainPicture: Boolean
+}
+
+input PictureUpdateManyWithoutHomeInput {
+  create: [PictureCreateWithoutHomeInput!]
+  delete: [PictureWhereUniqueInput!]
+  connect: [PictureWhereUniqueInput!]
+  set: [PictureWhereUniqueInput!]
+  disconnect: [PictureWhereUniqueInput!]
+  update: [PictureUpdateWithWhereUniqueWithoutHomeInput!]
+  upsert: [PictureUpsertWithWhereUniqueWithoutHomeInput!]
+  deleteMany: [PictureScalarWhereInput!]
+  updateMany: [PictureUpdateManyWithWhereNestedInput!]
+}
+
+input PictureUpdateManyWithWhereNestedInput {
+  where: PictureScalarWhereInput!
+  data: PictureUpdateManyDataInput!
+}
+
+input PictureUpdateWithoutHomeDataInput {
+  image: String
+  isMainPicture: Boolean
+}
+
+input PictureUpdateWithWhereUniqueWithoutHomeInput {
+  where: PictureWhereUniqueInput!
+  data: PictureUpdateWithoutHomeDataInput!
+}
+
+input PictureUpsertWithWhereUniqueWithoutHomeInput {
+  where: PictureWhereUniqueInput!
+  update: PictureUpdateWithoutHomeDataInput!
+  create: PictureCreateWithoutHomeInput!
+}
+
+input PictureWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  image: String
+  image_not: String
+  image_in: [String!]
+  image_not_in: [String!]
+  image_lt: String
+  image_lte: String
+  image_gt: String
+  image_gte: String
+  image_contains: String
+  image_not_contains: String
+  image_starts_with: String
+  image_not_starts_with: String
+  image_ends_with: String
+  image_not_ends_with: String
+  isMainPicture: Boolean
+  isMainPicture_not: Boolean
+  home: HomeWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PictureWhereInput!]
+  OR: [PictureWhereInput!]
+  NOT: [PictureWhereInput!]
+}
+
+input PictureWhereUniqueInput {
+  id: ID
+}
+
+type Query {
+  doctrineMigrationVersion(where: DoctrineMigrationVersionWhereUniqueInput!): DoctrineMigrationVersion
+  doctrineMigrationVersions(where: DoctrineMigrationVersionWhereInput, orderBy: DoctrineMigrationVersionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [DoctrineMigrationVersion]!
+  doctrineMigrationVersionsConnection(where: DoctrineMigrationVersionWhereInput, orderBy: DoctrineMigrationVersionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): DoctrineMigrationVersionConnection!
+  event(where: EventWhereUniqueInput!): Event
+  events(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Event]!
+  eventsConnection(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): EventConnection!
+  eventUser(where: EventUserWhereUniqueInput!): EventUser
+  eventUsers(where: EventUserWhereInput, orderBy: EventUserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [EventUser]!
+  eventUsersConnection(where: EventUserWhereInput, orderBy: EventUserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): EventUserConnection!
+  home(where: HomeWhereUniqueInput!): Home
+  homes(where: HomeWhereInput, orderBy: HomeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Home]!
+  homesConnection(where: HomeWhereInput, orderBy: HomeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HomeConnection!
+  notification(where: NotificationWhereUniqueInput!): Notification
+  notifications(where: NotificationWhereInput, orderBy: NotificationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Notification]!
+  notificationsConnection(where: NotificationWhereInput, orderBy: NotificationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): NotificationConnection!
+  option(where: OptionWhereUniqueInput!): Option
+  options(where: OptionWhereInput, orderBy: OptionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Option]!
+  optionsConnection(where: OptionWhereInput, orderBy: OptionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): OptionConnection!
+  picture(where: PictureWhereUniqueInput!): Picture
+  pictures(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Picture]!
+  picturesConnection(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PictureConnection!
+  rent(where: RentWhereUniqueInput!): Rent
+  rents(where: RentWhereInput, orderBy: RentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Rent]!
+  rentsConnection(where: RentWhereInput, orderBy: RentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): RentConnection!
+  service(where: ServiceWhereUniqueInput!): Service
+  services(where: ServiceWhereInput, orderBy: ServiceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Service]!
+  servicesConnection(where: ServiceWhereInput, orderBy: ServiceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ServiceConnection!
+  user(where: UserWhereUniqueInput!): User
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  node(id: ID!): Node
+}
+
+type Rent {
+  id: ID!
+  startDate: DateTime!
+  endDate: DateTime!
+  totalPrice: Float!
+  rentService(where: ServiceWhereInput, orderBy: ServiceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Service!]
+  home: Home!
+  owner: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type RentConnection {
+  pageInfo: PageInfo!
+  edges: [RentEdge]!
+  aggregate: AggregateRent!
+}
+
+input RentCreateInput {
+  id: ID
+  startDate: DateTime!
+  endDate: DateTime!
+  totalPrice: Float!
+  rentService: ServiceCreateManyWithoutRentServiceInput
+  home: HomeCreateOneInput!
+  owner: UserCreateOneInput!
+}
+
+input RentCreateOneInput {
+  create: RentCreateInput
+  connect: RentWhereUniqueInput
+}
+
+input RentCreateOneWithoutRentServiceInput {
+  create: RentCreateWithoutRentServiceInput
+  connect: RentWhereUniqueInput
+}
+
+input RentCreateWithoutRentServiceInput {
+  id: ID
+  startDate: DateTime!
+  endDate: DateTime!
+  totalPrice: Float!
+  home: HomeCreateOneInput!
+  owner: UserCreateOneInput!
+}
+
+type RentEdge {
+  node: Rent!
+  cursor: String!
+}
+
+enum RentOrderByInput {
+  id_ASC
+  id_DESC
+  startDate_ASC
+  startDate_DESC
+  endDate_ASC
+  endDate_DESC
+  totalPrice_ASC
+  totalPrice_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type RentPreviousValues {
+  id: ID!
+  startDate: DateTime!
+  endDate: DateTime!
+  totalPrice: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type RentSubscriptionPayload {
+  mutation: MutationType!
+  node: Rent
+  updatedFields: [String!]
+  previousValues: RentPreviousValues
+}
+
+input RentSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: RentWhereInput
+  AND: [RentSubscriptionWhereInput!]
+  OR: [RentSubscriptionWhereInput!]
+  NOT: [RentSubscriptionWhereInput!]
+}
+
+input RentUpdateDataInput {
+  startDate: DateTime
+  endDate: DateTime
+  totalPrice: Float
+  rentService: ServiceUpdateManyWithoutRentServiceInput
+  home: HomeUpdateOneRequiredInput
+  owner: UserUpdateOneRequiredInput
+}
+
+input RentUpdateInput {
+  startDate: DateTime
+  endDate: DateTime
+  totalPrice: Float
+  rentService: ServiceUpdateManyWithoutRentServiceInput
+  home: HomeUpdateOneRequiredInput
+  owner: UserUpdateOneRequiredInput
+}
+
+input RentUpdateManyMutationInput {
+  startDate: DateTime
+  endDate: DateTime
+  totalPrice: Float
+}
+
+input RentUpdateOneInput {
+  create: RentCreateInput
+  update: RentUpdateDataInput
+  upsert: RentUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: RentWhereUniqueInput
+}
+
+input RentUpdateOneWithoutRentServiceInput {
+  create: RentCreateWithoutRentServiceInput
+  update: RentUpdateWithoutRentServiceDataInput
+  upsert: RentUpsertWithoutRentServiceInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: RentWhereUniqueInput
+}
+
+input RentUpdateWithoutRentServiceDataInput {
+  startDate: DateTime
+  endDate: DateTime
+  totalPrice: Float
+  home: HomeUpdateOneRequiredInput
+  owner: UserUpdateOneRequiredInput
+}
+
+input RentUpsertNestedInput {
+  update: RentUpdateDataInput!
+  create: RentCreateInput!
+}
+
+input RentUpsertWithoutRentServiceInput {
+  update: RentUpdateWithoutRentServiceDataInput!
+  create: RentCreateWithoutRentServiceInput!
+}
+
+input RentWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  startDate: DateTime
+  startDate_not: DateTime
+  startDate_in: [DateTime!]
+  startDate_not_in: [DateTime!]
+  startDate_lt: DateTime
+  startDate_lte: DateTime
+  startDate_gt: DateTime
+  startDate_gte: DateTime
+  endDate: DateTime
+  endDate_not: DateTime
+  endDate_in: [DateTime!]
+  endDate_not_in: [DateTime!]
+  endDate_lt: DateTime
+  endDate_lte: DateTime
+  endDate_gt: DateTime
+  endDate_gte: DateTime
+  totalPrice: Float
+  totalPrice_not: Float
+  totalPrice_in: [Float!]
+  totalPrice_not_in: [Float!]
+  totalPrice_lt: Float
+  totalPrice_lte: Float
+  totalPrice_gt: Float
+  totalPrice_gte: Float
+  rentService_every: ServiceWhereInput
+  rentService_some: ServiceWhereInput
+  rentService_none: ServiceWhereInput
+  home: HomeWhereInput
+  owner: UserWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [RentWhereInput!]
+  OR: [RentWhereInput!]
+  NOT: [RentWhereInput!]
+}
+
+input RentWhereUniqueInput {
+  id: ID
+}
+
+type Service {
+  id: ID!
+  name: String!
+  price: Float!
+  rentService: Rent
+}
+
+type ServiceConnection {
+  pageInfo: PageInfo!
+  edges: [ServiceEdge]!
+  aggregate: AggregateService!
+}
+
+input ServiceCreateInput {
+  id: ID
+  name: String!
+  price: Float!
+  rentService: RentCreateOneWithoutRentServiceInput
+}
+
+input ServiceCreateManyWithoutRentServiceInput {
+  create: [ServiceCreateWithoutRentServiceInput!]
+  connect: [ServiceWhereUniqueInput!]
+}
+
+input ServiceCreateWithoutRentServiceInput {
+  id: ID
+  name: String!
+  price: Float!
+}
+
+type ServiceEdge {
+  node: Service!
+  cursor: String!
+}
+
+enum ServiceOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+}
+
+type ServicePreviousValues {
+  id: ID!
+  name: String!
+  price: Float!
+}
+
+input ServiceScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  price: Float
+  price_not: Float
+  price_in: [Float!]
+  price_not_in: [Float!]
+  price_lt: Float
+  price_lte: Float
+  price_gt: Float
+  price_gte: Float
+  AND: [ServiceScalarWhereInput!]
+  OR: [ServiceScalarWhereInput!]
+  NOT: [ServiceScalarWhereInput!]
+}
+
+type ServiceSubscriptionPayload {
+  mutation: MutationType!
+  node: Service
+  updatedFields: [String!]
+  previousValues: ServicePreviousValues
+}
+
+input ServiceSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ServiceWhereInput
+  AND: [ServiceSubscriptionWhereInput!]
+  OR: [ServiceSubscriptionWhereInput!]
+  NOT: [ServiceSubscriptionWhereInput!]
+}
+
+input ServiceUpdateInput {
+  name: String
+  price: Float
+  rentService: RentUpdateOneWithoutRentServiceInput
+}
+
+input ServiceUpdateManyDataInput {
+  name: String
+  price: Float
+}
+
+input ServiceUpdateManyMutationInput {
+  name: String
+  price: Float
+}
+
+input ServiceUpdateManyWithoutRentServiceInput {
+  create: [ServiceCreateWithoutRentServiceInput!]
+  delete: [ServiceWhereUniqueInput!]
+  connect: [ServiceWhereUniqueInput!]
+  set: [ServiceWhereUniqueInput!]
+  disconnect: [ServiceWhereUniqueInput!]
+  update: [ServiceUpdateWithWhereUniqueWithoutRentServiceInput!]
+  upsert: [ServiceUpsertWithWhereUniqueWithoutRentServiceInput!]
+  deleteMany: [ServiceScalarWhereInput!]
+  updateMany: [ServiceUpdateManyWithWhereNestedInput!]
+}
+
+input ServiceUpdateManyWithWhereNestedInput {
+  where: ServiceScalarWhereInput!
+  data: ServiceUpdateManyDataInput!
+}
+
+input ServiceUpdateWithoutRentServiceDataInput {
+  name: String
+  price: Float
+}
+
+input ServiceUpdateWithWhereUniqueWithoutRentServiceInput {
+  where: ServiceWhereUniqueInput!
+  data: ServiceUpdateWithoutRentServiceDataInput!
+}
+
+input ServiceUpsertWithWhereUniqueWithoutRentServiceInput {
+  where: ServiceWhereUniqueInput!
+  update: ServiceUpdateWithoutRentServiceDataInput!
+  create: ServiceCreateWithoutRentServiceInput!
+}
+
+input ServiceWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  price: Float
+  price_not: Float
+  price_in: [Float!]
+  price_not_in: [Float!]
+  price_lt: Float
+  price_lte: Float
+  price_gt: Float
+  price_gte: Float
+  rentService: RentWhereInput
+  AND: [ServiceWhereInput!]
+  OR: [ServiceWhereInput!]
+  NOT: [ServiceWhereInput!]
+}
+
+input ServiceWhereUniqueInput {
+  id: ID
+}
+
+type Subscription {
+  doctrineMigrationVersion(where: DoctrineMigrationVersionSubscriptionWhereInput): DoctrineMigrationVersionSubscriptionPayload
+  event(where: EventSubscriptionWhereInput): EventSubscriptionPayload
+  eventUser(where: EventUserSubscriptionWhereInput): EventUserSubscriptionPayload
+  home(where: HomeSubscriptionWhereInput): HomeSubscriptionPayload
+  notification(where: NotificationSubscriptionWhereInput): NotificationSubscriptionPayload
+  option(where: OptionSubscriptionWhereInput): OptionSubscriptionPayload
+  picture(where: PictureSubscriptionWhereInput): PictureSubscriptionPayload
+  rent(where: RentSubscriptionWhereInput): RentSubscriptionPayload
+  service(where: ServiceSubscriptionWhereInput): ServiceSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+}
+
+type User {
+  id: ID!
+  company: String
+  email: String!
+  firstname: String!
+  lastname: String!
+  password: String!
+  phone: String!
+  roles: Json!
+  token: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+  homes(where: HomeWhereInput, orderBy: HomeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Home!]
+  events(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Event!]
+  notifications(where: NotificationWhereInput, orderBy: NotificationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Notification!]
+}
+
+type UserConnection {
+  pageInfo: PageInfo!
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  id: ID
+  company: String
+  email: String!
+  firstname: String!
+  lastname: String!
+  password: String!
+  phone: String!
+  roles: Json!
+  token: String
+  deletedAt: DateTime
+  homes: HomeCreateManyWithoutOwnerInput
+  events: EventCreateManyInput
+  notifications: NotificationCreateManyWithoutOwnerInput
+}
+
+input UserCreateOneInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutHomesInput {
+  create: UserCreateWithoutHomesInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutNotificationsInput {
+  create: UserCreateWithoutNotificationsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutHomesInput {
+  id: ID
+  company: String
+  email: String!
+  firstname: String!
+  lastname: String!
+  password: String!
+  phone: String!
+  roles: Json!
+  token: String
+  deletedAt: DateTime
+  events: EventCreateManyInput
+  notifications: NotificationCreateManyWithoutOwnerInput
+}
+
+input UserCreateWithoutNotificationsInput {
+  id: ID
+  company: String
+  email: String!
+  firstname: String!
+  lastname: String!
+  password: String!
+  phone: String!
+  roles: Json!
+  token: String
+  deletedAt: DateTime
+  homes: HomeCreateManyWithoutOwnerInput
+  events: EventCreateManyInput
+}
+
+type UserEdge {
+  node: User!
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  company_ASC
+  company_DESC
+  email_ASC
+  email_DESC
+  firstname_ASC
+  firstname_DESC
+  lastname_ASC
+  lastname_DESC
+  password_ASC
+  password_DESC
+  phone_ASC
+  phone_DESC
+  roles_ASC
+  roles_DESC
+  token_ASC
+  token_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  deletedAt_ASC
+  deletedAt_DESC
+}
+
+type UserPreviousValues {
+  id: ID!
+  company: String
+  email: String!
+  firstname: String!
+  lastname: String!
+  password: String!
+  phone: String!
+  roles: Json!
+  token: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+  AND: [UserSubscriptionWhereInput!]
+  OR: [UserSubscriptionWhereInput!]
+  NOT: [UserSubscriptionWhereInput!]
+}
+
+input UserUpdateDataInput {
+  company: String
+  email: String
+  firstname: String
+  lastname: String
+  password: String
+  phone: String
+  roles: Json
+  token: String
+  deletedAt: DateTime
+  homes: HomeUpdateManyWithoutOwnerInput
+  events: EventUpdateManyInput
+  notifications: NotificationUpdateManyWithoutOwnerInput
+}
+
+input UserUpdateInput {
+  company: String
+  email: String
+  firstname: String
+  lastname: String
+  password: String
+  phone: String
+  roles: Json
+  token: String
+  deletedAt: DateTime
+  homes: HomeUpdateManyWithoutOwnerInput
+  events: EventUpdateManyInput
+  notifications: NotificationUpdateManyWithoutOwnerInput
+}
+
+input UserUpdateManyMutationInput {
+  company: String
+  email: String
+  firstname: String
+  lastname: String
+  password: String
+  phone: String
+  roles: Json
+  token: String
+  deletedAt: DateTime
+}
+
+input UserUpdateOneRequiredInput {
+  create: UserCreateInput
+  update: UserUpdateDataInput
+  upsert: UserUpsertNestedInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneWithoutHomesInput {
+  create: UserCreateWithoutHomesInput
+  update: UserUpdateWithoutHomesDataInput
+  upsert: UserUpsertWithoutHomesInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneWithoutNotificationsInput {
+  create: UserCreateWithoutNotificationsInput
+  update: UserUpdateWithoutNotificationsDataInput
+  upsert: UserUpsertWithoutNotificationsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateWithoutHomesDataInput {
+  company: String
+  email: String
+  firstname: String
+  lastname: String
+  password: String
+  phone: String
+  roles: Json
+  token: String
+  deletedAt: DateTime
+  events: EventUpdateManyInput
+  notifications: NotificationUpdateManyWithoutOwnerInput
+}
+
+input UserUpdateWithoutNotificationsDataInput {
+  company: String
+  email: String
+  firstname: String
+  lastname: String
+  password: String
+  phone: String
+  roles: Json
+  token: String
+  deletedAt: DateTime
+  homes: HomeUpdateManyWithoutOwnerInput
+  events: EventUpdateManyInput
+}
+
+input UserUpsertNestedInput {
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
+}
+
+input UserUpsertWithoutHomesInput {
+  update: UserUpdateWithoutHomesDataInput!
+  create: UserCreateWithoutHomesInput!
+}
+
+input UserUpsertWithoutNotificationsInput {
+  update: UserUpdateWithoutNotificationsDataInput!
+  create: UserCreateWithoutNotificationsInput!
+}
+
+input UserWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  company: String
+  company_not: String
+  company_in: [String!]
+  company_not_in: [String!]
+  company_lt: String
+  company_lte: String
+  company_gt: String
+  company_gte: String
+  company_contains: String
+  company_not_contains: String
+  company_starts_with: String
+  company_not_starts_with: String
+  company_ends_with: String
+  company_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  firstname: String
+  firstname_not: String
+  firstname_in: [String!]
+  firstname_not_in: [String!]
+  firstname_lt: String
+  firstname_lte: String
+  firstname_gt: String
+  firstname_gte: String
+  firstname_contains: String
+  firstname_not_contains: String
+  firstname_starts_with: String
+  firstname_not_starts_with: String
+  firstname_ends_with: String
+  firstname_not_ends_with: String
+  lastname: String
+  lastname_not: String
+  lastname_in: [String!]
+  lastname_not_in: [String!]
+  lastname_lt: String
+  lastname_lte: String
+  lastname_gt: String
+  lastname_gte: String
+  lastname_contains: String
+  lastname_not_contains: String
+  lastname_starts_with: String
+  lastname_not_starts_with: String
+  lastname_ends_with: String
+  lastname_not_ends_with: String
+  password: String
+  password_not: String
+  password_in: [String!]
+  password_not_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  password_contains: String
+  password_not_contains: String
+  password_starts_with: String
+  password_not_starts_with: String
+  password_ends_with: String
+  password_not_ends_with: String
+  phone: String
+  phone_not: String
+  phone_in: [String!]
+  phone_not_in: [String!]
+  phone_lt: String
+  phone_lte: String
+  phone_gt: String
+  phone_gte: String
+  phone_contains: String
+  phone_not_contains: String
+  phone_starts_with: String
+  phone_not_starts_with: String
+  phone_ends_with: String
+  phone_not_ends_with: String
+  token: String
+  token_not: String
+  token_in: [String!]
+  token_not_in: [String!]
+  token_lt: String
+  token_lte: String
+  token_gt: String
+  token_gte: String
+  token_contains: String
+  token_not_contains: String
+  token_starts_with: String
+  token_not_starts_with: String
+  token_ends_with: String
+  token_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  deletedAt: DateTime
+  deletedAt_not: DateTime
+  deletedAt_in: [DateTime!]
+  deletedAt_not_in: [DateTime!]
+  deletedAt_lt: DateTime
+  deletedAt_lte: DateTime
+  deletedAt_gt: DateTime
+  deletedAt_gte: DateTime
+  homes_every: HomeWhereInput
+  homes_some: HomeWhereInput
+  homes_none: HomeWhereInput
+  events_every: EventWhereInput
+  events_some: EventWhereInput
+  events_none: EventWhereInput
+  notifications_every: NotificationWhereInput
+  notifications_some: NotificationWhereInput
+  notifications_none: NotificationWhereInput
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+}
+
+input UserWhereUniqueInput {
+  id: ID
+  email: String
+}

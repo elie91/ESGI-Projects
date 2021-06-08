@@ -1,0 +1,5 @@
+<form class="d-inline-block" method="post" action="{{ path('back_constant_delete', {'id': constant.id}) }}" onsubmit="return confirm('{{ 'button.confirmDelete'|trans({'item': constant.value}) }}');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ constant.id) }}">
+    {% include '_partials/buttons/delete.html.twig' %}
+</form>

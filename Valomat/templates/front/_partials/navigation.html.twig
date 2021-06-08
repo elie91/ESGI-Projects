@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg flex-column navbar-light bg-light p-0">
+    <div class="d-flex flex-row w-100 p-3">
+        <a class="navbar-brand" href="{{ path('front_index') }}"><strong>Valomat</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('front_quote_new') }}"><i class="fas fa-file-invoice-dollar"></i>{{ 'quote.request'|trans }}</a>
+                </li>
+                {% if app.user %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i>{{ 'user.nav.account'|trans }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{{ path('security_edit')}}"><i class="fas fa-clipboard-list"></i>{{'user.nav.information'|trans}}</a>
+                            <a class="dropdown-item" href="{{ path('back_user_tracking', {'id': app.user.id})}}"><i class="fas fa-question"></i>{{'user.nav.tracking'|trans}}</a>
+                            <a class="dropdown-item" href="{{ path('security_logout') }}"><i class="fas fa-sign-out-alt"></i>{{'user.nav.logout'|trans}}</a>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('security_login') }}"><i class="fas fa-sign-in-alt"></i>{{ 'user.nav.login'|trans }}</a>
+                    </li>
+                {% endif %}
+                {% if is_granted('ROLE_USER') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('back_product_index') }}"><i class="fas fa-chart-bar"></i>{{ 'user.nav.admin'|trans }}<span class="sr-only">(current)</span></a>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link flag" href="{{ app.request.locale matches '/fr/' ? "http://"~ app.request.headers.get('host') ~ "/en/" : "http://" ~ app.request.headers.get('host') ~ "/fr/"}} ">
+                        <img alt="flag" src="{{ app.request.locale matches '/fr/' ? asset('build/uk.png') : asset('build/fr.png') }}" height="20">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% if navigation is defined %}
+        <div class="bg-dark w-100">
+            <ul class="nav justify-content-center">
+                {% for category in navigation.getAll %}
+                <li class="nav-item py-2">
+                    <a class="nav-link text-white" href="{{ path('front_category_index', {'slug': category.slug}) }}">{{ category.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</nav>

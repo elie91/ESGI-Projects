@@ -1,0 +1,4 @@
+GET http://localhost:3000/transactions/search?client_firstname=merchant
+Content-Type: application/json
+
+###

@@ -1,0 +1,15 @@
+.flash{
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  right: 1%;
+  top: 20%;
+  transition: all .3s ease-in;
+  z-index: 10;
+
+  &.show{
+    opacity: 1;
+    visibility: initial;
+  }
+}
+

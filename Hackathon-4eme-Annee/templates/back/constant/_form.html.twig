@@ -1,0 +1,16 @@
+{{ form_start(form) }}
+<div class="row">
+    {% if form.type is defined %}
+    <div class="col-md-6 mb-2">
+        {{ form_row(form.type) }}
+    </div>
+    {% endif %}
+    <div class="col-md-{% if form.type is defined %}6{% else %}12{% endif %} mb-2">
+        {{ form_row(form.value) }}
+    </div>
+    <div class="col-md-12 text-center">
+        {% include '_partials/buttons/save.html.twig' %}
+    </div>
+    {{ form_end(form) }}
+</div>
+

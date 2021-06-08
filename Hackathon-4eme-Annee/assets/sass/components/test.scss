@@ -1,0 +1,128 @@
+@import "../abstracts/variables";
+
+.test_wrapper {
+  margin: 1rem 0;
+
+  .card {
+    color: $blueColor;
+    margin-top: 15px;
+    min-height: 350px;
+    position: relative;
+
+    &__title {
+      font-weight: bold;
+    }
+
+    &__subtitle {
+      text-transform: uppercase;
+    }
+
+    &__logo {
+      font-size: 6rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 0;
+      position: relative;
+      .check{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 50px;
+      }
+    }
+
+    &__button {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .text-green{
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+    }
+  }
+}
+
+.form_test {
+  background-color: #ffffff;
+
+  &__header {
+    color: $blueColor;
+    padding: 10px 15px;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__error {
+    display: none;
+  }
+
+  &__tab {
+    padding: 20px;
+    display: none;
+  }
+
+  &__results {
+    padding: 20px;
+  }
+
+  &__indicator {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  &__step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+
+  /* Mark the active step: */
+  &__step.active {
+    opacity: 1;
+  }
+
+  /* Mark the steps that are finished and valid: */
+  &__step.finish {
+    background-color: #4CAF50;
+  }
+
+  &__buttons {
+    overflow: auto;
+  }
+
+  &__question {
+    margin-bottom: 2rem;
+  }
+
+  &__answers {
+    padding: 1rem;
+  }
+
+  &__answer {
+    display: flex;
+    padding: 1rem 0;
+    border-top: 1px solid #27255314;
+
+    &:first-child{
+      border-top: none;
+    }
+
+    label {
+      text-transform: none;
+      padding-left: 20px;
+    }
+  }
+}

@@ -1,0 +1,114 @@
+type DoctrineMigrationVersion @db(name: "doctrine_migration_versions") {
+  version: ID! @id
+  executedAt: DateTime @db(name: "executed_at")
+  executionTime: Int @db(name: "execution_time")
+}
+
+type Event @db(name: "event") {
+  id: ID! @id
+  description: String
+  name: String!
+  peopleLimit: Int! @db(name: "people_limit")
+  rent: Rent @db(name: "rent_id") @relation(link: INLINE)
+  createdAt: DateTime! @db(name: "created_at") @createdAt
+  updatedAt: DateTime! @db(name: "updated_at") @updatedAt
+  startDate: DateTime! @db(name: "start_date")
+  endDate: DateTime! @db(name: "end_date")
+  eventUsers: [EventUser]
+  status: String!
+}
+
+type Home @db(name: "home") {
+  id: ID! @id
+  active: Boolean! @default(value: false)
+  address: String!
+  city: String!
+  country: String!
+  description: String
+  name: String!
+  price: Float!
+  owner: User @db(name: "owner_id") @relation(link: INLINE)
+  createdAt: DateTime! @db(name: "created_at") @createdAt
+  updatedAt: DateTime! @db(name: "updated_at") @updatedAt
+  homeOption: [Option]! @relation(link: TABLE, name: "OptionHome")
+  pictures: [Picture]
+  type: String!
+  status: String!
+}
+
+type Option @db(name: "option") {
+  id: ID! @id
+  name: String!
+  homeOption: Home @relation(name: "OptionHome")
+}
+
+type Picture @db(name: "picture") {
+  id: ID! @id
+  image: String!
+  isMainPicture: Boolean! @db(name: "is_main_picture") @default(value: false)
+  home: Home @db(name: "home_id") @relation(link: INLINE)
+  createdAt: DateTime! @db(name: "created_at") @createdAt
+  updatedAt: DateTime! @db(name: "updated_at") @updatedAt
+}
+
+type Rent @db(name: "rent") {
+  id: ID! @id
+  startDate: DateTime! @db(name: "start_date")
+  endDate: DateTime! @db(name: "end_date")
+  totalPrice: Float! @db(name: "total_price")
+  rentService: [Service]! @relation(name: "ServiceRent")
+  home: Home! @db(name: "home_id") @relation(link: INLINE)
+  owner: User! @db(name: "owner_id") @relation(link: INLINE)
+  createdAt: DateTime! @db(name: "created_at") @createdAt
+  updatedAt: DateTime! @db(name: "updated_at") @updatedAt
+}
+
+type Service @db(name: "service") {
+  id: ID! @id
+  name: String!
+  price: Float!
+  rentService: Rent @relation(link: TABLE, name: "ServiceRent")
+}
+
+type User @db(name: "user") {
+  id: ID! @id
+  company: String
+  email: String! @unique
+  firstname: String!
+  lastname: String!
+  password: String!
+  phone: String!
+  roles: Json!
+  token: String
+  createdAt: DateTime! @db(name: "created_at") @createdAt
+  updatedAt: DateTime! @db(name: "updated_at") @updatedAt
+  deletedAt: DateTime @db(name: "deleted_at")
+  homes: [Home]!
+  events: [Event]!
+  notifications: [Notification]!
+}
+
+type EventUser @db(name: "event_user") {
+  id: ID! @id
+  event: Event! @db(name: "event_id") @relation(link: INLINE)
+  user: User! @db(name: "user_id") @relation(link: INLINE)
+  isOwner: Boolean! @default(value: false) @db(name: "is_owner")
+}
+
+type ServiceRent @relationTable @db(name: "service_rent") {
+  rent: Rent! @db(name: "rent_id")
+  service: Service! @db(name: "service_id")
+}
+
+type OptionHome @relationTable @db(name: "option_home") {
+  home: Home! @db(name: "home_id")
+  option: Option! @db(name: "option_id")
+}
+
+type Notification @db(name: "notification") {
+  id: ID! @id
+  description: String
+  owner: User @db(name: "owner_id") @relation(link: INLINE)
+  viewed:  Boolean! @default(value: false) @db(name: "is_owner")
+}
+

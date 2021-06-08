@@ -1,0 +1,42 @@
+@import "../abstracts/variables";
+@import "../base/animations";
+
+.tracking{
+  position: relative;
+  &:before{
+    position: absolute;
+    top: 71px;
+    left: 17%;
+    width: 66%;
+    border-top: 1px dotted #ddd;
+    content: " ";
+  }
+
+  h3{
+    font-size: 1rem;
+  }
+
+  .list-inline-item:not(:last-child) {
+    margin-right: 0;
+  }
+}
+
+span {
+  &.check {
+    border: 1px solid $greenColor;
+    padding: 5px 6px;
+    border-radius: 50%;
+    background-color: white;
+    color: $greenColor;
+    font-size: .75rem;
+    &.active{
+      background-color: $greenColor;
+      color: white;
+    }
+    &.incoming{
+      box-shadow: 0 0 0 0 $greenColor;
+      transform: scale(.75);
+      animation: pulse 1.5s infinite;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{#{% apply inky_to_html %}
+    <style type="text/css">
+
+        .header {
+            background: #8a8a8a;
+        }
+
+        .header .columns {
+            padding-bottom: 0;
+        }
+
+        .header p {
+            color: #fff;
+            margin-bottom: 0;
+        }
+
+        .header .wrapper-inner {
+            padding: 20px; /*controls the height of the header*/
+        }
+
+        .header .container {
+            background: #8a8a8a;
+        }
+
+        .wrapper.secondary {
+            background: #f3f3f3;
+        }
+
+    </style>#}
+    <!-- move the above styles into your custom stylesheet -->
+
+    <container>
+
+        <spacer size="16"></spacer>
+
+        <row>
+            <columns>
+
+                <h1>Bonjour Valomat</h1>
+                <p class="lead">Un utilisateur à crée un nouveau devis.</p>
+                <p>Voci les informations saisies: </p>
+                <callout class="primary">
+                    <p><b>Société : </b> {{ quote.company }}</p>
+                    <p><b>Nom : </b> {{ quote.lastname }}</p>
+                    <p><b>Prénom : </b> {{ quote.firstname }}</p>
+                    <p><b>Email: </b> {{ quote.email }}</p>
+                    <p><b>Téléphone : </b> {{ quote.phone }}</p>
+                    <p><b>Message : </b> {{ quote.message }}</p>
+                    <p><b>Produit : </b> {{ quote.product.name }}</p>
+                </callout>
+
+            </columns>
+        </row>
+
+    </container>
+{#{% endapply %}#}

@@ -1,0 +1,47 @@
+<nav class="nav flex-column">
+    {% set route = app.request.attributes.get('_route') %}
+    <a class="brand nav-link text-center font-weight-bold py-3" href="{{ path(is_granted('ROLE_ADMIN') ? 'back_index' : 'back_product_index') }}">
+        <i class="fab fa-vuejs"></i><span>Valomat</span>
+    </a>
+    {% if is_granted('ROLE_ADMIN') %}
+    <a class="nav-link {% if 'back_index' in route %}active{% endif %}" href="{{ path('back_index') }}"><i class="fas fa-home"></i> <span>{{ 'Dashboard' }}</span></a>
+    {% endif %}
+    <div class="accordion" id="accordionExample">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <i class="fas fa-list-ul"></i> <span>{{ 'user.nav.catalog'|trans }}</span>
+        </button>
+        <div id="collapseOne" class="collapse {% if 'back_category_index' in route or 'back_product_index' in route or 'back_feature_index' in route %}show{% endif %}" aria-labelledby="headingOne" data-parent="#accordionExample">
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="nav-link {% if 'back_category_index' in route %}active{% endif %}" href="{{ path('back_category_index') }}"><i class="fas">C</i><span>{{ 'category.name'|trans }}</span></a>
+            {% endif %}
+
+            <a class="nav-link {% if 'back_product_index' in route %}active{% endif %}" href="{{ path('back_product_index') }}"><i class="fas">R</i><span>{{ 'product.name'|trans }}</span></a>
+
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="nav-link {% if 'back_feature_index' in route %}active{% endif %}" href="{{ path('back_feature_index') }}"><i class="fas">F</i><span>{{ 'feature.name'|trans }}</span></a>
+            {% endif %}
+        </div>
+    </div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="nav-link {% if 'back_quote_index' in route %}active{% endif %}" href="{{ path('back_quote_index') }}">
+            <i class="fas fa-file-invoice-dollar"></i><span>{{ 'quote.name'|trans }}</span>
+        </a>
+    {% endif %}
+    <div class="accordion" id="accordionOperation">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOperation"
+                aria-expanded="true" aria-controls="collapseOperation">
+            <i class="fas fa-cogs"></i><span>{{ 'user.nav.operation'|trans }}</span>
+        </button>
+
+        <div id="collapseOperation" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="nav-link {% if 'back_product_import' in route %}active{% endif %}" href="{{ path('back_product_import') }}"><i class="fas fa-file-import"></i><span>{{ 'product.list.import'|trans }}</span></a>
+            {% else %}
+                <a class="nav-link {% if 'back_user_send_product' in route %}active{% endif %}" href="{{ path('back_user_send_product') }}"><i class="fas fa-paper-plane"></i><span>{{ 'user.button.send'|trans }}</span></a>
+            {% endif %}
+        </div>
+    </div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="nav-link {% if 'back_user_index' in route %}active{% endif %}" href="{{ path('back_user_index') }}"><i class="fas fa-users"></i><span>{{ 'user.name'|trans }}</span></a>
+    {% endif %}
+</nav>

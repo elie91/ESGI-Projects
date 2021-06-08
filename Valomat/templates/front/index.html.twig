@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('homepage') | replace({'src=' : 'defer src='}) | raw }}
+{% endblock %}
+{% block body %}
+    {% include 'front/_partials/navigation.html.twig' %}
+    {% include '_partials/flash.html.twig' %}
+
+    {% block content %}
+        <section class="min-vh-100">
+            <div class="container-fluid js-filter">
+                <div class="row pt-5">
+                    <div class="col-lg-3">
+                        {% include 'front/product/filter.html.twig' %}
+                    </div>
+                    <div class="col-lg-9">
+                        <div id="container-products" class="row"
+                             data-fetch="{{ path('front_index') }}"
+                             data-url="{{ path('front_product_show', {'slug': 0}) }}"
+                             data-empty="{{ 'product.list.noproduct'|trans }}"
+                             data-translations='{"aloy":"{{ 'product.column.aloy'|trans }}", "width": "{{ 'product.column.width'|trans }}", "depth": "{{ 'product.column.depth'|trans }}","state": "{{ 'product.column.state'|trans }}", "height": "{{ 'product.column.height'|trans }}", "dimension": "{{ 'product.column.dimension'|trans }}"}'
+                        ></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+    {% include '_partials/footer.html.twig' %}
+{% endblock %}

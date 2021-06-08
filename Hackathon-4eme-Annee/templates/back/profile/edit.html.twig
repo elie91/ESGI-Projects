@@ -1,0 +1,22 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{ 'user.informations'|trans }}{% endblock %}
+
+{% block buttons %}
+    {% include 'back/user/_delete_form.html.twig' %}
+{% endblock %}
+{% block content %}
+    <section>
+        <div class="container">
+            <div class="card mt-3">
+                <div class="card-body">
+                    {{ include('back/profile/_form.html.twig', {'button_label': 'button.edit'}) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('user_edit') }}
+{% endblock %}

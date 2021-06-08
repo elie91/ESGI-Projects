@@ -1,0 +1,11 @@
+{% extends 'email/base.html.twig' %}
+
+{% block body %}
+    <section>
+        <div class="card">
+            <div class="card-body">
+                {{ 'mail.file.content'|trans({'name': user.firstname, 'company': user.company}) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

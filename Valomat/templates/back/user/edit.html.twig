@@ -1,0 +1,33 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{ 'user.button.edit'|trans }}{% endblock %}
+
+{% block content %}
+    <section class="mt-3">
+        <div class="container">
+            <div class="row align-items-center mb-3">
+                <div class="col-md-6">
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <h1>{{ 'user.button.edit'|trans }}</h1>
+                    {% else %}
+                        <h1>{{ 'user.nav.information'|trans }}</h1>
+                    {% endif %}
+                </div>
+                <div class="col-md-6 text-right">
+                    <a class="btn btn-primary sm-mb-1"
+                       href="{{ path(is_granted('ROLE_ADMIN') ? 'back_user_index' : 'back_product_index') }}">
+                        <i class="fas fa-arrow-left"></i>{{ 'button.back'|trans }}
+                    </a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        {{ include('back/user/_delete_form.html.twig') }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    {{ include('back/user/_form.html.twig', {'button_label': 'button.edit'}) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

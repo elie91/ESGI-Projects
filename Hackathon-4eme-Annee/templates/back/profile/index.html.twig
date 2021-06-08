@@ -1,0 +1,82 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{ 'user.informations'|trans }}{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container profil mt-5">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="{{ asset(picture_path~user.picture) }}" class="img-hexagone profil__photo"
+                         alt="{{ 'user.picture'|trans }}"
+                         height="100" width="100">
+                </div>
+                <div class="col-md-10">
+                    <div class="text-blue">
+                        <h1 class="h5 text-uppercase profil__title">{{ user.fullName }}</h1>
+                        <h2 class="h6 mt-2 text-capitalize">{{ job }}</h2>
+                        <h6 class="mt-2 text-capitalize font-weight-light">{{ user.city }}</h6>
+                        <div class="profil__buttons mt-5 d-flex">
+                            <a class="btn btn-outline-blue" href="{{ user.website }}" target="_blank">Mon cv</a>
+                            <a class="ml-3 btn btn-outline-blue" href="{{ path('back_experience_new') }}" class="pl-5">Ajouter une expérience</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5">
+                <div class="card p-lg-4">
+                    <div class="card-body text-blue">
+                        <h5 class="text-uppercase">Biographie</h5>
+                        <span class="font-weight-light">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus at ea harum id itaque iure minus omnis, pariatur
+                            perferendis placeat ratione veritatis voluptate. Ipsam, rerum, voluptatum! Ad autem doloremque vel?
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="my-5">
+                <div class="card p-lg-4">
+                    <div class="card-body text-blue">
+                        <h5 class="text-uppercase">Expériences</h5>
+                        <ul class="row mt-5 list-unstyled timeline text-blue">
+                            {% for experience in user.experiences|sort((a, b) => a.startDate < b.startDate) %}
+                                <li class="col-md-12 mb-5">
+                                    <div class="row d-flex justify-content-start align-items-center text-blue">
+                                        <div class="col-lg-2 mb-3 pr-4">
+                                            <h5 class="pt-2">{{ experience.startDate|date('Y') }}
+                                                - {{ experience.endDate|date('Y') }}</h5>
+                                            <h4>{{ experience.startDate|date('M') }}</h4>
+                                        </div>
+                                        <div class="col-lg-9 pl-5 reveal load-hidden rAnimated">
+                                            <div class="timeline-icon">
+                                                <i class="timeline-i"></i>
+                                            </div>
+                                            <div class="mb-3 px-2">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <span class="text-uppercase let-spac">{{ experience.company }} /</span>
+                                                        <span class="font-weight-lighter let-spac">{{ experience.title }}</span>
+                                                    </div>
+                                                    <a href="{{ path('back_experience_edit', {'id': experience.id}) }}">
+                                                        <i class="fas fa-pencil-alt text-yellow"></i>
+                                                    </a>
+                                                </div>
+                                                <span class="font-weight-lighter pt-2">{{ experience.description }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% else %}
+                                <li class="offset-md-3 col-md-6">Vous n'avez pas encore d'experience</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('user_edit') }}
+{% endblock %}

@@ -1,0 +1,129 @@
+POST http://localhost:3000/login_check
+Content-Type: application/json
+
+{
+  "email": "merchant@test.fr",
+  "password": "test"
+}
+
+### CGET
+
+GET http://localhost:3000/transactions
+
+### SEARCH
+
+GET http://localhost:3000/transactions/search
+Content-Type: application/json
+
+{
+  "searchText": "bismuth"
+}
+
+
+### POST
+
+POST http://localhost:3000/transactions
+Content-Type: application/json
+
+{
+  "amount": 10,
+  "billing_address": "1 rue de test",
+  "billing_postal_code": "12345",
+  "billing_city": "Paris"
+}
+
+### GET
+
+GET http://localhost:3000/transactions/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTksImxhc3RuYW1lIjoiYWRtaW4iLCJmaXJzdG5hbWUiOiJlbGllZSIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicGhvbmUiOiIwNjY2NjY2NjY2Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNTk0MzIxNDU3LCJleHAiOjE1OTQzMjUwNTd9.1QTRmgiTRNitRcIuoKpXVjGP5kasbBVvpN-6I0A5mS8
+
+### UPDATE
+
+PUT http://localhost:3000/transactions/1
+Content-Type: application/json
+
+{
+  "amount": 999
+}
+
+### DELETE
+DELETE http://localhost:3000/transactions/1
+
+### USER
+
+### GET
+
+GET http://localhost:3000/users
+
+### POST
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "firstname": "f",
+  "lastname": "f",
+  "email": "merchant6@test.fr",
+  "phone": "0123456789",
+  "password": "test",
+  "company_name": "Ma compagnie",
+  "kbis": "base64",
+  "address": "1 Rue de Test",
+  "postal_code": "12345",
+  "city": "Paris",
+  "confirmation_url": "http://localhost:3001/order/success",
+  "cancellation_url": "http://localhost:3001/order/cancel",
+  "currency": "EUR"
+}
+
+### MERCHANT
+
+### GET
+
+GET http://localhost:3000/merchants
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTksImxhc3RuYW1lIjoiYWRtaW4iLCJmaXJzdG5hbWUiOiJlbGllZSIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicGhvbmUiOiIwNjY2NjY2NjY2Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNTk0MjI0MjM1LCJleHAiOjE1OTQyMjc4MzV9.XVPugbnp8E7-2saurzpSzlkw18DB3Um1WaoN5mAssds
+
+### CGET MERCHANT TRANSACTIONS
+
+GET http://localhost:3000/merchants/1/transactions
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTksImxhc3RuYW1lIjoiYWRtaW4iLCJmaXJzdG5hbWUiOiJlbGllZWRzZCIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicGhvbmUiOiIwNjY2NjY2NjY2Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNTk0MTEyMDY0LCJleHAiOjE1OTQxMTU2NjR9.L6Sm8aGfeF-KihAUv_Pfuxd_wsR9dW6v-aruPRYnCG4
+
+
+### PUT MERCHANT
+PUT http://localhost:3000/merchants/1/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTksImxhc3RuYW1lIjoiYWRtaW4iLCJmaXJzdG5hbWUiOiJlbGllZSIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicGhvbmUiOiIwNjY2NjY2NjY2Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNTk0MjMyNjAxLCJleHAiOjE1OTQyMzYyMDF9.A2OvLBG1J8KtshFvpPE3lNJfmE7lyjP6_jsHfgudGcU
+
+{
+  "UserId": 1,
+  "address": "12 rue chabert",
+  "approved": true,
+  "cancellation_url": "https://gitlab.com/team-fullstack-js/backoffice-app/-/commits/develop",
+  "city": "Maisons Alfort",
+  "confirmation_url": "https://gitlab.com/team-fullstack-js/backoffice-app/-/commits/develop",
+  "createdAt": "2020-07-04T22:46:52.010Z",
+  "id": 1,
+  "kbis": "data:application/pdf;base64,JVBERi0xLjcKJbe+raoKMS",
+  "name": "Modif Entreprise",
+  "phone": "0666666666",
+  "postal_code": "95700",
+  "public_key": "public_9m73203y78owehg5szls5",
+  "refund_currency_id": null,
+  "secret_key": "secret_z7gzkgzj8kaemjo3c36wb",
+  "updatedAt": "2020-07-04T22:46:52.010Z"
+}
+
+### GENERATE KEYS
+GET http://localhost:3000/merchants/keys
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibGFzdG5hbWUiOiJiaXNtdXRoIiwiZmlyc3RuYW1lIjoiZWxpZSIsImVtYWlsIjoiZWxpZWJpc211dGhAZ21haWwuY29tIiwicGhvbmUiOiIwNjY2NjY2NjY2Iiwicm9sZSI6Ik1FUkNIQU5UIiwiaWF0IjoxNTk0Mjg0MTYyLCJleHAiOjE1OTQyODc3NjJ9.m6w4OU3LbnlEQJu6p8qvsTkrIcucz_slYormwWeSjrQ
+
+### GET CURRENCIES
+
+GET  http://localhost:3000/currencies
+Content-Type: application/json
+
+###

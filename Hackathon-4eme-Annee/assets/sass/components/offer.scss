@@ -1,0 +1,36 @@
+.offer_wraper {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+}
+
+.offer {
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  position: relative;
+
+  .offer_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    background-color: #FEC54270;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    height: 400px;
+    width: 100%;
+    transition: all .1s ease-in;
+  }
+
+  &:hover {
+    .offer_content {
+      visibility: initial;
+    }
+  }
+}
+

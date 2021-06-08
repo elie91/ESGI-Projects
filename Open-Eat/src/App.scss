@@ -1,0 +1,382 @@
+$primary : #4caf50;
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+.navbar {
+  transition: all .3s ease-in;
+  padding: 1rem;
+
+  &.bg-light {
+    background-color: white !important;
+  }
+
+  .navbar-icon {
+    height: 25px;
+  }
+
+  .nav-link{
+    display: flex;
+    align-items: center;
+  }
+
+  &.navbar-light .navbar-toggler {
+    color: black;
+    border: none;
+    transition: all .3s ease-in;
+    &.open:focus{
+      transform: rotateZ(90deg);
+    }
+  }
+
+  &.navbar-light .navbar-nav .nav-link {
+    color: rgb(0,0,0);
+  }
+
+  &.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: .75rem;
+    padding-left: .75rem;
+  }
+}
+
+button:focus {
+  outline: none;
+}
+
+.is-top.navbar {
+  &.bg-light {
+    background-color: transparent !important;
+  }
+
+  &.navbar-light .navbar-nav .nav-link {
+    color: white;
+  }
+
+  .navbar-brand {
+    color: white;
+  }
+
+  .avatar {
+    background-color: white;
+    padding: .15rem;
+  }
+
+  svg.shopping-icon path {
+    fill: white !important;
+  }
+
+  .item-count {
+    color: white;
+  }
+}
+
+.form-group label {
+  text-align: left;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05);
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.btn-primary{
+  background-color: $primary;
+  border-color: $primary;
+  &:hover, &:active{
+    background-color: $primary!important;
+    border-color: $primary!important;
+    box-shadow: 0 0 0 0.1rem rgba(75, 175, 79, 0.31);
+  }
+  &:focus{
+    background-color: $primary;
+    border-color: $primary;
+    box-shadow: 0 0 0 0.1rem rgba(75, 175, 79, 0.31);
+  }
+}
+
+.text-primary{
+  color: $primary!important;
+}
+
+.login {
+  background-image: url(./images/login-min.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.profile {
+  background-image: url(./images/profile-min.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+header {
+  background-image: url(./images/header-min.jpg);
+  background-size: cover;
+  background-position: right center;
+
+  .container {
+    min-height: 70vh;
+  }
+
+  .card {
+    border-radius: 1.5rem;
+  }
+}
+
+.badge.badge-primary{
+  background-color: $primary;
+}
+
+.fav-icon {
+  color: #4baf4f;
+}
+
+textarea{
+  padding: 1rem;
+}
+
+.bg-primary{
+  background-color: $primary!important;
+}
+
+.gradient{
+  background: $primary;
+  background: linear-gradient(180deg, $primary 75%, white 75%);
+}
+
+.min-vh-35{
+  min-height: 35vh;
+}
+
+.icon{
+  height: 50px;
+}
+
+.list-group-item {
+  padding: 1.5rem 1.25rem;
+  a:hover{
+    text-decoration: none;
+  }
+}
+
+.comment-avatar{
+  height: 40px;
+  width: 40px;
+  background-color: $primary;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+}
+
+.mb-4 {
+  margin-bottom: 2rem !important;
+}
+
+.title-bordered {
+  position: relative;
+  padding-bottom: .25rem;
+  display: inline-flex;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 85%;
+    background-color: $primary;
+  }
+}
+
+.pt-6 {
+  padding-top: 6rem;
+}
+
+.form-control {
+  background-color: #f5f5f5;
+  border: none;
+  height: calc(2.5em + .75rem + 2px);
+  border-radius: .75rem;
+  &:focus{
+    box-shadow: none;
+  }
+}
+
+.pulse {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+
+  &.online {
+    background-color: #4CAF50;
+    box-shadow: 0 0 0 0 #4caf50c9;
+  }
+
+  &.offline {
+    background-color: #e84c3d;
+    box-shadow: 0 0 0 0 #e84c3dc9;
+  }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin: 30px auto;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+}
+
+.text-orange {
+  color: orange;
+}
+
+.loader-mt {
+  margin-top: -50px;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.fav-icon {
+  right: 5px;
+  top: 5px;
+
+  .icon {
+    height: 20px;
+  }
+}
+
+.h-20 {
+  height: 20px;
+}
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% {
+    -webkit-transform: scale(0.0)
+  }
+  50% {
+    -webkit-transform: scale(1.0)
+  }
+}
+
+@keyframes sk-bounce {
+  0%, 100% {
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  }
+  50% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+
+@-webkit-keyframes pulse {
+  to {
+    box-shadow: 0 0 0 3px rgba(232, 76, 61, 0);
+  }
+}
+
+@-moz-keyframes pulse {
+  to {
+    box-shadow: 0 0 0 3px rgba(232, 76, 61, 0);
+  }
+}
+
+@-ms-keyframes pulse {
+  to {
+    box-shadow: 0 0 0 3px rgba(232, 76, 61, 0);
+  }
+}
+
+@keyframes pulse {
+  to {
+    box-shadow: 0 0 0 3px rgba(232, 76, 61, 0);
+  }
+}
+
+@media (max-width: 992px) {
+  .is-top.navbar{
+    &.bg-light {
+      background-color: white !important;
+    }
+    .navbar-brand{
+      color: black;
+    }
+    &.navbar-light .navbar-nav .nav-link {
+      color: black;
+    }
+    svg.shopping-icon path {
+      fill: black !important;
+    }
+
+    .item-count {
+      color: black;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  header .container {
+    min-height: 80vh;
+    .display-3{
+      font-size: 3rem;
+    }
+    .h3{
+      font-size: 1.15rem;
+    }
+    .mb-4 {
+      margin-bottom: 1rem !important;
+    }
+  }
+  .title-bordered{
+    font-size: 1.75rem;
+  }
+
+  .card-body{
+    .h2, h2 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .gradient{
+    h1{
+      font-size: 1.75rem;
+    }
+  }
+}

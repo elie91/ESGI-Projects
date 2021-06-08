@@ -1,0 +1,5 @@
+App\Entity\Fruit:
+  fruit:
+    name: Banane
+  fruit_2:
+      name: Fraise

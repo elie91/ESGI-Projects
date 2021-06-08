@@ -1,0 +1,14 @@
+<div class="my-3">
+    {{ form_start(form) }}
+    <div class="input-group">
+        {{ form_widget(form.search, { 'attr': {'placeholder': placeholder, 'class': 'form-control bg-white' }} ) }}
+        <div class="input-group-append">
+            <button class="btn btn-primary btn-block">{{ button_label|default('button.search')|trans }}</button>
+        </div>
+    </div>
+
+    <div class="invalid-feedback" {% if form_errors(form.search) %}style="display: block"{% endif %}>
+        {{ form_errors(form.search) }}
+    </div>
+    {{ form_end(form) }}
+</div>

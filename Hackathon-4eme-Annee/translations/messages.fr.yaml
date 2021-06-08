@@ -1,0 +1,209 @@
+breadcrumb:
+  dashboard: "Dashboard"
+  new: "Ajouter"
+  edit: "Modifier"
+  show: "Voir"
+  my: "Mes projets"
+  community: "Communauté"
+
+flash:
+  confirmRegister: "Un email vous a été envoyé pour confirmer votre inscription"
+  tokenNotExist: "Le token n'existe pas. Vous avez probablement déjà confirmer votre compte"
+  userUpdated: "Vos informations ont été mises à jour"
+  userDeleted: "Votre compte sera supprimé dans quelques jours"
+  resetPassword:
+    mail: "Un email vient d'être envoyé afin de réinitialiser votre mot de passe"
+    success: "Votre mot de passe a bien été réinitialisé"
+    error: "Erreur lors de la réinitialisation du mot de passe"
+
+assert:
+  email: "L'email renseigné n'est pas un email valide"
+
+page:
+  404:
+    title: "Désolé, cette page n'est pas disponible"
+    content: "La page que vous avez demandé a été déplacé ou supprimé"
+    button: "Retour à l'accueil"
+  reset:
+    title: "Réinitialiser votre mot de passe"
+  confirmUser:
+    title: "Votre compte est activé"
+    content: "Merci d'avoir confirmer votre adresse mail, vous pouvez dès maintenant vous connecter avec votre compte."
+
+button:
+  login: "Se connecter"
+  forgot: "Mot de passe oublié ?"
+  send: "Envoyer"
+  search: "Rechercher"
+  update: "Mettre à jour"
+  logout: "Se déconnecter"
+  add: "Ajouter"
+  back: "Retour"
+  save: "Sauvegarder"
+  show: "Voir"
+  edit: "Modifier"
+  delete: "Supprimer"
+  confirmDelete: "Confirmez-vous la suppression de item"
+  register: "S'inscrire"
+  remember: "Rester connecté ?"
+  close: "Fermer"
+  deleteUser: "Supprimer mon compte"
+  select: "Assigner le projet"
+  space: "Mon espace"
+
+home:
+  expert: "Une Expertise"
+  exigence: "Une exigence"
+  accompagnement: "Un accompagnement"
+  innovation: "Une innovation"
+  ethique: "Une éthique"
+  confiance: "Une confiance"
+  proximity: "Une proximité"
+
+user:
+  singular: "Utilisateur"
+  plurial: "Utilisateurs"
+  title: "Mon compte"
+  informations: "Mes informations"
+  updatePassword: "Modifer mon mot de passe"
+  email: "Email"
+  password: "Mot de passe"
+  repeatPassword: "Confirmer le mot de passe"
+  actualPassword: "Saisir votre mot de passe"
+  firstname: "Prénom"
+  name: "Nom"
+  empty: "Aucun utilisateur trouvé"
+  add: "Ajouter un utilisateur"
+  terms: "Conditions d'utilisation"
+  picture: "Photo de profil"
+  job: "Métier"
+  selectJob: "Sélectionner votre métier"
+  selectState: "Sélectionner l'état du compte"
+  skill: "Compétences"
+  selectSkill: "Sélectionner vos compétences"
+  city: "Ville"
+  website: "Site internet ou LinkedIn"
+  state: "Etat d'avancement"
+  search: "Recherche un utilisateur"
+  testSuccess: "Un membre de l'équipe va vous contacter afin de convenir d'un entretien physique"
+  error:
+    invalid: "Identifiant invalide"
+    password: "Le mot de passe actuel saisi est invalide"
+    active: "Vous devez confirmer votre compte, vérifier votre boîte mail ou vos spams."
+    delete: "Votre compte a été supprimé"
+    samepassword: "Les mots de passes ne sont pas identiques"
+
+topic:
+  singular: "Topic"
+  title: "Titre"
+  titlePlaceholder: "De quel sujet voulez vous parler"
+  content: "Contenu"
+  contentPlaceholder: "Rédigez votre contenu ici"
+  plurial: "Topics"
+  createdBy: "Créé par"
+  comment: "Publier"
+  add: "Créer un topic"
+  search: "Rechercher un sujet"
+
+comment:
+  publish: "Publier"
+
+project:
+  singular: "Projet"
+  plurial: "Projets"
+  my: "Mes projets"
+  offers: "Offres"
+  name: "Nom"
+  company: "Entreprise"
+  description: "Description"
+  add: "Nouveau project"
+  empty: "Vous n'avez pas encore de projet assigné"
+  users: "Selectionner un utilisateur pour lui assigner le projet"
+  ended: "Projet terminé ?"
+  apply: "Je postule"
+  cancel: "Annuler"
+  usersApply: "Agents"
+  select: "Candidatures"
+  assignAt: "Assigné à"
+  state: "Etat du projet"
+  close: "Terminé"
+  reject: "Refusé"
+  pending: "En cours"
+  waiting: "Selection en cours"
+  latest: "Mes derniers projets"
+
+profile:
+  plurial: "Mon compte"
+
+constant:
+  plurial: "Constantes"
+  singular: "Constante"
+  value: "Valeur"
+  type: "Type"
+  empty: "Il n'y a pas de constantes"
+  select: "Selectionner un type de constante"
+  add: "Nouvelle constante"
+
+tracking:
+  select:
+    short: "En attente de selection"
+    active: "Vous avez été selectionné"
+    inactive: "Vous n'avez pas été selectionné"
+  relation:
+    short: "Mise en relation avec le client"
+  finish:
+    short: "Le projet est terminé"
+
+
+test:
+  singular: "Test"
+  search: "Rechercher un test"
+  plurial: "Tests"
+  title: "Évaluation en"
+  message1: "Veuillez cliquer sur le bouton démarrer pour débuter le test"
+  message2: "4 choix de réponses vous seront proposés pour chaque question, une seule sera valide"
+  goodluck: "Bonne chance !"
+  result: "Résultat"
+  result_test: "Résultats pour le test en"
+  success: "Beau travail ! Vous avez réussi"
+  failed: "Dommage ! Vous êtes en dessous de la tranche des 70%."
+  retry: "Vous pouvez réessayer lorsque vous serez prêt de nouveau"
+  latest: "Derniers tests"
+  empty: "Vous n'avez pas passé de test"
+  notFound: "Aucun test ne correspond aux critères choisis"
+  start: "Démarrer"
+  entry: "Tests d'entrée"
+  skill: "Tests de compétences"
+  invalid: "Veuillez choisir une réponse"
+
+email:
+  confirmUser:
+    subject: "Merci de bien vouloir confirmer votre compte"
+    content: "Merci de votre inscription, pour activer votre compte, cliquer sur le lien suivant : "
+    button: "Cliquez-ici"
+  resetPassword:
+    subject: "Réinitialiser son mot de passe"
+    content: "Afin de réinitialiser votre mot de passe, cliquer sur le lien suivant : "
+    button: "Cliquez-ici"
+
+contact:
+  subject: "Objet"
+  phone: "Téléphone"
+  message: "Message"
+  company: "Entreprise"
+
+experience:
+  plurial: "Expériences"
+  actual: "Actuel"
+  title: "Intitulé du poste"
+  titlePlaceholder: "Ex: Développeur"
+  content: "Description du poste"
+  contentPlaceholder: "Décrire les missions effectués"
+  company: "Entreprise"
+  location: "Emplacement"
+  locationPlaceholder: "Ex: Paris"
+  startDate: "Date de début"
+  endDate: "Date de fin"
+  isCurrentJob: "Poste actuel"
+  add: "Ajouter une expérience"
+  edit: "Modifier une expérience"

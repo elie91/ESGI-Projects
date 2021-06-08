@@ -1,0 +1,50 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{{ 'test.plurial'|trans }}{% endblock %}
+
+
+{#{% block buttons %}
+    {% include '_partials/buttons/new.html.twig' with {'href': path('back_topic_new'), 'button_label': 'topic.add'|trans } %}
+{% endblock %}#}
+
+{% block content %}
+    <section>
+        {% if tests is not empty %}
+            <div class="container-fluid">
+                <div class="row test_wrapper">
+                    {% for test in tests %}
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    {% if test.type == 'ENTRY' %}
+                                        <h5 class="text-uppercase">{{ 'test.entry'|trans }}</h5>
+                                    {% else %}
+                                        <h5 class="text-uppercase">{{ 'test.skill'|trans }}</h5>
+                                    {% endif %}
+                                    <h6 class="card__subtitle">{{ test.title }}</h6>
+                                    <div class="card__logo">
+                                        {% for score in scores %}
+                                            {% if score.test.id == test.id %}
+                                                <img src="{{ asset('build/images/pictos/test_fait.svg') }}"
+                                                     class="img-fluid check" alt="test">
+                                            {% endif %}
+                                        {% endfor %}
+                                        <img src="{{ asset('build/images/pictos/chronometre_bleu.svg') }}"
+                                             class="img-fluid" alt="test">
+                                    </div>
+                                    <div class="card__button text-center">
+                                        <a href="{{ path('back_test_start', {'id': test.id }) }}">
+                                            <button class="btn btn-primary">{{ 'test.start'|trans }}</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-danger w-50 m-auto">{{ 'test.notFound'|trans }}</div>
+        {% endif %}
+    </section>
+{% endblock %}

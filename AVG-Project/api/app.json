@@ -1,0 +1,21 @@
+{
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-php"
+    }
+  ],
+  "env": {
+    "APP_ENV": "prod",
+    "APP_SECRET": {
+      "generator": "!ChangeMe!"
+    },
+    "CORS_ALLOW_ORIGIN": "https://cclique-react.herokuapp.com/"
+  },
+  "scripts": {
+    "postdeploy": "php bin/console doctrine:schema:create"
+  },
+  "success_url": "/"
+}

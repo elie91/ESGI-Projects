@@ -1,0 +1,5 @@
+<form class="d-inline-block" method="post" action="{{ path('back_feature_value_delete', {'id': value.id}) }}" onsubmit="return confirm('{{'featureValue.button.confirmDelete'|trans}}');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ value.id) }}">
+    <button class="btn btn-danger"><i class="fas fa-trash"></i><span>{{ 'button.delete'|trans }}</span></button>
+</form>

@@ -1,0 +1,8 @@
+{
+  "apiurl": "http://localhost",
+  "port": "3000",
+  "cors": {
+    "origin": "*"
+  },
+  "maxBodySize": "2mb"
+}

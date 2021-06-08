@@ -1,0 +1,34 @@
+{
+  "name": "esgi-test-unitaire",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/abdelhakim.belmakdem/esgi-test-unitaire.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/abdelhakim.belmakdem/esgi-test-unitaire/issues"
+  },
+  "homepage": "https://gitlab.com/abdelhakim.belmakdem/esgi-test-unitaire#readme",
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "cors": "^2.8.5",
+    "date-fns": "^2.12.0",
+    "express": "^4.17.1",
+    "helmet": "^3.22.0",
+    "jest": "^26.0.1",
+    "jsonschema": "^1.2.6",
+    "nodemon": "^2.0.3",
+    "winston": "^3.2.1"
+  }
+}

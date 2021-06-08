@@ -1,0 +1,82 @@
+{% extends 'front/index.html.twig' %}
+
+{% block content %}
+    <section class="min-vh-100">
+        <div class="container pt-5">
+            <div class="row mb-3 align-items-center">
+                <div class="col-md-6">
+                    <h1>{{ product.name }}</h1>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a class="btn btn-primary" href="{{ path('front_quote_new', {'slug': product.slug }) }}">
+                        <i class="fas fa-marker"></i>{{ 'quote.request'|trans }}
+                    </a>
+                    <a class="btn btn-primary" href="{{ path('front_index') }}">
+                        <i class="fas fa-arrow-left"></i>{{ 'button.back'|trans }}
+                    </a>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <th>{{ 'product.column.reference'|trans }}</th>
+                    <td>{{ product.reference }}</td>
+                </tr>
+
+                {% if product.description %}
+                    <tr>
+                        <th>{{ 'product.column.description'|trans }}</th>
+                        <td>{{ product.description }}</td>
+                    </tr>
+                {% endif %}
+                <tr>
+                    <th>{{ 'category.name'|trans }}</th>
+                    <td>
+                        {% for category in product.categories %}
+                            {{ category.title }}
+                        {% else %}
+                            {{ 'product.list.nocategory'|trans }}
+                        {% endfor %}
+                    </td>
+                </tr>
+                {% if product.aloy %}
+                    <tr>
+                        <th>{{ 'product.column.aloy'|trans }}</th>
+                        <td>{{ product.aloy }}</td>
+                    </tr>
+                {% endif %}
+                {% if product.width %}
+                    <tr>
+                        <th>{{ 'product.column.width'|trans }}</th>
+                        <td>{{ product.width }}</td>
+                    </tr>
+                {% endif %}
+                {% if product.height %}
+                    <tr>
+                        <th>{{ 'product.column.height'|trans }}</th>
+                        <td>{{ product.height }}</td>
+                    </tr>
+                {% endif %}
+                {% if product.depth %}
+                    <tr>
+                        <th>{{ 'product.column.depth'|trans }}</th>
+                        <td>{{ product.depth }}</td>
+                    </tr>
+                {% endif %}
+                {% if product.standardIndex %}
+                    <tr>
+                        <th>{{ 'product.column.standardIndex'|trans }}</th>
+                        <td>{{ product.standardIndex }}</td>
+                    </tr>
+                {% endif %}
+                {% if product.elaborator %}
+                    <tr>
+                        <th>{{ 'product.column.elaborator'|trans }}</th>
+                        <td>{{ product.elaborator }}</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

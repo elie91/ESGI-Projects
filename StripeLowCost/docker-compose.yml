@@ -1,0 +1,80 @@
+version: '3.6'
+services:
+
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: 9tPf5DmJxBPy
+    volumes:
+      - ./Platform:/usr/local/platform
+    working_dir: /usr/local/platform
+
+  postgres:
+    image: 'postgres:12-alpine'
+    volumes:
+      - './platform-api/docker/postgres/data:/var/lib/postgres/data'
+    ports:
+      - 3003:5432
+    environment:
+      - PGDATA=/var/lib/postgres/data/pgdata
+      - POSTGRES_DB=plateform
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=RtB7xHkCgneT
+
+  platform-api:
+    build: 'platform-api'
+    working_dir: '/app'
+    volumes:
+      - /app/node_modules
+      - './platform-api:/app:rw,consistent'
+    environment:
+      MONGODB_USER: "mongo"
+      MONGODB_PASS: "9tPf5DmJxBPy"
+      MONGODB_DBNAME: "Platform"
+      JWT_SECRET: "9tPf5DmJxBPy2020"
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+      - postgres
+      - psp-api
+
+  psp-api:
+    build: 'psp-api'
+    working_dir: '/app'
+    volumes:
+      - /app/node_modules
+      - './psp-api:/app:rw,consistent'
+    ports:
+      - 3006:3000
+
+  merchant-app:
+    build: 'merchant-app'
+    working_dir: '/app'
+    volumes:
+      - '/app/node_modules'
+      - './merchant-app:/app'
+    tty: true
+    stdin_open: true
+    ports:
+      - 3001:3000
+    depends_on:
+      - platform-api
+      - psp-api
+
+  backoffice-app:
+    build: 'backoffice-app'
+    working_dir: '/app'
+    volumes:
+      - '/app/node_modules'
+      - './backoffice-app:/app'
+    tty: true
+    stdin_open: true
+    ports:
+      - 3002:3000
+    depends_on:
+      - platform-api
+      - psp-api

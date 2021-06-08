@@ -1,0 +1,146 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-8 order-2 order-md-1">
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_label(form.name)}}
+                {{ form_widget(form.name) }}
+                <div class="invalid-feedback" {% if form_errors(form.name) %}style="display: block"{% endif %}>
+                    {{form_errors(form.name)}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.reference)}}
+                {{ form_widget(form.reference) }}
+                <div class="invalid-feedback" {% if form_errors(form.reference) %}style="display: block"{% endif %}>
+                    {{form_errors(form.reference)}}
+                </div>
+            </div>
+            <div class="col-md-12 mb-3">
+                {{ form_label(form.description)}}
+                {{ form_widget(form.description) }}
+                <div class="invalid-feedback" {% if form_errors(form.description) %}style="display: block"{% endif %}>
+                    {{form_errors(form.description)}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.rewrittenUrl)}}
+                {{ form_widget(form.rewrittenUrl) }}
+                <div class="invalid-feedback" {% if form_errors(form.rewrittenUrl) %}style="display: block"{% endif %}>
+                    {{form_errors(form.rewrittenUrl)}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.metaTitle)}}
+                {{ form_widget(form.metaTitle) }}
+                <div class="invalid-feedback" {% if form_errors(form.metaTitle) %}style="display: block"{% endif %}>
+                    {{form_errors(form.metaTitle)}}
+                </div>
+            </div>
+            <div class="col-md-12">
+                {{ form_label(form.metaDescription)}}
+                {{ form_widget(form.metaDescription) }}
+                <div class="invalid-feedback" {% if form_errors(form.metaDescription) %}style="display: block"{% endif %}>
+                    {{form_errors(form.metaDescription)}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.quantity)}}
+                {{ form_widget(form.quantity) }}
+                <div class="invalid-feedback" {% if form_errors(form.quantity) %}style="display: block"{% endif %}>
+                    {{form_errors(form.quantity)}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.aloy)}}
+                {{ form_widget(form.aloy) }}
+                <div class="invalid-feedback" {% if form_errors(form.aloy) %}style="display: block"{% endif %}>
+                    {{form_errors(form.aloy)}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.width)}}
+                {{ form_widget(form.width) }}
+                <div class="invalid-feedback" {% if form_errors(form.width) %}style="display: block"{% endif %}>
+                    {{form_errors(form.width)}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.height)}}
+                {{ form_widget(form.height) }}
+                <div class="invalid-feedback" {% if form_errors(form.height) %}style="display: block"{% endif %}>
+                    {{form_errors(form.height)}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.weight)}}
+                {{ form_widget(form.weight) }}
+                <div class="invalid-feedback" {% if form_errors(form.weight) %}style="display: block"{% endif %}>
+                    {{form_errors(form.weight)}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.depth)}}
+                {{ form_widget(form.depth) }}
+                <div class="invalid-feedback" {% if form_errors(form.depth) %}style="display: block"{% endif %}>
+                    {{form_errors(form.depth)}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.standardIndex)}}
+                {{ form_widget(form.standardIndex) }}
+                <div class="invalid-feedback" {% if form_errors(form.standardIndex) %}style="display: block"{% endif %}>
+                    {{form_errors(form.standardIndex)}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.elaborator)}}
+                {{ form_widget(form.elaborator) }}
+                <div class="invalid-feedback" {% if form_errors(form.elaborator) %}style="display: block"{% endif %}>
+                    {{form_errors(form.elaborator)}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.state)}}
+                {{ form_widget(form.state) }}
+                <div class="invalid-feedback" {% if form_errors(form.state) %}style="display: block"{% endif %}>
+                    {{form_errors(form.state)}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.active)}}
+                {{ form_widget(form.active) }}
+                <div class="invalid-feedback" {% if form_errors(form.active) %}style="display: block"{% endif %}>
+                    {{form_errors(form.active)}}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <button class="btn btn-block btn-primary">{{ button_label|default('button.create')|trans }}</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 order-1 order-md-2">
+        <div class="mb-3">
+            {{ form_label(form.categories)}}
+            {{ form_widget(form.categories) }}
+            <div class="invalid-feedback" {% if form_errors(form.categories) %}style="display: block"{% endif %}>
+                {{form_errors(form.categories)}}
+            </div>
+        </div>
+            <div class="mb-3">
+            {{ form_label(form.featureValues)}}
+            {{ form_widget(form.featureValues) }}
+            <div class="invalid-feedback" {% if form_errors(form.featureValues) %}style="display: block"{% endif %}>
+                {{form_errors(form.featureValues)}}
+            </div>
+        </div>
+        {{ form_label(form.userId)}}
+        {{ form_widget(form.userId) }}
+        <div class="invalid-feedback" {% if form_errors(form.userId) %}style="display: block"{% endif %}>
+            {{form_errors(form.userId)}}
+        </div>
+    </div>
+
+</div>
+
+{{ form_end(form) }}

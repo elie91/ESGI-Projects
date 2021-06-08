@@ -1,0 +1,18 @@
+<nav class="nav flex-column">
+    <a class="brand nav-link font-weight-bold text-white text-center py-2" href="{{ path('back_index') }}">
+        <img src="{{ asset('build/images/logo.png') }}" alt="logo" height="40"> <span>Les agents du web</span>
+    </a>
+    <a class="nav-link" href="{{ path('back_index') }}"><img src="{{ asset('build/images/pictos/mon-espace_jaune.svg') }}" alt="Mon compte" height="30"><span class="font-weight-bold">Mon espace</span></a>
+    <a class="nav-link" href="{{ path('back_test_index') }}"><img src="{{ asset('build/images/pictos/test-entree_jaune.svg') }}" alt="Tests" height="30"><span>{{ 'Tests' }}</span></a>
+    {% if is_granted('ROLE_USER') %}
+        <a class="nav-link" href="{{ path('back_profile_index') }}"><img src="{{ asset('build/images/pictos/mon-espace_jaune.svg') }}" alt="Mon compte" height="30"><span>Profil</span></a>
+        <a class="nav-link" href="{{ path('back_project_index') }}"><img src="{{ asset('build/images/pictos/innovation_jaune.svg') }}" alt="Projets" height="30"><span>{% if is_granted('ROLE_ADMIN') %}Projets{% else %}Offre{% endif %}</span></a>
+        {% if not is_granted('ROLE_ADMIN') %}<a class="nav-link" href="{{ path('back_project_index') }}"><img src="{{ asset('build/images/pictos/innovation_jaune.svg') }}" alt="Mes projets" height="30"><span>{{ 'project.my'|trans }}</span></a>{% endif %}
+        <a class="nav-link" href="{{ path('back_user_community') }}"><img src="{{ asset('build/images/pictos/communaute_jaune.svg') }}" alt="Communaué" height="30"><span>{{ 'Communauté' }}</span></a>
+        <a class="nav-link" href="{{ path('back_topic_index') }}"><img src="{{ asset('build/images/pictos/interrogation_jaune-92.svg') }}" alt="Communaué" height="30"><span>{{ 'Forum' }}</span></a>
+    {% endif %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="nav-link" href="{{ path('back_user_index') }}"><img src="{{ asset('build/images/pictos/mon-espace_jaune.svg') }}" alt="Mon compte" height="30"><span>{{ 'user.plurial'|trans }}</span></a>
+        <a class="nav-link" href="{{ path('back_constant_index') }}"><img src="{{ asset('build/images/pictos/interrogation_jaune-92.svg') }}" alt="Communaué" height="30"><span>{{ 'constant.plurial'|trans }}</span></a>
+    {% endif %}
+</nav>

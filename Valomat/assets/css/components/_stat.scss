@@ -1,0 +1,29 @@
+@import "../abstracts/variables";
+
+.card-stat{
+  i{
+    background-color: $blueColor;
+    color: white;
+    padding: 1.25rem;
+    border-radius: 50%;
+    font-size: 1.5em;
+    &.fa-file-invoice-dollar{
+      padding: 1.25rem 1.45rem;
+    }
+    &.fa-users{
+      padding: 1.25rem 1.1rem;
+    }
+  }
+
+  .number{
+    font-weight: 900;
+    font-size: 1.5em;
+  }
+
+  .text{
+    font-weight: 400;
+    font-style: italic;
+    margin-top: -.5rem;
+  }
+
+}

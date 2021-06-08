@@ -1,0 +1,57 @@
+{% extends 'back/index.html.twig' %}
+
+{% block content %}
+    <section class="mt-3">
+        <div class="container">
+            <div class="row align-items-center mb-3">
+                <div class="col-md-6">
+                    <h1>{{ 'quote.list.title'|trans }}</h1>
+                </div>
+            </div>
+
+            {% include 'form/search_in_table.html.twig' with {'placeholder' : 'filter.quote' } %}
+
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>{{ knp_pagination_sortable(quotes, 'user.column.company'|trans, 'quote.company') }}</th>
+                            <th class="hidden-md">{{ knp_pagination_sortable(quotes, 'user.column.email'|trans, 'quote.email') }}</th>
+                            <th class="hidden-md">{{ knp_pagination_sortable(quotes, 'user.column.phone'|trans, 'quote.phone') }}</th>
+                            <th>{{ knp_pagination_sortable(quotes, 'user.column.lastname'|trans, 'quote.lastname') }}</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for quote in quotes %}
+                            <tr>
+                                <td>{{ quote.company }}</td>
+                                <td class="hidden-md">{{ quote.email }}</td>
+                                <td class="hidden-md">{{ quote.phone }}</td>
+                                <td>{{ quote.lastname }}</td>
+                                <td class="text-right">
+                                    <a class="btn btn-primary"
+                                       href="{{ path('back_quote_show', {'id': quote.id}) }}"><i
+                                                class="fas fa-search-plus"></i><span>{{ 'button.show'|trans }}</span></a>
+                                    <a class="btn btn-primary"
+                                       href="{{ path('back_quote_edit', {'id': quote.id}) }}"><i
+                                                class="fas fa-pen"></i><span>{{ 'button.edit'|trans }}</span></a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">{{ 'quote.list.noquote'|trans }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="navigation my-4">
+                {{ knp_pagination_render(quotes) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

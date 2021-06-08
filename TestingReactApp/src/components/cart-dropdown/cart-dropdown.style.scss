@@ -1,0 +1,34 @@
+.cart {
+    position: absolute;
+    width: 240px;
+    height: 340px;
+    top: 70px;
+    right: -10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: black;
+    background-color: #f7f3f3;
+    z-index: 5;
+
+    &__items {
+        height: 240px;
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__message {
+        font-size: 18px;
+        margin: 50px auto;
+    }
+
+    button {
+        margin-top: auto;
+    }
+}

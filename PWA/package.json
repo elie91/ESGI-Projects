@@ -1,0 +1,27 @@
+{
+    "name": "iw2_retodo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "database": "npx json-server --watch ./data/database.json",
+        "serve": "npx es-dev-server --app-index index.html --node-resolve --watch -p 8080",
+        "css": "npx tailwindcss build ./assets/styles/tailwind-import.css -o ./assets/styles/tailwind.css",
+        "css:prod": "NODE_ENV=production npm run css"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "idb": "^5.0.4",
+        "lit-element": "^2.3.1",
+        "lit-html": "^1.2.1",
+        "lit-icon": "^1.0.0",
+        "page": "^1.11.6"
+    },
+    "devDependencies": {
+        "es-dev-server": "^1.53.0",
+        "json-server": "^0.16.1",
+        "tailwindcss": "^1.4.6"
+    }
+}

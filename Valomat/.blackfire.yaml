@@ -1,0 +1,27 @@
+scenarios: |
+  #!blackfire-player
+
+  scenario
+      name 'Visitor'
+
+      visit url('/')
+          name 'Home page'
+          expect status_code() == 200
+
+  scenario
+      name 'Authentication'
+
+      set user_email "admin@gmail.com"
+      set user_password "admin"
+
+      visit url('/fr/login')
+          name 'Login page'
+
+      submit button('Submit')
+          name 'Submit log in form'
+          param email user_email
+          param password user_password
+
+      follow
+          name 'Login redirection'
+          expect current_url() == endpoint ~ 'admin/'

@@ -1,0 +1,173 @@
+{% extends 'base.html.twig' %}
+{% block body_class %}class="admin"{% endblock %}
+{% block body %}
+    {% include '_partials/flash.html.twig' %}
+    <div class="wrapper">
+        <div id="sidebar" class="sidebar">
+            {% include '_partials/sidebar.html.twig' %}
+        </div>
+        <div class="content">
+            {% include '_partials/navigation.html.twig' %}
+            <header class="container-fluid">
+                <div class="row align-items-center mb-3">
+                    <div class="col-md-7">
+                        <div class="d-flex align-items-center">
+                            <h1>
+                                {% block title %}
+                                    {% if is_granted('ROLE_USER') %}
+                                        Dashboard
+                                    {% else %}
+                                        {{ 'user.state'|trans }}
+                                    {% endif %}
+                                {% endblock %}
+                            </h1>
+                            {% include '_partials/breadcrumb.html.twig' %}
+                        </div>
+                    </div>
+                    <div class="col-md-5 text-right">
+                        {% block buttons %}{% endblock %}
+                    </div>
+                </div>
+            </header>
+            {% block content %}
+                <section>
+                    <div class="container-fluid">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="card card-stat">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <div>
+                                                    <i class="fas fa-users"></i>
+                                                </div>
+                                                <div class="flex-row pl-2">
+                                                    <div class="number">{{ data.users }}</div>
+                                                    <div class="text">{{ 'user.singular'|trans }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card card-stat">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <div>
+                                                    <i class="fas fa-file-invoice-dollar"></i>
+                                                </div>
+                                                <div class="flex-row pl-2">
+                                                    <div class="number">{{ data.projects }}</div>
+                                                    <div class="text">{{ 'project.singular'|trans }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card card-stat">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <div>
+                                                    <i class="fas fa-comment"></i>
+                                                </div>
+                                                <div class="flex-row pl-2">
+                                                    <div class="number">{{ data.tests }}</div>
+                                                    <div class="text">{{ 'test.singular'|trans }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card card-stat">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <div>
+                                                    <i class="fas fa-comment"></i>
+                                                </div>
+                                                <div class="flex-row pl-2">
+                                                    <div class="number">{{ data.topics }}</div>
+                                                    <div class="text">{{ 'topic.singular'|trans }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% elseif is_granted('ROLE_USER') %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5>{{ 'project.latest'|trans }}</h5>
+                                            <hr>
+                                            {% for item in data.projects %}
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <a href="{{ path('back_project_show', {'id': item.project.id}) }}">{{ item.project.name }}</a>
+                                                    </div>
+                                                    <div>
+                                                        {% set state = ["tracking.select.short","tracking.relation.short","tracking.finish.short"] %}
+                                                        {{ state[item.project.state - 1]|trans }}
+                                                    </div>
+                                                </div>
+                                            {% else %}
+                                                {{ 'project.empty'|trans }}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5>{{ 'test.latest'|trans }}</h5>
+                                            <hr>
+                                            {% for test in data.tests %}
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        {{ test.test.title }}
+                                                    </div>
+                                                    <div>
+                                                        SCORE : {{ test.score }}
+                                                    </div>
+                                                </div>
+                                            {% else %}
+                                                {{ 'test.empty'|trans }}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="row">
+                                {% for state in data.states %}
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="card {% if state.position <= app.user.state %}bg-green{% endif %}">
+                                            <div class="card-body text-center">
+                                                <div>
+                                                    <i class="fas fa-2x fa-user"></i>
+                                                </div>
+                                                <div class="mt-3">
+                                                    {{ state.value }}
+                                                </div>
+                                                <div class="mt-3">
+                                                    {% if state.position <= app.user.state %}
+                                                        <i class="fas fa-2x fa-check-circle"></i>
+                                                    {% else %}
+                                                        <i class="fas fa-2x fa-clock"></i>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </section>
+            {% endblock %}
+        </div>
+    </div>
+    {% include '_partials/footer.html.twig' %}
+{% endblock %}
