@@ -1,6 +1,6 @@
-import React, {useEffect} from "react";
-import './Alert.scss';
-const Alert = ({open, onDismiss, type, message}) => {
+import React, { useEffect } from "react";
+import './Alert.css';
+const Alert = ({ open, onDismiss, type, message }) => {
 
     useEffect(() => {
         let timeout;

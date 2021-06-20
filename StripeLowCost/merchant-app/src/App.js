@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import ErrorBoundary from "./components/ErrorBoundary";
-import "../src/sass/components/_reset.scss";
+import "../src/sass/components/_reset.css";
 import Navbar from "./components/Navbar/Navbar";
 import useProducts from "./hooks/useProducts";
 import { toast } from "react-toastify";

@@ -1,6 +1,6 @@
 import React from "react";
 import CartItem from "./CartItem";
-import "../../sass/components/_cart-dropdown.scss";
+import "../../sass/components/_cart-dropdown.css";
 import useProducts from "../../hooks/useProducts";
 import {withRouter} from "react-router-dom";
 

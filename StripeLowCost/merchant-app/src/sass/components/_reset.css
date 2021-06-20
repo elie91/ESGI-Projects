@@ -1,5 +1,3 @@
-@import "../helpers/variables.scss";
-
 * {
     margin: 0;
     padding: 0;
@@ -22,17 +20,17 @@
 }
 
 ::selection {
-    background-color: $primary;
-    color: $white;
+    background-color: #4e73df;
+    color: #4e73df;
 }
 
 ::-moz-selection {
-    background-color: $primary;
-    color: $white;
+    background-color: #4e73df;
+    color: #FFFFFF;
 }
 
 body {
-    background-color: $smoke;
+    background-color: #FAFAFA;
     overflow-x: hidden;
 }
 

@@ -1,0 +1,14 @@
+.navbar {
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.navbar__links {
+  display: flex;
+}
+
+.navbar__security {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
