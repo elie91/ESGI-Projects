@@ -1,0 +1,7 @@
+FROM node:alpine
+RUN apk add --update ffmpeg
+WORKDIR "/home/node/app"
+COPY package.json .
+RUN yarn install
+COPY . .
+CMD ["yarn", "run", "dev"]

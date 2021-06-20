@@ -1,0 +1,49 @@
+version: "3.8"
+services:
+  # db:
+  #   image: mariadb
+  #   volumes:
+  #     - db_data:/var/lib/mysql
+  #   ports:
+  #     - 3306:3306
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=rKQbt86bt3zt44aB
+  #     - MYSQL_DATABASE=infoclimax
+  #     - MYSQL_USER=infoclimax
+  #     - MYSQL_PASSWORD=rKQbt86bt3zt44aB
+  api:
+    build:
+      context: ./api
+      target: api_development
+    volumes:
+      - /usr/src/api/node_modules
+      - ./api:/usr/src/api:rw
+    environment:
+      - JWT_SECRET=ShKz495hAk8Cbh8d
+      - MYSQL_ROOT_PASSWORD=rKQbt86bt3zt44aB
+      - MYSQL_HOST=mysql-ext.infoclimat.net
+      - MYSQL_DATABASE=hackaton_esgi_groupe13
+      - MYSQL_PORT=3306
+      - MYSQL_USER=esgi13
+      - MYSQL_PASSWORD=D8NP7P7BxhArF9fRQK2t
+    ports:
+      - 3001:3001
+
+  client:
+    build:
+      context: ./client
+      target: client_development
+      cache_from:
+        - ${CLIENT_IMAGE:-quay.io/api-platform/client}
+    image: ${CLIENT_IMAGE:-quay.io/api-platform/client}
+    tty: true # https://github.com/facebook/create-react-app/issues/8688
+    stdin_open: true
+    environment:
+      - REACT_APP_API_URL=http://localhost:3001
+    volumes:
+      - /usr/src/api/node_modules
+      - ./client:/usr/src/client:rw
+    ports:
+      - 8080:3000
+volumes:
+  db_data:

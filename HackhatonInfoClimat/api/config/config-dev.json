@@ -1,0 +1,54 @@
+{
+  "api": "http://localhost",
+  "port": "3001",
+  "cors": {
+    "origin": "*"
+  },
+  "database": {
+    "name": "sports",
+    "host": "postgres",
+    "port": "5432",
+    "user": "sports",
+    "password": "rKQbt86bt3zt44aB",
+    "option": {
+      "force": false,
+      "log": false,
+      "alter": false
+    },
+    "model": {
+      "freezeTableName": true,
+      "timestamp": false
+    }
+  },
+  "smtpConfig": {
+    "host": "1.2.3.4",
+    "port": "1000",
+    "secure": false,
+    "from": "ltde@fuckelie.com",
+    "auth": {
+      "user": "",
+      "pass": ""
+    }
+  },
+  "jwt": {
+    "salt": "ShKz495hAk8Cbh8d",
+    "sessionLength": "1a"
+  },
+  "caddy": {
+    "hostname": "caddy",
+    "port": "80",
+    "path": "/.well-known/mercure",
+    "bearer": "eyJhbGciOiJIUzI1NiJ9.eyJtZXJjdXJlIjp7InB1Ymxpc2giOlsiKiJdLCJzdWJzY3JpYmUiOlsiaHR0cHM6Ly9leGFtcGxlLmNvbS9teS1wcml2YXRlLXRvcGljIiwie3NjaGVtZX06Ly97K2hvc3R9L2RlbW8vYm9va3Mve2lkfS5qc29ubGQiLCIvLndlbGwta25vd24vbWVyY3VyZS9zdWJzY3JpcHRpb25zey90b3BpY317L3N1YnNjcmliZXJ9Il0sInBheWxvYWQiOnsidXNlciI6Imh0dHBzOi8vZXhhbXBsZS5jb20vdXNlcnMvZHVuZ2xhcyIsInJlbW90ZUFkZHIiOiIxMjcuMC4wLjEifX19.z5YrkHwtkz3O_nOnhC_FP7_bmeISe3eykAkGbAl5K7c",
+    "topics": {
+      "conversations": {
+        "post": "http://caddy/users/:id/conversations"
+      },
+      "messages": {
+        "post": "http://caddy/users/:id/messages"
+      },
+      "videos": {
+        "post": "http://caddy/videos/upload"
+      }
+    }
+  }
+}
