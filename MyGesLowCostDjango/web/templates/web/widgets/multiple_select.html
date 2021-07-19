@@ -1,0 +1,12 @@
+<select id="select-multiple-{{ widget.name }}" name="{{ widget.name }}"{% include "web/widgets/attrs.html" %}>{% for group_name, group_choices, group_index in widget.optgroups %}{% if group_name %}
+  <optgroup label="{{ group_name }}">{% endif %}{% for option in group_choices %}
+  {% include option.template_name with widget=option %}{% endfor %}{% if group_name %}
+  </optgroup>{% endif %}{% endfor %}
+</select>
+
+{% block scripts %}
+    <script>
+        const select = document.getElementById("select-multiple-{{ widget.name }}");
+         const choices = new Choices(select);
+    </script>
+{% endblock %}

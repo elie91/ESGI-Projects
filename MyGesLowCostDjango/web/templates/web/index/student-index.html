@@ -1,0 +1,28 @@
+{#ma moyenne gé#}
+{#mes notes#}
+{#ma promo#}
+{#prochain cours#}
+
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card h-100">
+            <div class="card-body p-4 text-dark">
+                <h6 class="card-title">Ma moyenne générale</h6>
+                <p class="card-text mt-3 fs-2 fw-bold">
+                    {{ student_data.average.promotions.0.global_average }}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card h-100">
+            <div class="card-body p-4 text-dark">
+                <h6 class="card-title">Ma promo</h6>
+                <p class="card-text mt-3 fs-4 fw-bold">
+                    {{ student_data.promo.0.name }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+{% extends 'web/base.html' %}
+
+{% block body %}
+    {{ groups }}
+    <div class="container-fluid">
+        {% if role == 'student' %}
+            {% include 'web/index/student-index.html' %}
+        {% elif role == 'teacher' %}
+            {% include 'web/index/teacher-index.html' %}
+        {% elif role == 'manager' %}
+            {% include 'web/index/manager-index.html' %}
+        {% endif %}
+    </div>
+{% endblock %}

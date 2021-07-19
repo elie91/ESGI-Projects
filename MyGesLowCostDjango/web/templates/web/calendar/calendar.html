@@ -1,0 +1,145 @@
+{% extends 'web/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link href='{% static 'web/lib/fullcalendar/lib/main.min.css' %}' rel='stylesheet'/>
+    <script src='{% static 'web/lib/fullcalendar/lib/main.min.js' %}'></script>
+    <script src='{% static 'web/lib/fullcalendar/lib/locales/fr.js' %}'></script>
+    <script>
+        let initialEvents = []
+        let selectPromotion = null
+        let selectCourse = null
+        let calendar = null
+        let params = {
+            initialView: 'timeGridWeek',
+            themeSystem: 'bootstrap',
+            slotMinTime: '08:00:00',
+            slotMaxTime: '21:00:00',
+            hiddenDays: [0],
+            locale: 'fr',
+            eventColor: '#2b867a',
+            eventBorderColor: '#2b867a',
+            selectable: {% if user.role == "manager" %}true{% else %}false{% endif %},
+            select: (e) => {
+                openModal(e)
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const calendarEl = document.getElementById('calendar');
+            initialEvents = {{ slots|safe }}
+                calendar = new FullCalendar.Calendar(calendarEl, {
+                    ...params,
+                    initialEvents: initialEvents,
+                });
+            calendar.render();
+            selectCourse = document.getElementById('select-course');
+            selectPromotion = document.getElementById('select-promotion');
+            selectPromotion.onchange = function (e) {
+                fetch(window.location.origin + '/promotions/' + e.target.value + '/courses').then(function (response) {
+                    if (response.ok) {
+                        response.text().then(function (content) {
+                            let data = JSON.parse(content)
+                            selectCourse.innerHTML = "";
+                            data.forEach(item => {
+                                let option = document.createElement("option");
+                                option.textContent = item.fields.name;
+                                option.value = item.pk;
+                                selectCourse.add(option);
+                            })
+                            document.querySelector('.container-none').style.display = "block"
+                        });
+                    }
+                }).catch(function (error) {
+                    console.log(error.message);
+                });
+            }
+        });
+
+        function openModal(params) {
+            const myModal = new mdb.Modal(document.getElementById('slot'))
+            const date = document.getElementById('date')
+            const start = document.getElementById('start')
+            const end = document.getElementById('end')
+            date.value = formatDate(params.startStr);
+            start.value = formatDate(params.startStr, true);
+            end.value = formatDate(params.endStr, true);
+            myModal.show()
+        }
+
+        function formatDate(date, time = false) {
+            date = date.split('T')
+            if (time) {
+                date = date[1].split('+')
+                return date[0]
+            } else {
+                return date[0]
+            }
+        }
+
+        function handleClick(value) {
+            const calendarEl = document.getElementById('calendar');
+            calendar.destroy()
+            let events = initialEvents
+            if (value !== "-1") {
+                events = initialEvents.filter(s => parseInt(value, 10) === s.promotion)
+            }
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                ...params,
+                initialEvents: events,
+            });
+            calendar.render()
+
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-{% if user.role == 'manager' %}8{% else %}12{% endif %}">
+                    <h5 class="card-title mb-0">Planning</h5>
+                </div>
+                {% if user.role == 'manager' %}
+                    <div class="col-md-4">
+                        <select class="form-control" onchange="handleClick(value)" aria-label="Promotions">
+                            <option value="-1">Selectionner une promotion</option>
+                            {% for promotion in promotions %}
+                                <option value="{{ promotion.id }}">
+                                    {{ promotion.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                {% endif %}
+
+            </div>
+            <div class="mt-3" id="calendar"></div>
+        </div>
+    </div>
+    <div class="modal fade" id="slot" tabindex="-1" aria-labelledby="slot" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Création d'un créneau</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+                <form id="form-slot" action="{% url 'calendar' %}" method="post">
+                    <div class="modal-body">
+                        <div class="row">
+                            {% csrf_token %}
+                            {% include 'web/fields.html' %}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                            Fermer
+                        </button>
+                        <button type="submit" class="btn btn-primary">Confirmer</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% for field in form %}
+    <div class="mb-2
+            {% if field.field.widget.attrs.container %}{{ field.field.widget.attrs.container }}{% else %}col-md-12{% endif %}">
+        {% if field.label %}
+            <label for="{{ field.html_name }}" class="form-label">{{ field.label_tag }}</label>
+        {% endif %}
+        {{ field }}
+        {% if field.errors %}
+            {% for error in field.errors %}
+                {% if error == field.html_name %}
+                    <div class="invalid-feedback">
+                        {{ error }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endfor %}

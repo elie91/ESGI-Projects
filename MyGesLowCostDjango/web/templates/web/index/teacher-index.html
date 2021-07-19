@@ -1,0 +1,23 @@
+{% comment %}
+prochain cours
+mes promos
+{% endcomment %}
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card h-100">
+            <div class="card-body p-4 text-dark">
+                <h6 class="card-title">Mes promotions</h6>
+                <div class="mt-4">
+                    {% for promo in teacher_data.promos %}
+                        <a href="{% url 'promotions_show' promo.id %}">
+                            <button type="button" class="btn btn-secondary btn-lg me-2" data-mdb-ripple-color="dark">
+                                {{ promo.name }}
+                            </button>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

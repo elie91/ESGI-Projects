@@ -1,0 +1,45 @@
+{% extends 'web/base.html' %}
+
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-9">
+                        <h5 class="card-title"> Ajouter des notes à la matière {{ course.name }}</h5>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary w-100">Enregistrer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% for promotion in promotions %}
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Promotion {{ promotion.name }}</h5>
+                    <div class="row align-items-center">
+                        {% for student in promotion.users.all %}
+                            <div class="col-md-3 m3-3">
+                                <span>{{ student.last_name }} {{ student.first_name }}</span>
+                            </div>
+                            <div class="col-md-3 mt-3">
+                                <input type="number" step="0.01" min="0" max="20" name="notation_{{ student.id }}"
+                                       class="form-control"
+                                       placeholder="Saisir une note" aria-label="Note de {{ student.last_name }} {{ student.first_name }}">
+                            </div>
+                            <div class="col-md-6"></div>
+                        {% endfor %}
+                        {% if promotion.users.count == 0 %}
+                            <div class="col-md-12 text-center">
+                                <p class="mb-0">Il n'y a pas d'etudiant</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </form>
+
+{% endblock %}

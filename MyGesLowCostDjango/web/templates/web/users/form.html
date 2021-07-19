@@ -1,0 +1,16 @@
+<a href="{% url 'users' %}" class="btn btn-primary mb-3">
+    Retour
+</a>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title text-primary">{% if edit %}Modifier{% else %}Ajouter{% endif %} un utilisateur</h5>
+        <form class="row" action="{% if edit %}{% url 'users_edit' user.id %}{% else %}{% url 'users_add' %}{% endif %}"
+              method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% include 'web/fields.html' %}
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">{% if edit %}Modifier{% else %}Ajouter{% endif %}</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+{% extends 'web/base.html' %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <h5 class="card-title text-primary">Matières</h5>
+                {% if user.role == 'manager' %}
+                    <a href="{% url 'courses_add' %}" class="btn btn-primary">
+                        Ajouter une matière
+                    </a>
+                {% endif %}
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Coefficient</th>
+                    <th scope="col">Enseignant</th>
+                    <th scope="col" class="text-end">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for course in courses %}
+                    <tr>
+                        <th scope="row">{{ course.id }}</th>
+                        <td>{{ course.name }}</td>
+                        <td>{{ course.coefficient }}</td>
+                        <td>{{ course.teacher.last_name }} {{ course.teacher.first_name }}</td>
+                        <td class="text-end">
+
+                            <a href="{% url 'courses_show' course.id %}" class="btn btn-transparent btn-floating">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            {% if user.role == 'manager' %}
+                                <a href="{% url 'courses_edit' course.id %}" class="btn btn-transparent btn-floating">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                                <button
+                                        data-mdb-toggle="modal"
+                                        data-mdb-target="#delete-modal"
+                                        data-url="{% url 'courses_delete' course.id %}" data-name="{{ course.name }}"
+                                        class="btn btn-transparent text-danger btn-floating delete-button">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                {% if courses|length == 0 %}
+                    <tr>
+                        <th class="text-center" colspan="5" scope="row">Il n'y a pas de matière</th>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% include 'web/custom/modal_delete.html' %}
+{% endblock %}
+

@@ -1,0 +1,105 @@
+{% extends 'web/base.html' %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <h5 class="card-title text-primary">Utilisateurs</h5>
+                </div>
+                <div class="col-md-9">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <select name="choose-role" id="choose-role" class="form-control py-2 mb-0" aria-label="Roles">
+                                <option value="all" selected>Tout les rôles</option>
+                                <option value="student">Etudiant</option>
+                                <option value="teacher">Professeur</option>
+                                <option value="manager">Collaborateur</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{% url 'users_import' %}" class="btn w-100 btn-primary ms-2">
+                                Importer
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{% url 'users_add' %}" class="btn w-100 btn-primary ms-2">
+                                Ajouter un utilisateur
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <table class="table mt-3">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Rôle</th>
+                    <th scope="col">Promotion</th>
+                    <th scope="col" class="text-end">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr class="user-row" data-role="{{ user.role }}">
+                        <th scope="row">{{ user.id }}</th>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.last_name }}</td>
+                        <td>{{ user.first_name }}</td>
+                        <td>{{ user.role }}</td>
+                        <td>{{ user.promotion_set.all.0.name }}</td>
+                        <td class="text-end">
+                            <a href="{% url 'users_edit' user.id %}" class="btn btn-transparent btn-floating">
+                                <i class="fas fa-pen"></i>
+                            </a>
+                            <button
+                                    data-mdb-toggle="modal"
+                                    data-mdb-target="#delete-modal"
+                                    data-url="{% url 'users_delete' user.id %}" data-name="{{ user.last_name }}"
+                                    class="btn btn-transparent text-danger btn-floating delete-button">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+                {% if users|length == 0 %}
+                    <tr>
+                        <th class="text-center" colspan="5" scope="row">Il n'y a pas d'utilisateur</th>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% include 'web/custom/modal_delete.html' %}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        const select = document.querySelector('#choose-role');
+        const rows = Array.from(document.querySelectorAll('.user-row'));
+
+        const displayUsers = role => {
+            rows.forEach(r => {
+                if (role === 'all') {
+                    r.style.display = 'table-row'
+                } else {
+                    if (role === r.dataset.role) {
+                        r.style.display = 'table-row'
+                    } else {
+                        r.style.display = 'none'
+                    }
+                }
+            })
+        }
+
+        displayUsers(select.value);
+        select.addEventListener('change', (e) => displayUsers(e.target.value))
+
+    </script>
+{% endblock %}
+

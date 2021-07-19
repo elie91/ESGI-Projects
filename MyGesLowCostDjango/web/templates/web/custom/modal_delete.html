@@ -1,0 +1,42 @@
+<div
+        class="modal fade"
+        id="delete-modal"
+        tabindex="-1"
+        aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmer la suppression
+                    <span class="text-danger" id="modal-title"></span>
+                </h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Êtes-vous sur de vouloir supprimer <span class="text-danger" id="modal-name"></span> ?
+            </div>
+            <form id="modal-form" action="#" class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                    Fermer
+                </button>
+                <button type="submit" class="btn btn-primary">Confirmer</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% block scripts %}
+    <script>
+        const element = document.querySelectorAll(".delete-button")
+        const title = document.getElementById("modal-title")
+        const name = document.getElementById("modal-name")
+        const form = document.getElementById("modal-form")
+        element.forEach(item => {
+            item.onclick = function () {
+                form.setAttribute('action', item.dataset.url)
+                title.textContent = item.dataset.name
+                name.textContent = item.dataset.name
+            }
+        })
+    </script>
+{% endblock %}

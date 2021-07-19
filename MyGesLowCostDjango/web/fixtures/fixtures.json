@@ -1,0 +1,558 @@
+[
+  {
+    "model": "web.user",
+    "pk": 1,
+    "fields": {
+      "role": "manager",
+      "username": "manager",
+      "first_name": "yves",
+      "last_name": "skrzypczyk",
+      "email": "manager@gmail.com",
+      "is_active": 1,
+      "password": "pbkdf2_sha256$260000$XL49u96ICIoBdrtm59oRav$6cbV25g7THFad/A/AnWNn8IVka8vqaq2VGZwkmtmBq0=",
+      "is_staff": 0,
+      "gender": "M"
+    }
+  },
+  {
+    "model": "web.user",
+    "pk": 2,
+    "fields": {
+      "role": "teacher",
+      "username": "Benjamin Raynal",
+      "first_name": "benjamin",
+      "last_name": "raynal",
+      "email": "teacher@gmail.com",
+      "is_active": 1,
+      "password": "pbkdf2_sha256$260000$XL49u96ICIoBdrtm59oRav$6cbV25g7THFad/A/AnWNn8IVka8vqaq2VGZwkmtmBq0=",
+      "is_staff": 0,
+      "gender": "M"
+    }
+  },
+  {
+    "model": "web.user",
+    "pk": 3,
+    "fields": {
+      "role": "teacher",
+      "username": "Karlito",
+      "first_name": "Karlito",
+      "last_name": "bernardolo",
+      "email": "Karlito@gmail.com",
+      "is_active": 1,
+      "password": "pbkdf2_sha256$260000$XL49u96ICIoBdrtm59oRav$6cbV25g7THFad/A/AnWNn8IVka8vqaq2VGZwkmtmBq0=",
+      "is_staff": 0,
+      "gender": "M"
+    }
+  },
+  {
+    "model": "web.user",
+    "pk": 4,
+    "fields": {
+      "role": "student",
+      "username": "Antoine",
+      "first_name": "Antoine",
+      "last_name": "Dupont",
+      "email": "student@gmail.com",
+      "is_active": 1,
+      "password": "pbkdf2_sha256$260000$XL49u96ICIoBdrtm59oRav$6cbV25g7THFad/A/AnWNn8IVka8vqaq2VGZwkmtmBq0=",
+      "is_staff": 0,
+      "gender": "M"
+    }
+  },
+  {
+    "model": "web.user",
+    "pk": 5,
+    "fields": {
+      "role": "student",
+      "username": "Jean Dupont",
+      "first_name": "Jean",
+      "last_name": "Dupont",
+      "email": "student2@gmail.com",
+      "is_active": 1,
+      "password": "pbkdf2_sha256$260000$XL49u96ICIoBdrtm59oRav$6cbV25g7THFad/A/AnWNn8IVka8vqaq2VGZwkmtmBq0=",
+      "is_staff": 0,
+      "gender": "M"
+    }
+  },
+  {
+    "model": "web.course",
+    "pk": 1,
+    "fields": {
+      "name": "Symfony",
+      "coefficient": 3,
+      "created_at": "2021-05-04 18:06:34.487000Z",
+      "updated_at": "2021-05-04 18:06:34.487000Z",
+      "teacher_id": 3
+    }
+  },
+  {
+    "model": "web.course",
+    "pk": 2,
+    "fields": {
+      "name": "Javascript",
+      "coefficient": 2,
+      "created_at": "2021-05-04 18:06:34.487000Z",
+      "updated_at": "2021-05-04 18:06:34.487000Z",
+      "teacher_id": 2
+    }
+  },
+  {
+    "model": "web.course",
+    "pk": 3,
+    "fields": {
+      "name": "React",
+      "coefficient": 1,
+      "created_at": "2021-05-04 18:06:34.487000Z",
+      "updated_at": "2021-05-04 18:06:34.487000Z",
+      "teacher_id": 3
+    }
+  },
+  {
+    "model": "web.course",
+    "pk": 4,
+    "fields": {
+      "name": "Base du développement web",
+      "coefficient": 2,
+      "created_at": "2021-05-04 18:06:34.487000Z",
+      "updated_at": "2021-05-04 18:06:34.487000Z",
+      "teacher_id": 2
+    }
+  },
+  {
+    "model": "web.course",
+    "pk": 5,
+    "fields": {
+      "name": "NodeJS",
+      "coefficient": 3,
+      "created_at": "2021-05-04 18:06:34.487000Z",
+      "updated_at": "2021-05-04 18:06:34.487000Z",
+      "teacher_id": 3
+    }
+  },
+  {
+    "model": "web.promotion",
+    "pk": 1,
+    "fields": {
+      "name": "5ESGI IW1",
+      "start": "2020-08-04 18:06:34.487000Z",
+      "end": "2021-08-04 18:06:34.487000Z"
+    }
+  },
+  {
+    "model": "web.promotion",
+    "pk": 2,
+    "fields": {
+      "name": "5ESGI IW2",
+      "start": "2020-08-04 18:06:34.487000Z",
+      "end": "2021-08-04 18:06:34.487000Z"
+    }
+  },
+  {
+    "model": "web.promotion",
+    "pk":3,
+    "fields": {
+      "name": "4ESGI",
+      "start": "2020-08-04 18:06:34.487000Z",
+      "end": "2021-08-04 18:06:34.487000Z"
+    }
+  },
+  {
+    "model": "web.promotion",
+    "pk":4,
+    "fields": {
+      "name": "3ESGI",
+      "start": "2020-08-04 18:06:34.487000Z",
+      "end": "2021-08-04 18:06:34.487000Z"
+    }
+  },
+  {
+    "model": "web.promotion",
+    "pk":4,
+    "fields": {
+      "name": "2ESGI",
+      "start": "2020-08-04 18:06:34.487000Z",
+      "end": "2021-08-04 18:06:34.487000Z"
+    }
+  },
+  {
+    "model": "web.promotion_courses",
+    "pk":1,
+    "fields": {
+      "promotion_id": 1,
+      "course_id": 1
+    }
+  },
+    {
+    "model": "web.promotion_courses",
+    "pk":2,
+    "fields": {
+      "promotion_id": 1,
+      "course_id": 3
+    }
+  },
+    {
+    "model": "web.promotion_courses",
+    "pk":3,
+    "fields": {
+      "promotion_id": 1,
+      "course_id": 5
+    }
+  },
+    {
+    "model": "web.promotion_courses",
+    "pk":4,
+    "fields": {
+      "promotion_id": 2,
+      "course_id": 1
+    }
+  },
+    {
+    "model": "web.promotion_courses",
+    "pk":5,
+    "fields": {
+      "promotion_id": 2,
+      "course_id": 3
+    }
+  },
+    {
+    "model": "web.promotion_courses",
+    "pk":6,
+    "fields": {
+      "promotion_id": 2,
+      "course_id": 5
+    }
+  },
+  {
+    "model": "web.promotion_courses",
+    "pk":7,
+    "fields": {
+      "promotion_id": 3,
+      "course_id": 2
+    }
+  },
+  {
+    "model": "web.promotion_courses",
+    "pk":8,
+    "fields": {
+      "promotion_id": 3,
+      "course_id": 4
+    }
+  },
+  {
+    "model": "web.promotion_users",
+    "pk":1,
+    "fields": {
+      "promotion_id": 1,
+      "user_id": 5
+    }
+  },
+      {
+    "model": "web.promotion_users",
+    "pk":2,
+    "fields": {
+      "promotion_id": 2,
+      "user_id": 4
+    }
+  },
+  {
+    "model": "web.promotion_users",
+    "pk":3,
+    "fields": {
+      "promotion_id": 3,
+      "user_id": 4
+    }
+  },
+  {
+    "model": "web.promotion_users",
+    "pk":4,
+    "fields": {
+      "promotion_id": 3,
+      "user_id": 5
+    }
+  },
+  {
+    "model": "web.grade",
+    "pk": 1,
+    "fields": {
+      "value": 10,
+      "created_at": "2020-08-04 18:06:34.487000Z",
+      "updated_at": "2021-08-04 18:06:34.487000Z",
+      "course_id": 1,
+      "user_id": 4
+    }
+  },
+  {
+    "model": "web.grade",
+    "pk": 2,
+    "fields": {
+      "value": 14,
+      "created_at": "2020-08-04 18:06:34.487000Z",
+      "updated_at": "2021-08-04 18:06:34.487000Z",
+      "course_id": 2,
+      "user_id": 4
+    }
+  },
+  {
+    "model": "web.grade",
+    "pk": 3,
+    "fields": {
+      "value": 15,
+      "created_at": "2020-08-04 18:06:34.487000Z",
+      "updated_at": "2021-08-04 18:06:34.487000Z",
+      "course_id": 3,
+      "user_id": 4
+    }
+  },
+  {
+    "model": "web.grade",
+    "pk": 4,
+    "fields": {
+      "value": 19,
+      "created_at": "2020-08-04 18:06:34.487000Z",
+      "updated_at": "2021-08-04 18:06:34.487000Z",
+      "course_id": 4,
+      "user_id": 4
+    }
+  },
+  {
+    "model": "web.grade",
+    "pk": 5,
+    "fields": {
+      "value": 2,
+      "created_at": "2020-08-04 18:06:34.487000Z",
+      "updated_at": "2021-08-04 18:06:34.487000Z",
+      "course_id": 5,
+      "user_id": 4
+    }
+  },
+  {
+    "model": "web.grade",
+    "pk": 6,
+    "fields": {
+      "value": 12,
+      "created_at": "2020-08-04 18:06:34.487000Z",
+      "updated_at": "2021-08-04 18:06:34.487000Z",
+      "course_id": 5,
+      "user_id": 4
+    }
+  },
+  {
+    "model": "web.grade",
+    "pk": 7,
+    "fields": {
+      "value": 5,
+      "created_at": "2020-08-04 18:06:34.487000Z",
+      "updated_at": "2021-08-04 18:06:34.487000Z",
+      "course_id": 1,
+      "user_id": 5
+    }
+  },
+  {
+    "model": "web.grade",
+    "pk": 8,
+    "fields": {
+      "value": 5,
+      "created_at": "2020-08-04 18:06:34.487000Z",
+      "updated_at": "2021-08-04 18:06:34.487000Z",
+      "course_id": 1,
+      "user_id": 5
+    }
+  },
+  {
+    "model": "web.grade",
+    "pk": 9,
+    "fields": {
+      "value": 11,
+      "created_at": "2020-08-04 18:06:34.487000Z",
+      "updated_at": "2021-08-04 18:06:34.487000Z",
+      "course_id": 2,
+      "user_id": 5
+    }
+  },
+  {
+    "model": "web.grade",
+    "pk": 10,
+    "fields": {
+      "value": 18,
+      "created_at": "2020-08-04 18:06:34.487000Z",
+      "updated_at": "2021-08-04 18:06:34.487000Z",
+      "course_id": 2,
+      "user_id": 5
+    }
+  },
+  {
+    "model": "web.grade",
+    "pk": 11,
+    "fields": {
+      "value": 15,
+      "created_at": "2020-08-04 18:06:34.487000Z",
+      "updated_at": "2021-08-04 18:06:34.487000Z",
+      "course_id": 3,
+      "user_id": 5
+    }
+  },
+  {
+    "model": "web.grade",
+    "pk": 12,
+    "fields": {
+      "value": 6,
+      "created_at": "2020-08-04 18:06:34.487000Z",
+      "updated_at": "2021-08-04 18:06:34.487000Z",
+      "course_id": 4,
+      "user_id": 5
+    }
+  },
+  {
+    "model": "web.grade",
+    "pk": 13,
+    "fields": {
+      "value": 11,
+      "created_at": "2020-08-04 18:06:34.487000Z",
+      "updated_at": "2021-08-04 18:06:34.487000Z",
+      "course_id": 5,
+      "user_id": 5
+    }
+  },
+  {
+    "model": "web.slot",
+    "pk": 1,
+    "fields": {
+      "start": "2021-05-03 09:00:00.487000Z",
+      "end": "2021-05-03 11:15:00.487000Z",
+      "course_id": 5,
+      "promotion_id": 1
+    }
+  },
+  {
+    "model": "web.slot",
+    "pk": 2,
+    "fields": {
+      "start": "2021-05-03 11:30:00.487000Z",
+      "end": "2021-05-03 13:00:00.487000Z",
+      "course_id": 5,
+      "promotion_id":1
+    }
+  },
+  {
+    "model": "web.slot",
+    "pk": 3,
+    "fields": {
+      "start": "2021-05-03 11:30:00.487000Z",
+      "end": "2021-05-03 13:00:00.487000Z",
+      "course_id": 5,
+      "promotion_id": 2
+    }
+  },
+  {
+    "model": "web.slot",
+    "pk": 4,
+    "fields": {
+      "start": "2021-05-03 14:00:00.487000Z",
+      "end": "2021-05-03 15:30:00.487000Z",
+      "course_id": 5,
+      "promotion_id": 2
+    }
+  },
+  {
+    "model": "web.slot",
+    "pk": 5,
+    "fields": {
+      "start": "2021-05-04 09:00:00.487000Z",
+      "end": "2021-05-04 11:15:00.487000Z",
+      "course_id": 5,
+      "promotion_id": 1
+    }
+  },
+  {
+    "model": "web.slot",
+    "pk": 6,
+    "fields": {
+      "start": "2021-05-04 11:30:00.487000Z",
+      "end": "2021-05-04 13:00:00.487000Z",
+      "course_id": 5,
+      "promotion_id":1
+    }
+  },
+  {
+    "model": "web.slot",
+    "pk": 7,
+    "fields": {
+      "start": "2021-05-04 11:30:00.487000Z",
+      "end": "2021-05-04 13:00:00.487000Z",
+      "course_id": 5,
+      "promotion_id": 2
+    }
+  },
+  {
+    "model": "web.slot",
+    "pk": 8,
+    "fields": {
+      "start": "2021-05-04 14:00:00.487000Z",
+      "end": "2021-05-04 15:30:00.487000Z",
+      "course_id": 5,
+      "promotion_id": 2
+    }
+  }
+  ,
+  {
+    "model": "web.slot",
+    "pk": 9,
+    "fields": {
+      "start": "2021-05-05 11:30:00.487000Z",
+      "end": "2021-05-05 13:00:00.487000Z",
+      "course_id": 5,
+      "promotion_id": 2
+    }
+  },
+  {
+    "model": "web.slot",
+    "pk": 10,
+    "fields": {
+      "start": "2021-05-05 14:00:00.487000Z",
+      "end": "2021-05-05 15:30:00.487000Z",
+      "course_id": 5,
+      "promotion_id": 2
+    }
+  }
+  ,
+  {
+    "model": "web.slot",
+    "pk": 11,
+    "fields": {
+      "start": "2021-05-05 11:30:00.487000Z",
+      "end": "2021-05-05 13:00:00.487000Z",
+      "course_id": 5,
+      "promotion_id": 2
+    }
+  },
+  {
+    "model": "web.slot",
+    "pk": 12,
+    "fields": {
+      "start": "2021-05-05 14:00:00.487000Z",
+      "end": "2021-05-05 15:30:00.487000Z",
+      "course_id": 5,
+      "promotion_id": 2
+    }
+  },
+  {
+    "model": "web.slot",
+    "pk": 13,
+    "fields": {
+      "start": "2020-05-04 11:30:00.487000Z",
+      "end": "2020-05-04 13:00:00.487000Z",
+      "course_id": 2,
+      "promotion_id": 3
+    }
+  },
+  {
+    "model": "web.slot",
+    "pk": 14,
+    "fields": {
+      "start": "2020-05-04 14:00:00.487000Z",
+      "end": "2020-05-04 15:30:00.487000Z",
+      "course_id": 2,
+      "promotion_id": 3
+    }
+  }
+]

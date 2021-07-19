@@ -1,0 +1,7 @@
+.idea
+web/__pycache__/
+web/migrations/__pycache__/
+myGesLowCost/__pycache__/
+.DS_Store
+/venv
+__pycache__/

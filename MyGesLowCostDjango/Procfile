@@ -1,0 +1,1 @@
+web: gunicorn myGesLowCost.wsgi --log-file -

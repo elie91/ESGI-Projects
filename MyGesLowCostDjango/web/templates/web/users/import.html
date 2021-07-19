@@ -1,0 +1,19 @@
+{% extends 'web/base.html' %}
+
+{% block body %}
+    <a href="{% url 'users' %}" class="btn btn-primary mb-3">
+        Retour
+    </a>
+    <div class="card">
+        <div class="card-body">
+            <form class="row" action="{% url 'users_import' %}"
+                  method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% include 'web/fields.html' %}
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary">Importer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'web/base.html' %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <h5 class="card-title text-primary">Ajout d'un support</h5>
+            </div>
+            <form class="row" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% include 'web/fields.html' %}
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+

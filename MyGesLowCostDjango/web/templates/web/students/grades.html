@@ -1,0 +1,126 @@
+{% extends 'web/base.html' %}
+{% load subtract %}
+
+{% block body %}
+    {% if teacher %}
+        <a href="{% url 'promotions' %}" class="btn btn-primary mb-3">
+            Retour
+        </a>
+    {% endif %}
+    <div class="card">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h5 class="card-title text-primary">
+                        {% if user.role == 'student' %}
+                            Mes notes
+                        {% else %}
+                            Note de l'élève {{ student.last_name }} {{ student.first_name }}
+                        {% endif %}
+                    </h5>
+                </div>
+                {% if request.GET.promotion == None %}
+                    <div class="col-md-4">
+                        <select aria-label="select" class="form-control py-2" onchange="handleClick(value)">
+                            {% for promotion in student.promotion_set.all %}
+                                <option value="{{ promotion.id }}">
+                                    {{ promotion.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                {% endif %}
+            </div>
+
+            <table class="table mt-3">
+                <thead>
+                <tr>
+                    <th scope="col">Matière</th>
+                    <th scope="col">Enseignant</th>
+                    <th scope="col">Coefficient</th>
+                    <th scope="col" colspan="{{ max }}">Notes</th>
+                    <th scope="col">Moyenne</th>
+                </tr>
+                </thead>
+                <tbody id="table">
+                {% for promotion in promotions %}
+                    {% for course in promotion.courses %}
+                        <tr data-id="{{ promotion.promotion.id }}" class="grade-wrapper">
+                            <td>{{ course.course.name }}</td>
+                            <td>
+                                {% if course.course.teacher.gender == "W" %}
+                                    Mme.
+                                {% elif course.course.teacher.gender == "M" %}
+                                    M.
+                                {% endif %}
+                                {{ course.course.teacher.last_name.upper }} {{ course.course.teacher.first_name }}</td>
+                            <td>{{ course.course.coefficient }}</td>
+
+
+                            {% for grade in course.course.grade_set.all %}
+                                {% if grade.user.id == student.id %}
+                                    <td id="{{ grade.value }}" class="grade-cell{% if grade.value < 10 %} text-danger{% endif %}">
+                                        {{ grade.value }}
+                                    </td>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if course.average %}
+                                <td class="grade-average fw-bold{% if course.average < 10 %} text-danger{% endif %}">
+                                    {{ course.average }}
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    <tr data-id="{{ promotion.promotion.id }}" class="fw-bold grade-wrapper">
+                        <td class="grade-cell">
+                            Moyenne générale
+                        </td>
+                        <td colspan="3"></td>
+                        <td class="fw-bold grade-average{% if promotion.global_average < 10 %} text-danger{% endif %}">
+                            {{ promotion.global_average }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        const table = document.getElementById('table');
+        const children = Array.from(table.children);
+        const promotion = "{{ request.GET.promotion|safe }}"
+
+
+        const grades = Array.from(document.querySelectorAll('.grade-wrapper'))
+        grades.forEach(tr => {
+            const gradeCell = Array.from(tr.querySelectorAll('.grade-cell'))
+            if (gradeCell.length < {{ max }}) {
+                for (let i = gradeCell.length; i < {{ max }}; i++) {
+                    const newTd = document.createElement('td')
+                    tr.insertBefore(newTd, tr.querySelector('.grade-average'))
+                }
+            }
+        })
+
+        let handleClick = function (param) {
+            children.forEach(item => {
+                    if (item.dataset.id === param) {
+                        item.style.display = 'table-row';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            )
+            return param;
+        };
+
+        if (children.length > 0) {
+            handleClick(promotion ? promotion : children[0].dataset.id);
+        }
+    </script>
+{% endblock %}

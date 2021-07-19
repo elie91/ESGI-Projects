@@ -1,0 +1,74 @@
+{% load static %}
+<div class="mb-3 {{ widget.container }}">
+    <div id="drop-{{ widget.name }}" class="dropzone text-center mt-3">
+        <label for="{{ widget.name }}">
+            <img
+                    class="my-2"
+                    id="preview-{{ widget.name }}"
+                    height="85"
+                    src="{% if widget.attrs.document %}{% static 'web/images/file-download-solid.svg' %}{% else %}{% if widget.is_initial %}{{ widget.value.url }}{% else %}{% static 'web/images/image-regular.svg' %}{% endif %}{% endif %}"
+                    alt="{{ widget.name }}">
+        </label>
+        <p id="drop-text-{{ widget.name }}" class="my-2">Glisser/deposer votre fichier...</p>
+        <input class="form-control d-none" id="{{ widget.name }}" type="{{ widget.type }}" name="{{ widget.name }}"
+               aria-label="{{ widget.name }}">
+    </div>
+</div>
+
+
+{% block script %}
+    <script>
+        const input = document.getElementById("{{ widget.name }}");
+        const img = document.getElementById("preview-{{ widget.name }}");
+        const drop = document.getElementById("drop-{{ widget.name }}");
+        const dropText = document.getElementById("drop-text-{{ widget.name }}")
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    img.setAttribute('src', e.target.result);
+                }
+                dropText.textContent = input.files[0].name
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            drop.addEventListener(eventName, preventDefaults, false)
+        })
+
+        function preventDefaults(e) {
+            e.preventDefault()
+            e.stopPropagation()
+        }
+
+        ;['dragenter', 'dragover'].forEach(eventName => {
+            drop.addEventListener(eventName, highlight, false)
+        })
+
+        ;['dragleave', 'drop'].forEach(eventName => {
+            drop.addEventListener(eventName, unhighlight, false)
+        })
+
+        function highlight() {
+            drop.classList.add('highlight')
+        }
+
+        function unhighlight() {
+            drop.classList.remove('highlight')
+        }
+
+        drop.addEventListener('drop', handleDrop, false)
+
+
+        function handleDrop(e) {
+            readURL(e.dataTransfer)
+        }
+
+        input.onchange = function () {
+            readURL(this);
+        };
+    </script>
+{% endblock %}
