@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      component: server
+  template:
+    metadata:
+      labels:
+        component: server
+    spec:
+      containers:
+      - name: server
+        image: elie91/sportunities-pa-api
+        ports:
+        - containerPort: 3001
+        env:
+          - name: POSTGRES_DB
+            value: sports
+          - name: POSTGRES_HOST
+            value: postgres-cluster-ip-service
+          - name: POSTGRES_PORT
+            value: "5432"
+          - name: POSTGRES_USER
+            value: sports
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+                secretKeyRef: 
+                  name: pgpassword
+                  key: PGPASSWORD
+          - name: JWT_SECRET
+            value: ShKz495hAk8Cbh8d
+          - name: NODE_AWS_ACCESS_KEY
+            value: AKIAQ2YNHC7MDNVVPUEF
+          - name: NODE_AWS_SECRET_KEY
+            value: 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
+          - name: NODE_S3_BUCKET_NAME
+            value: sportunities-bucket-pa
+          - name: MERCURE_PORT
+            value: "80"
+          - name: MERCURE_HOST
+            value: sportunities-mercure
+          - name: MERCURE_BEARER
+            value: eyJhbGciOiJIUzI1NiJ9.eyJtZXJjdXJlIjp7InB1Ymxpc2giOlsiKiJdLCJzdWJzY3JpYmUiOlsiaHR0cHM6Ly9leGFtcGxlLmNvbS9teS1wcml2YXRlLXRvcGljIiwie3NjaGVtZX06Ly97K2hvc3R9L2RlbW8vYm9va3Mve2lkfS5qc29ubGQiLCIvLndlbGwta25vd24vbWVyY3VyZS9zdWJzY3JpcHRpb25zey90b3BpY317L3N1YnNjcmliZXJ9Il0sInBheWxvYWQiOnsidXNlciI6Imh0dHBzOi8vZXhhbXBsZS5jb20vdXNlcnMvZHVuZ2xhcyIsInJlbW90ZUFkZHIiOiIxMjcuMC4wLjEifX19.z5YrkHwtkz3O_nOnhC_FP7_bmeISe3eykAkGbAl5K7c

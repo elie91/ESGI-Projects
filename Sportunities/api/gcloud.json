@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "esgi2020CI",
+  "private_key_id": "45471e94afda917d7d03561aa35a775949f0305f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCg2q8hnFaX709x\nxEKWzzbDHCmzPopFoZjo3kgOelxdURt/KylFA9VZPo3DU2ZPHasroi5h+CPNe0KU\nnEmfmcWERucNTB0Nd3zfSECaIvGA9A3+myddxiqOBMK5MrTae5PgV73nSlb02rv1\nWVWVyMoCjVLptTo0TkUG32v7IH0aPe/WpsI6glPtjP8fv15GwYpfuLfOA60NcM4I\nrdz7TEz4UTLmZfeDKowYvXr8fA0EOGoujTKXAyYOFS38/VfYCYx0lfc8orWquyan\nxXeq0NwtHD1oonNAklwwVN74bB7MdNmx4D8fVQqZv3/WkV+SqicHS2R1KHZUGM3e\nXikLZvRTAgMBAAECggEALfmDH9Sq7V8hck9Zhvgv20FT697er3s6FKjfqH+xoZxa\ngxTnhUnMs2bNJvxR3CALOfvvTOIa/ZKS25317w+I5D9Nr7/G9//kaX8hs8x0AVsA\nGvrmnAdVR2U18K/9AAtdHzyE0zQsuWxBV6VScG7EykjxX0oEmkmashWuq8bD6vk/\niTntazHyL2COQKx9MC19WD57FBg8t1+2+wFEafE2Lbti/WZeR9vngbdnyPCu/cWg\nV0XM2PtKA2E1SchezYZFmk5cs064htm1mD7A4MN7Tf5MfrpoYWS2/aEC4CaGkJxo\n8oEndIFZu7DfqLSOuyGOV8UXMkXbjkD3t7yJpAWhWQKBgQDcoLRLixTc0S0BZvMY\nvHmve+b+dYCaWNB3euPSwMD7qB59YfgBwMFuUXuGGOSWPyPrHm3Sz54HDZofzKdE\nHoQs+btAC8O3pDhac9kA3zA9mq9JjA1EVHtQkmu9bYiVX1V3sKMUxi8xu8nM01g4\nBonnl6pe9BOZggC46nhL06JIiQKBgQC6pK0aP4FKZvqU360+NmQt4OPcv6Ty6H/q\nYoRFny9YWjqHwAMQAOENIylO+Blhs/s0UE6M46K3r201aacXwEH5K0XghFzb7r25\nECVieP4wODdiufyNAB/QcRAfVUg14s7Srp1jH/Yxy+QJdgIF/iTxVSMDjv5bDX8f\niq4v6/mm+wKBgAZc1BZBoo5jseqSb3xNIy0+Y4D/HoBVA14Ouzc+u9IGHSr8gkx6\npJlr3CYX3a+/jmefbwdfWW1WpRU5r7E1OBab9Rx5umE3aTCimqV9ykRci6WRVmic\nDxpZvqWt3PyBzVMwUuOse3vxsHYpuieTeLKnGxC19UK+DwtGJ8X4CnwRAoGBAJUK\nHQSBw4+TLfQlrSSpsFOGas6C5ofmKwcSRkeGNvtZibWPGaL04MFp23mo2jPP0f/T\nRPZybCQ73Hwzcu+fYc9Dw9fmOnSRb0TRZNj+fxQoP+oBVG+PstfzAQnUQwZsp/VK\n5HkcM69N/jmj1zfL2tovvvb/f5Nb8rBQQIoZ6FBzAoGBALyFnY5ZKRwCCM0QsonP\nYYABhqyqVzIKNkfnnY/SEzPlnBrbgvo6jFV2RX4c2yWvq1OMU9smDs3v6lvyiP3j\nt1QzOIIrTnOXL98TNIJOUGB2bXAQqz1U4IzCmzA+AWiCKgqESFkS0THrL2XRKxx4\nwiGxYDnEtUgx2+fvEI8Yo9cS\n-----END PRIVATE KEY-----\n",
+  "client_email": "esgi-sportunities-deployer@esgi2020ci.iam.gserviceaccount.com",
+  "client_id": "116178809833825851319",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/esgi-sportunities-deployer%40esgi2020ci.iam.gserviceaccount.com"
+}
