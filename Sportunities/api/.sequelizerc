@@ -1,7 +1,0 @@
-const path = require('path');
-
-module.exports = {
-  'config': path.resolve(__dirname, 'migrations', 'config.js'),
-  'env': process.env.NODE_ENV || 'development',
-  'migrations-path': path.resolve(__dirname, 'migrations', 'version'),
-};
