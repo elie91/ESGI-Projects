@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mercure-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: mercure
+  template:
+    metadata:
+      labels:
+        component: mercure
+    spec:
+      containers:
+        - name: mercure
+          image: dunglas/mercure
+          command: [ "caddy" ]
+          args: [ "run", "--config", "/etc/caddy/Caddyfile.dev", "--adapter", "caddyfile" ]
+          ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP
+          env:
+            - name: SERVER_NAME
+              value: :80
+            - name: MERCURE_TRANSPORT_URL
+              value: "bolt:///data/mercure.db"
+            - name: MERCURE_PUBLISHER_JWT_KEY
+              value: "!ChangeMe!"
+            - name: MERCURE_SUBSCRIBER_JWT_KEY
+              value: "!ChangeMe!"
+            - name: DEBUG
+              value: debug
+            - name: MERCURE_EXTRA_DIRECTIVES
+              value: "cors_origins http://34.141.232.89 http://192.168.64.40"

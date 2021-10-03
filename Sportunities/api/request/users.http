@@ -1,0 +1,81 @@
+POST http://localhost:3002/.well-known/mercure
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXJjdXJlIjp7InN1YnNjcmliZSI6WyIqIl0sInB1Ymxpc2giOlsiKiJdfX0.hcIPAMklMCkx9r6Jk4A9215GaoGgcGxo6OXPCJ6TsmI
+
+topic=http://localhost:3002/users&data=1
+
+###
+
+GET http://localhost:3000/users/1
+Content-Type: application/json
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "firstname": "Elie",
+  "lastname": "Bismuth",
+  "email": "elie@gmail.com",
+  "phone": "0123456789",
+  "password": "agent",
+  "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lejdd.fr%2FInternational%2FAsie%2Fpourquoi-la-chine-prete-t-elle-ses-pandas-3998558&psig=AOvVaw2PJ333XG4HY77-bnbelPwM&ust=1613814819685000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjQ2fHW9e4CFQAAAAAdAAAAABAD",
+  "role": ["ROLE_PLAYER"]
+}
+
+###
+
+POST http://localhost:3000/login_check
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "Coichot95&"
+}
+
+> {% client.global.set('bearer', response.body.token) %}
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "email": "coichot.t+10124@gmail.com",
+  "lastname": "COICHOT",
+  "firstname": "Thomas",
+  "phone": "+33673763262",
+  "gender": "MAN",
+  "password": "test",
+  "player": {
+    "height": "182",
+    "weight": "82",
+    "nationality": "FR"
+  }
+}
+
+###
+
+GET http://localhost:3000/users
+Content-Type: application/json
+Authorization: Bearer {{bearer}}
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+"firstname": "Elie",
+"lastname": "Bismuth",
+"email": "fernandes.rphl@gmail.com",
+"phone": "0123456789",
+"password": "raph",
+"image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lejdd.fr%2FInternational%2FAsie%2Fpourquoi-la-chine-prete-t-elle-ses-pandas-3998558&psig=AOvVaw2PJ333XG4HY77-bnbelPwM&ust=1613814819685000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjQ2fHW9e4CFQAAAAAdAAAAABAD",
+"role": ["ROLE_ADMIN"]
+}
+###
+
+GET http://localhost:3001/search?s=J1
+Content-Type: application/json
