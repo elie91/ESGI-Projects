@@ -2,28 +2,22 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: ingress-service
+  # higher level configurations
   annotations:
+    # create a ingress controller based of nginx
     kubernetes.io/ingress.class: nginx
+    # rewrite the url to remove the /api/
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     nginx.ingress.kubernetes.io/use-regex: 'true'
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
-    nginx.ingress.kubernetes.io/proxy-body-size: 2048g
 spec:
-  tls:
-    - hosts:
-          - sportunities.com
-          - www.sportunities.com
-      secretName: sportunities-com-secret
   rules:
-    - host: sportunities.com
-      http:
+    - http: 
         paths:
-          - path: /?(.*)
+          - path: /?(.)
             backend:
               serviceName: client-cluster-ip-service
               servicePort: 3000
-          - path: /api/?(.*)
+          - path: /api/?(.)
             backend:
               serviceName: server-cluster-ip-service
               servicePort: 3001
@@ -31,19 +25,3 @@ spec:
             backend:
               serviceName: sportunities-mercure
               servicePort: 80
-    - host: www.sportunities.com
-      http:
-        paths:
-          - path: /?(.*)
-            backend:
-              serviceName: client-cluster-ip-service
-              servicePort: 3000
-          - path: /api/?(.*)
-            backend:
-              serviceName: server-cluster-ip-service
-              servicePort: 3001
-          - path: /mercure/?(.*)
-            backend:
-              serviceName: sportunities-mercure
-              servicePort: 80
-              
